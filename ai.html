@@ -8,6 +8,9 @@
 <meta property="og:title" content="AI — Eric Gabbard">
 <meta property="og:description" content="A point of view on AI in product work, and the systems behind it.">
 <link rel="canonical" href="https://ericgabbard.com/ai.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -29,25 +32,201 @@
   <h1>AI</h1>
 
   <p class="lede">Most companies are automating workflows when their actual problem is that
-  their data can&rsquo;t be reasoned over. Those look similar from the outside. They are not
-  the same project, and one of them compounds fragility.</p>
+  their data can&rsquo;t be reasoned over. Those look similar from the outside. They are not the
+  same project, and one of them compounds fragility.</p>
 
-  <p>I watched this happen up close. Every new Zapier automation made the system a little more
-  brittle, because loan context was split across a document portal, a drive, and a CRM, and no
+  <p>I watched this happen up close. Every new automation made the system a little more brittle,
+  because loan context was split across a document portal, a file store, and a CRM, and no
   automation could see the whole deal. The instinct was to add more automation. The fix was to
   stop and build a centralized deal context layer, so agents could reason across the full loan
-  lifecycle instead of firing on triggers. Trigger-based automation scales linearly with how
-  many rules you can maintain. Context-based agents scale with how good your data model is.</p>
+  lifecycle instead of firing on triggers.</p>
+
+  <figure class="plate">
+    <svg viewBox="0 0 560 190" role="img" aria-label="Diagram: four fragmented data sources unify into a deal context layer, which three agents reason across">
+      <text class="bp-t-m" x="0" y="10">BEFORE — FRAGMENTED</text>
+      <rect class="bp-box"   x="0" y="24" width="104" height="24"/>
+      <text class="bp-t"     x="10" y="40">Document portal</text>
+      <rect class="bp-box"   x="0" y="58" width="104" height="24"/>
+      <text class="bp-t"     x="10" y="74">File storage</text>
+      <rect class="bp-box"   x="0" y="92" width="104" height="24"/>
+      <text class="bp-t"     x="10" y="108">CRM</text>
+      <rect class="bp-box-d" x="0" y="126" width="104" height="24"/>
+      <text class="bp-t-m"   x="10" y="142">+ trigger rules</text>
+
+      <g class="bp-arrow">
+        <path d="M104,36 L146,36 L146,86"/>
+        <path d="M104,70 L146,70 L146,86"/>
+        <path d="M104,104 L146,104 L146,86"/>
+        <path d="M104,138 L146,138 L146,86"/>
+        <path d="M146,86 L192,86"/>
+      </g>
+      <path class="bp-head" d="M192,86 l-7,-3.6 v7.2 z"/>
+
+      <rect class="bp-key" x="196" y="46" width="152" height="80"/>
+      <text class="bp-t-k" x="208" y="72">DEAL CONTEXT</text>
+      <text class="bp-t-k" x="208" y="88">LAYER</text>
+      <text class="bp-t-m" x="208" y="107">full loan lifecycle</text>
+      <text class="bp-t-m" x="196" y="142">AFTER — ONE MODEL</text>
+
+      <g class="bp-arrow-k">
+        <path d="M348,86 L392,86"/>
+        <path d="M392,86 L392,40 L436,40"/>
+        <path d="M392,86 L436,86"/>
+        <path d="M392,86 L392,132 L436,132"/>
+      </g>
+      <g class="bp-head-k">
+        <path d="M436,40 l-7,-3.6 v7.2 z"/>
+        <path d="M436,86 l-7,-3.6 v7.2 z"/>
+        <path d="M436,132 l-7,-3.6 v7.2 z"/>
+      </g>
+
+      <rect class="bp-box" x="440" y="28" width="118" height="24"/>
+      <text class="bp-t"   x="450" y="44">Processing agent</text>
+      <rect class="bp-box" x="440" y="74" width="118" height="24"/>
+      <text class="bp-t"   x="450" y="90">Sales agents</text>
+      <rect class="bp-box" x="440" y="120" width="118" height="24"/>
+      <text class="bp-t"   x="450" y="136">Config monitor</text>
+      <text class="bp-t-m" x="440" y="162">reasoning, not triggers</text>
+    </svg>
+    <figcaption>Fig. 1 — AI enablement strategy: from workflow automation to data architecture</figcaption>
+  </figure>
+
+  <p>Trigger-based automation scales with how many rules you can maintain. Context-based agents
+  scale with how good your data model is. That reframing is the whole strategy, and it&rsquo;s
+  why I stopped a push for more automation and redirected the effort at the data layer instead.</p>
 
   <p>The second thing I believe: the interesting constraint is no longer capability, it&rsquo;s
   governance and cost. A model can write the automation. The open questions are who is allowed
-  to deploy it, what it&rsquo;s permitted to write to, and whether anyone modeled the token bill
-  before shipping. Those are product decisions, not engineering ones, and they&rsquo;re where I
-  spend most of my time.</p>
+  to deploy it, what it&rsquo;s permitted to write to, and whether anyone modeled the bill before
+  shipping. Those are product decisions, not engineering ones.</p>
 
   <p>Third: I build the things I propose. Writing a strategy for AI adoption without having
   shipped an agent is like writing a mobile roadmap having never used a phone. Everything below
   is something I built and ran, not something I specced.</p>
+
+  <hr>
+
+  <h2>Three systems, drawn</h2>
+
+  <h3>The write model</h3>
+  <p>The multi-agent context system had a single-writer model and was losing data whenever two
+  agents wrote at once. The obvious fix is locking. The better fix is making the collision
+  impossible: immutable per-event writes, with views regenerated from the log.</p>
+
+  <figure class="plate">
+    <svg viewBox="0 0 560 200" role="img" aria-label="Diagram comparing a single-writer model that loses concurrent writes against an event-sourced model with immutable writes and regenerable views">
+      <text class="bp-t-m" x="0" y="10">BEFORE — SINGLE WRITER</text>
+      <rect class="bp-box" x="0" y="26" width="62" height="20"/>
+      <text class="bp-t"   x="8" y="40">Agent A</text>
+      <rect class="bp-box" x="0" y="54" width="62" height="20"/>
+      <text class="bp-t"   x="8" y="68">Agent B</text>
+      <rect class="bp-box" x="0" y="82" width="62" height="20"/>
+      <text class="bp-t"   x="8" y="96">Agent C</text>
+
+      <g class="bp-arrow">
+        <path d="M62,36 L100,36 L100,64"/>
+        <path d="M62,64 L100,64"/>
+        <path d="M62,92 L100,92 L100,64"/>
+        <path d="M100,64 L134,64"/>
+      </g>
+      <path class="bp-head" d="M134,64 l-7,-3.6 v7.2 z"/>
+
+      <rect class="bp-box-w" x="138" y="50" width="84" height="28"/>
+      <text class="bp-t-w"   x="148" y="68">single writer</text>
+      <text class="bp-t-w"   x="138" y="98">✕ last write wins</text>
+      <text class="bp-t-w"   x="138" y="112">✕ silent data loss</text>
+
+      <line class="bp-div" x1="252" y1="8" x2="252" y2="180"/>
+
+      <text class="bp-t-m" x="272" y="10">AFTER — EVENT SOURCED</text>
+      <rect class="bp-box" x="272" y="26" width="62" height="20"/>
+      <text class="bp-t"   x="280" y="40">Agent A</text>
+      <rect class="bp-box" x="272" y="54" width="62" height="20"/>
+      <text class="bp-t"   x="280" y="68">Agent B</text>
+      <rect class="bp-box" x="272" y="82" width="62" height="20"/>
+      <text class="bp-t"   x="280" y="96">Agent C</text>
+
+      <g class="bp-arrow-k">
+        <path d="M334,36 L368,36"/>
+        <path d="M334,64 L368,64"/>
+        <path d="M334,92 L368,92"/>
+      </g>
+      <g class="bp-head-k">
+        <path d="M368,36 l-7,-3.6 v7.2 z"/>
+        <path d="M368,64 l-7,-3.6 v7.2 z"/>
+        <path d="M368,92 l-7,-3.6 v7.2 z"/>
+      </g>
+
+      <rect class="bp-key" x="372" y="24" width="82" height="80"/>
+      <text class="bp-t-k" x="380" y="48">append-</text>
+      <text class="bp-t-k" x="380" y="63">only</text>
+      <text class="bp-t-k" x="380" y="78">event log</text>
+      <text class="bp-t-m" x="372" y="120">immutable, one file per event</text>
+
+      <path class="bp-arrow-k" d="M454,64 L490,64"/>
+      <path class="bp-head-k" d="M490,64 l-7,-3.6 v7.2 z"/>
+      <rect class="bp-box" x="494" y="40" width="64" height="20"/>
+      <text class="bp-t"   x="502" y="54">view · A</text>
+      <rect class="bp-box" x="494" y="68" width="64" height="20"/>
+      <text class="bp-t"   x="502" y="82">view · B</text>
+      <text class="bp-t-m" x="494" y="106">regenerable</text>
+
+      <text class="bp-t-m" x="272" y="152">NO LOCKING. THE COLLISION IS REMOVED, NOT MANAGED.</text>
+      <text class="bp-t-m" x="272" y="168">A SECOND, NON-TECHNICAL BUILDER SHIPPED AGAINST THIS IN ONE SPRINT.</text>
+    </svg>
+    <figcaption>Fig. 2 — Event-sourced, CQRS-style write model for multi-agent context</figcaption>
+  </figure>
+
+  <h3>The governance model</h3>
+  <p>Company-wide AI automation stalls on one question: who is allowed to ship. Blanket
+  engineering review kills adoption; no review kills data. The split that worked was by
+  permission, not by person — read-only automations run unrestricted, anything that writes goes
+  through a gate.</p>
+
+  <figure class="plate">
+    <svg viewBox="0 0 560 176" role="img" aria-label="Diagram: natural language automation requests route through code generation, then split by permission — read-only deploys directly, write access passes an engineering review gate">
+      <text class="bp-t-m" x="0" y="10">REQUEST</text>
+      <rect class="bp-box" x="0" y="60" width="96" height="34"/>
+      <text class="bp-t"   x="8" y="76">plain-English</text>
+      <text class="bp-t"   x="8" y="88">request</text>
+
+      <path class="bp-arrow" d="M96,77 L136,77"/>
+      <path class="bp-head" d="M136,77 l-7,-3.6 v7.2 z"/>
+
+      <rect class="bp-box" x="140" y="60" width="92" height="34"/>
+      <text class="bp-t"   x="148" y="76">code</text>
+      <text class="bp-t"   x="148" y="88">generation</text>
+
+      <g class="bp-arrow">
+        <path d="M232,77 L262,77"/>
+        <path d="M262,77 L262,36 L300,36"/>
+        <path d="M262,77 L262,120 L300,120"/>
+      </g>
+      <g class="bp-head">
+        <path d="M300,36 l-7,-3.6 v7.2 z"/>
+        <path d="M300,120 l-7,-3.6 v7.2 z"/>
+      </g>
+      <text class="bp-t-m" x="238" y="20">SPLIT BY PERMISSION</text>
+
+      <rect class="bp-key" x="304" y="20" width="104" height="32"/>
+      <text class="bp-t-k" x="312" y="40">read-only</text>
+      <path class="bp-arrow-k" d="M408,36 L446,36"/>
+      <path class="bp-head-k" d="M446,36 l-7,-3.6 v7.2 z"/>
+      <rect class="bp-box" x="450" y="20" width="108" height="32"/>
+      <text class="bp-t"   x="458" y="40">ships, no gate</text>
+
+      <rect class="bp-box-w" x="304" y="104" width="104" height="32"/>
+      <text class="bp-t-w"   x="312" y="124">writes data</text>
+      <path class="bp-arrow-w" d="M408,120 L446,120"/>
+      <path class="bp-head" d="M446,120 l-7,-3.6 v7.2 z" fill="#d98c7a"/>
+      <rect class="bp-box" x="450" y="104" width="108" height="32"/>
+      <text class="bp-t"   x="458" y="118">engineering</text>
+      <text class="bp-t"   x="458" y="130">review gate</text>
+
+      <text class="bp-t-m" x="0" y="164">ADOPTED ORG-WIDE. ZERO ENGINEERING BOTTLENECK ON PERSONAL, READ-ONLY AUTOMATIONS.</text>
+    </svg>
+    <figcaption>Fig. 3 — Governance model for company-wide AI automation adoption</figcaption>
+  </figure>
 
   <hr>
 
@@ -81,38 +260,12 @@
     </li>
 
     <li>
-      <h3>Event-sourced context architecture for multi-agent writes</h3>
-      <p>The multi-agent context system had a single-writer model and was losing data to
-      concurrent writes. I designed a CQRS-style replacement: immutable per-event writes with
-      regenerable materialized views, which eliminates the write conflict by design instead of
-      papering over it with locking. I then wrote the shared standard, and a second,
-      non-technical builder shipped conformant agents against it within the same sprint.</p>
-      <ul class="stats">
-        <li>Concurrent-write loss eliminated by design</li>
-        <li>No locking</li>
-        <li>Second builder productive in one sprint</li>
-      </ul>
-    </li>
-
-    <li>
-      <h3>Company-wide AI automation governance</h3>
-      <p>An internal platform that routes natural-language automation requests through code
-      generation and an engineering review gate before production. The unlock was a read/write
-      permission split: personal read-only automations run unrestricted, while anything that
-      writes to protected fields goes through review. Adopted org-wide.</p>
-      <ul class="stats">
-        <li>Adopted org-wide</li>
-        <li>Zero engineering bottleneck on read-only automations</li>
-      </ul>
-    </li>
-
-    <li>
       <h3>A monitoring agent that cost-models itself</h3>
       <p>CRM configuration changes were silently breaking code across four repositories, and we
-      only found out when a customer reported it. I designed a scheduled agent that audits
-      config changes for downstream breakage risk — roughly 125 hardcoded CRM string literals
-      under watch. Cost modeling before any code was written cut about 40% off the naive
-      always-on design.</p>
+      only found out when a customer reported it. I designed a scheduled agent that audits config
+      changes for downstream breakage risk — roughly 125 hardcoded CRM string literals under
+      watch. Cost modeling before any code was written cut about 40% off the naive always-on
+      design.</p>
       <ul class="stats">
         <li>4 repositories audited</li>
         <li>~40% cheaper than the ambient design</li>
@@ -134,9 +287,9 @@
 
     <li>
       <h3>AI agent strategy for loan processing</h3>
-      <p>Authored the AI Agent Vision for automating loan processing as a crawl/walk/run
-      roadmap, and designed four AI sales agent concepts. I built a working interactive
-      prototype the same day to validate them with stakeholders rather than debating a deck.</p>
+      <p>Authored the AI Agent Vision for automating loan processing as a crawl/walk/run roadmap,
+      and designed four AI sales agent concepts. I built a working interactive prototype the same
+      day to validate them with stakeholders rather than debating a deck.</p>
       <ul class="stats">
         <li>4 agent concepts</li>
         <li>Same-day concept to prototype</li>

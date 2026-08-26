@@ -6,6 +6,9 @@
 <title>Rebuilding a live A/B test that was lying to us — Eric Gabbard</title>
 <meta name="description" content="A three-variant loan application experiment, two opposed stakeholder agendas, and an attribution pipeline discarding three quarters of real mobile traffic.">
 <link rel="canonical" href="https://ericgabbard.com/work/experiment-integrity.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -37,6 +40,45 @@
     <dt>Scope</dt>
     <dd>Experiment design, metric definition, attribution pipeline debugging, methodology documentation</dd>
   </dl>
+
+
+  <figure>
+    <svg viewBox="0 0 560 250" role="img" aria-label="Entry counts per funnel arm before and after the attribution fix: 74, 41 and 45 became 197, 127 and 125. The rates-hidden variant converted at 4.5 percent versus 2.0 percent.">
+      <text class="ch-lab" x="0" y="12">ENTRIES PER ARM &#8212; REPORTED VS CORRECTED</text>
+
+      <rect class="ch-alt"  x="0"   y="126" width="34" height="46"/>
+      <rect class="ch-mark" x="40"  y="52"  width="34" height="120"/>
+      <text class="ch-val"  x="0"   y="120">74</text>
+      <text class="ch-val"  x="40"  y="46">197</text>
+      <text class="ch-lab"  x="24"  y="190">ARM A</text>
+
+      <rect class="ch-alt"  x="120" y="147" width="34" height="25"/>
+      <rect class="ch-mark" x="160" y="95"  width="34" height="77"/>
+      <text class="ch-val"  x="120" y="141">41</text>
+      <text class="ch-val"  x="160" y="89">127</text>
+      <text class="ch-lab"  x="144" y="190">ARM B</text>
+
+      <rect class="ch-alt"  x="240" y="145" width="34" height="27"/>
+      <rect class="ch-mark" x="280" y="96"  width="34" height="76"/>
+      <text class="ch-val"  x="240" y="139">45</text>
+      <text class="ch-val"  x="280" y="90">125</text>
+      <text class="ch-lab"  x="264" y="190">ARM C</text>
+
+      <line class="ch-rule" x1="0" y1="172" x2="330" y2="172"/>
+      <text class="ch-lab" x="0" y="212">~73% OF REAL MOBILE SESSIONS WERE BEING</text>
+      <text class="ch-lab" x="0" y="226">SWEPT UP BY AN OVER-TUNED BOT FILTER</text>
+
+      <line class="ch-rule" x1="380" y1="20" x2="380" y2="230"/>
+      <text class="ch-lab" x="410" y="12">SUBMISSION CONVERSION</text>
+      <rect class="ch-mark" x="410" y="52"  width="140" height="26"/>
+      <text class="ch-val"  x="419" y="46">4.5%  RATES HIDDEN</text>
+      <rect class="ch-alt"  x="410" y="96"  width="62"  height="26"/>
+      <text class="ch-val"  x="419" y="90">2.0%  CONTROL</text>
+      <text class="ch-lab"  x="410" y="150">~2.3&#215; &#8212; AND IT LED ON</text>
+      <text class="ch-lab"  x="410" y="164">EVERY PULL ACROSS 25 DAYS</text>
+    </svg>
+    <figcaption><span>Fig. 1 &#8212; Corrected attribution, and the result that survived it</span><span>Backflip</span></figcaption>
+  </figure>
 
   <h2>The problem</h2>
 

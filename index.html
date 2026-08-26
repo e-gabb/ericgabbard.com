@@ -10,6 +10,9 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ericgabbard.com/">
 <link rel="canonical" href="https://ericgabbard.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -34,15 +37,50 @@
   Backflip, a real estate lending platform, where I owned the technology roadmap across three
   teams and built the AI infrastructure the product org ran on.</p>
 
-  <p>My work tends to start with a measurement problem. Teams usually know what they want to
-  build; far fewer can tell you whether the last thing worked. I spend a lot of time on the
-  boring middle — what the metric actually means, whether the pipeline behind it is lying,
-  what the data says about the feature everyone already decided to cut.</p>
+  <div class="strip">
+    <div class="metric">
+      <span class="k">Week 2 retention</span>
+      <span class="v">+9<span class="u">%</span></span>
+      <svg viewBox="0 0 120 26" role="img" aria-label="Week 2 retention trending up after the roadmap restructure">
+        <polyline class="ch-line" points="0,20 24,19 48,17 72,12 96,8 120,5"/>
+        <circle class="ch-mark" cx="120" cy="5" r="2.6"/>
+      </svg>
+    </div>
+    <div class="metric">
+      <span class="k">Funnel conversion</span>
+      <span class="v">+34<span class="u">%</span></span>
+      <svg viewBox="0 0 120 26" role="img" aria-label="Conversion before and after ten funnel experiments">
+        <rect class="ch-alt" x="0" y="14" width="52" height="10"/>
+        <rect class="ch-mark" x="62" y="6" width="58" height="18"/>
+      </svg>
+    </div>
+    <div class="metric">
+      <span class="k">Data cost</span>
+      <span class="v">&minus;90<span class="u">%</span></span>
+      <svg viewBox="0 0 120 26" role="img" aria-label="Data cost stepping down ninety percent">
+        <path class="ch-area" d="M0,4 L58,4 L58,20 L120,20 L120,26 L0,26 Z"/>
+        <path class="ch-line" d="M0,4 L58,4 L58,20 L120,20"/>
+      </svg>
+    </div>
+    <div class="metric">
+      <span class="k">Time to close</span>
+      <span class="v">&minus;27<span class="u">%</span></span>
+      <svg viewBox="0 0 120 26" role="img" aria-label="Median time to close falling from 26 days to 19 days">
+        <rect class="ch-alt" x="0" y="4" width="104" height="8"/>
+        <rect class="ch-mark" x="0" y="16" width="76" height="8"/>
+      </svg>
+    </div>
+  </div>
+
+  <p style="margin-top:2.2rem">My work tends to start with a measurement problem. Teams usually
+  know what they want to build; far fewer can tell you whether the last thing worked. I spend a
+  lot of time on the boring middle — what the metric actually means, whether the pipeline behind
+  it is lying, what the data says about the feature everyone already decided to cut.</p>
 
   <p>Before Backflip I spent six and a half years at <strong>Kasasa</strong>, a banking SaaS
-  company, moving from Associate PM to Senior PM across rewards platforms, a 600-client
-  platform migration, and a product line that did $1.2M in annual revenue. Before product,
-  I managed a 90-person shift at an Amazon fulfillment center. Purdue, Industrial Management.</p>
+  company, moving from Associate PM to Senior PM across rewards platforms, a 600-client platform
+  migration, and a product line that did $1.2M in annual revenue. Before product, I managed a
+  90-person shift at an Amazon fulfillment center. Purdue, Industrial Management.</p>
 
   <section id="work">
     <h2>Selected work</h2>
@@ -50,38 +88,69 @@
     <div class="cards">
 
       <a class="card" href="/work/retention-conversion.html">
-        <h3>Making retention the roadmap</h3>
-        <p>Rebuilt the roadmap around new-user retention, then ran a cross-functional pod
-        through 10+ funnel experiments — and showed sales why retention was their problem too.</p>
-        <ul class="stats">
-          <li>+9% Week 2 retention</li>
-          <li>+34% conversion</li>
-          <li>+26% applications</li>
-          <li>10% less ad spend</li>
-        </ul>
+        <div>
+          <h3>Making retention the roadmap</h3>
+          <p>Rebuilt the roadmap around new-user retention, then ran a cross-functional pod
+          through 10+ funnel experiments — and showed sales why retention was their problem too.</p>
+        </div>
+        <div class="chart">
+          <svg viewBox="0 0 200 92" role="img" aria-label="Loan applications up 26 percent while marketing spend fell 10 percent">
+            <text class="ch-lab" x="0" y="9">APPLICATIONS</text>
+            <rect class="ch-alt"  x="0" y="15" width="103" height="14"/>
+            <rect class="ch-mark" x="0" y="33" width="130" height="14"/>
+            <text class="ch-val" x="136" y="44">+26%</text>
+            <text class="ch-lab" x="0" y="63">MARKETING SPEND</text>
+            <rect class="ch-alt"  x="0" y="69" width="103" height="14"/>
+            <rect class="ch-mark" x="0" y="69" width="93" height="14"/>
+            <text class="ch-val" x="112" y="80">&minus;10%</text>
+          </svg>
+        </div>
       </a>
 
       <a class="card" href="/work/analyzer.html">
-        <h3>Saving the product everyone wanted to cut</h3>
-        <p>A feature was on the chopping block for its data bill. The data said it was the
-        single strongest retention driver we had. I kept the product and killed the bill.</p>
-        <ul class="stats">
-          <li>6.7&times; retention</li>
-          <li>90% cost reduction</li>
-          <li>85% more applications per user</li>
-        </ul>
+        <div>
+          <h3>Saving the product everyone wanted to cut</h3>
+          <p>A feature was on the chopping block for its data bill. The data said it was the
+          single strongest retention driver we had. I kept the product and killed the bill.</p>
+        </div>
+        <div class="chart">
+          <svg viewBox="0 0 200 92" role="img" aria-label="Month 1 retention: Analyzer users 60 percent versus 9 percent for everyone else">
+            <text class="ch-lab" x="0" y="9">MONTH 1 RETENTION</text>
+            <rect class="ch-mark" x="0" y="17" width="160" height="20"/>
+            <text class="ch-on"  x="5" y="31">Analyzer users</text>
+            <text class="ch-val" x="166" y="31">60%</text>
+            <rect class="ch-alt" x="0" y="45" width="24" height="20"/>
+            <text class="ch-val" x="30" y="59">9%</text>
+            <text class="ch-lab" x="0" y="80">EVERYONE ELSE</text>
+          </svg>
+        </div>
       </a>
 
       <a class="card" href="/work/experiment-integrity.html">
-        <h3>Rebuilding a live A/B test that was lying to us</h3>
-        <p>Three-variant test, two opposed stakeholder agendas, and an attribution pipeline
-        quietly discarding three quarters of real mobile traffic. Fixed mid-flight without
-        burning the experiment.</p>
-        <ul class="stats">
-          <li>~73% of mobile sessions recovered</li>
-          <li>4.5% vs 2.0% winning variant</li>
-          <li>25-day hold</li>
-        </ul>
+        <div>
+          <h3>Rebuilding a live A/B test that was lying to us</h3>
+          <p>Three variants, two opposed stakeholder agendas, and an attribution pipeline
+          quietly discarding three quarters of real mobile traffic. Fixed mid-flight.</p>
+        </div>
+        <div class="chart">
+          <svg viewBox="0 0 200 92" role="img" aria-label="Entry counts before and after the attribution fix, across three funnel arms">
+            <text class="ch-lab" x="0" y="9">ENTRIES BY ARM</text>
+            <g>
+              <rect class="ch-alt"  x="0"  y="60" width="16" height="14"/>
+              <rect class="ch-mark" x="20" y="38" width="16" height="36"/>
+              <rect class="ch-alt"  x="56" y="66" width="16" height="8"/>
+              <rect class="ch-mark" x="76" y="51" width="16" height="23"/>
+              <rect class="ch-alt"  x="112" y="65" width="16" height="9"/>
+              <rect class="ch-mark" x="132" y="51" width="16" height="23"/>
+            </g>
+            <line class="ch-rule" x1="0" y1="74" x2="200" y2="74"/>
+            <text class="ch-lab" x="0"   y="86">A</text>
+            <text class="ch-lab" x="56"  y="86">B</text>
+            <text class="ch-lab" x="112" y="86">C</text>
+            <text class="ch-lab" x="160" y="45">CORRECTED</text>
+            <text class="ch-lab" x="160" y="86">REPORTED</text>
+          </svg>
+        </div>
       </a>
 
     </div>
