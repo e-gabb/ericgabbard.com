@@ -278,3 +278,5 @@ footer a:hover { color: var(--accent); }
 .bp-t-w   { fill: #d98c7a; font-family: var(--mono); font-size: 8.5px; }
 .bp-arrow-w { fill: none; stroke: #d98c7a; stroke-width: 1; }
 .bp-div   { stroke: rgba(127,168,201,0.35); stroke-width: 1; stroke-dasharray: 4 4; }
+
+main > .eyebrow:first-child { margin-top: 2.2rem; }
