@@ -280,3 +280,83 @@ footer a:hover { color: var(--accent); }
 .bp-div   { stroke: rgba(127,168,201,0.35); stroke-width: 1; stroke-dasharray: 4 4; }
 
 main > .eyebrow:first-child { margin-top: 2.2rem; }
+
+/* ---------- wide screens: sticky identity rail + breakout figures ----------
+   Prose keeps its ~65-character measure; charts and diagrams take the extra
+   width instead of leaving it empty. Everything below 68rem is untouched. */
+
+@media (min-width: 68rem) {
+
+  .wrap {
+    max-width: 82rem;
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 40rem) minmax(0, 1fr);
+    column-gap: 4rem;
+    align-items: start;
+    padding: 0 2.5rem;
+  }
+
+  header {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    position: sticky;
+    top: 3rem;
+    padding: 3rem 0 0;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.1rem;
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  nav .home { font-size: 1.05rem; }
+
+  nav ul { flex-direction: column; gap: 0.45rem; font-size: 0.9rem; }
+
+  main {
+    grid-column: 2 / 4;
+    display: grid;
+    grid-template-columns: minmax(0, 40rem) minmax(0, 1fr);
+    column-gap: 4rem;
+    padding-top: 3rem;
+  }
+
+  main > * { grid-column: 1; }
+
+  /* data breathes into the right margin */
+  main > .strip,
+  main > figure,
+  main > .plate { grid-column: 1 / -1; }
+
+  main > *:first-child { margin-top: 0; }
+
+  footer {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .strip { grid-template-columns: repeat(4, 1fr); }
+
+  .plate svg { min-width: 0; }
+}
+
+@media (min-width: 100rem) {
+  .wrap { max-width: 92rem; grid-template-columns: 14rem minmax(0, 42rem) minmax(0, 1fr); }
+  main { grid-template-columns: minmax(0, 42rem) minmax(0, 1fr); }
+}
+
+@media (min-width: 68rem) {
+  /* sparklines are sparklines — don't let them stretch across the strip */
+  .metric svg { max-width: 15rem; }
+
+  /* the work cards use the full width as a three-up row */
+  main > #work { grid-column: 1 / -1; }
+  main > #work > :not(.cards) { max-width: 40rem; }
+
+  .cards { grid-template-columns: repeat(3, 1fr); align-items: stretch; gap: 1.2rem; }
+  .card { grid-template-columns: 1fr; align-content: start; gap: 1.1rem; }
+  .card .chart { margin-top: auto; }
+}
