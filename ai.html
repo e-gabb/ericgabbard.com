@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI — Eric Gabbard</title>
+<meta name="description" content="What I think about AI in product work, and the systems I've actually built: a PM operating system, a prototyping pipeline, a multi-agent context architecture, and an org-wide governance model.">
+<meta property="og:title" content="AI — Eric Gabbard">
+<meta property="og:description" content="A point of view on AI in product work, and the systems behind it.">
+<link rel="canonical" href="https://ericgabbard.com/ai.html">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <nav>
+    <a class="home" href="/">Eric Gabbard</a>
+    <ul>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/ai.html" aria-current="page">AI</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <h1>AI</h1>
+
+  <p class="lede">Most companies are automating workflows when their actual problem is that
+  their data can&rsquo;t be reasoned over. Those look similar from the outside. They are not
+  the same project, and one of them compounds fragility.</p>
+
+  <p>I watched this happen up close. Every new Zapier automation made the system a little more
+  brittle, because loan context was split across a document portal, a drive, and a CRM, and no
+  automation could see the whole deal. The instinct was to add more automation. The fix was to
+  stop and build a centralized deal context layer, so agents could reason across the full loan
+  lifecycle instead of firing on triggers. Trigger-based automation scales linearly with how
+  many rules you can maintain. Context-based agents scale with how good your data model is.</p>
+
+  <p>The second thing I believe: the interesting constraint is no longer capability, it&rsquo;s
+  governance and cost. A model can write the automation. The open questions are who is allowed
+  to deploy it, what it&rsquo;s permitted to write to, and whether anyone modeled the token bill
+  before shipping. Those are product decisions, not engineering ones, and they&rsquo;re where I
+  spend most of my time.</p>
+
+  <p>Third: I build the things I propose. Writing a strategy for AI adoption without having
+  shipped an agent is like writing a mobile roadmap having never used a phone. Everything below
+  is something I built and ran, not something I specced.</p>
+
+  <hr>
+
+  <h2>What I&rsquo;ve built</h2>
+
+  <ul class="plain build">
+
+    <li>
+      <h3>An AI-native PM operating system</h3>
+      <p>A working operating system for product management built on Claude Code — PRD authoring,
+      prototyping, roadmap management, meeting intelligence, data analysis, task management, and
+      idea capture, all automated and wired to the same context.</p>
+      <ul class="stats">
+        <li>7 automated workflows</li>
+        <li>8+ custom agentic skills</li>
+        <li>6 integrated data sources</li>
+      </ul>
+      <p class="muted">The point wasn&rsquo;t speed for its own sake. It let one PM operate the
+      surface area that normally needs a team.</p>
+    </li>
+
+    <li>
+      <h3>PRD-to-prototype pipeline</h3>
+      <p>A system that autonomously generates interactive, design-system-compliant HTML
+      prototypes directly from PRDs. Prototype turnaround went from days to minutes, which
+      changed what stakeholder validation could happen <em>before</em> engineering investment
+      rather than after it.</p>
+      <ul class="stats">
+        <li>Days &rarr; minutes</li>
+      </ul>
+    </li>
+
+    <li>
+      <h3>Event-sourced context architecture for multi-agent writes</h3>
+      <p>The multi-agent context system had a single-writer model and was losing data to
+      concurrent writes. I designed a CQRS-style replacement: immutable per-event writes with
+      regenerable materialized views, which eliminates the write conflict by design instead of
+      papering over it with locking. I then wrote the shared standard, and a second,
+      non-technical builder shipped conformant agents against it within the same sprint.</p>
+      <ul class="stats">
+        <li>Concurrent-write loss eliminated by design</li>
+        <li>No locking</li>
+        <li>Second builder productive in one sprint</li>
+      </ul>
+    </li>
+
+    <li>
+      <h3>Company-wide AI automation governance</h3>
+      <p>An internal platform that routes natural-language automation requests through code
+      generation and an engineering review gate before production. The unlock was a read/write
+      permission split: personal read-only automations run unrestricted, while anything that
+      writes to protected fields goes through review. Adopted org-wide.</p>
+      <ul class="stats">
+        <li>Adopted org-wide</li>
+        <li>Zero engineering bottleneck on read-only automations</li>
+      </ul>
+    </li>
+
+    <li>
+      <h3>A monitoring agent that cost-models itself</h3>
+      <p>CRM configuration changes were silently breaking code across four repositories, and we
+      only found out when a customer reported it. I designed a scheduled agent that audits
+      config changes for downstream breakage risk — roughly 125 hardcoded CRM string literals
+      under watch. Cost modeling before any code was written cut about 40% off the naive
+      always-on design.</p>
+      <ul class="stats">
+        <li>4 repositories audited</li>
+        <li>~40% cheaper than the ambient design</li>
+        <li>~$6–8/wk vs ~$17–19/wk</li>
+      </ul>
+    </li>
+
+    <li>
+      <h3>Sales conversation analysis at scale</h3>
+      <p>An AI system analyzing thousands of sales calls and deal-loss reasons on an ongoing
+      basis. It started as a proof of concept and surfaced objection patterns and rep-level
+      coaching gaps that nobody had visibility into; the findings reshaped sales onboarding and
+      ongoing training.</p>
+      <ul class="stats">
+        <li>Thousands of calls analyzed</li>
+        <li>Rep-level coaching gaps surfaced</li>
+      </ul>
+    </li>
+
+    <li>
+      <h3>AI agent strategy for loan processing</h3>
+      <p>Authored the AI Agent Vision for automating loan processing as a crawl/walk/run
+      roadmap, and designed four AI sales agent concepts. I built a working interactive
+      prototype the same day to validate them with stakeholders rather than debating a deck.</p>
+      <ul class="stats">
+        <li>4 agent concepts</li>
+        <li>Same-day concept to prototype</li>
+      </ul>
+    </li>
+
+  </ul>
+
+  <a class="back" href="/">&larr; Back</a>
+
+</main>
+
+<footer>
+  <p>Eric Gabbard — Seattle, WA</p>
+  <ul class="footlinks">
+    <li><a href="mailto:ericdgabbard@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/eric-gabbard-48069759/">LinkedIn</a></li>
+    <li><a href="/resume.pdf">Résumé (PDF)</a></li>
+  </ul>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,250 @@
+/* ericgabbard.com — minimal personal site */
+
+:root {
+  --bg: #fbfaf8;
+  --fg: #1c1b18;
+  --muted: #6d6a62;
+  --rule: #e6e2da;
+  --accent: #2f5d50;
+  --accent-soft: #eaf1ee;
+  --max: 44rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131310;
+    --fg: #eceae5;
+    --muted: #9a968c;
+    --rule: #2c2b26;
+    --accent: #8fc9b4;
+    --accent-soft: #1b2621;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- header ---------- */
+
+header {
+  padding: 2.5rem 0 0;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+nav .home {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--fg);
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.95rem;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+nav a:hover, nav a[aria-current="page"] { color: var(--accent); }
+
+/* ---------- type ---------- */
+
+h1, h2, h3 {
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 2.7rem);
+  margin: 2.5rem 0 1rem;
+}
+
+h2 {
+  font-size: 1.45rem;
+  margin: 3rem 0 1rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-family: inherit;
+  font-weight: 600;
+  margin: 2rem 0 0.5rem;
+}
+
+p { margin: 0 0 1.15rem; }
+
+a { color: var(--accent); text-underline-offset: 3px; }
+
+.lede {
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: var(--fg);
+}
+
+.muted { color: var(--muted); }
+
+.eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+/* ---------- sections ---------- */
+
+section { margin: 0 0 3.5rem; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 3rem 0;
+}
+
+/* ---------- work cards ---------- */
+
+.cards { display: grid; gap: 1.5rem; }
+
+.card {
+  display: block;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.card:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+.card h3 { margin: 0 0 0.4rem; font-size: 1.05rem; }
+
+.card p { margin: 0 0 0.7rem; color: var(--muted); font-size: 0.97rem; }
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stats li {
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+}
+
+/* ---------- lists ---------- */
+
+ul.plain { list-style: none; margin: 0; padding: 0; }
+
+ul.plain > li {
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+ul.plain > li:last-child { border-bottom: 1px solid var(--rule); }
+
+.build h3 { margin: 0 0 0.3rem; }
+
+.build p { margin: 0 0 0.5rem; }
+
+/* ---------- case study ---------- */
+
+.case dl { margin: 0 0 2rem; }
+
+.case dt {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 1rem;
+}
+
+.case dd { margin: 0.2rem 0 0; }
+
+blockquote {
+  margin: 2rem 0;
+  padding: 0.2rem 0 0.2rem 1.2rem;
+  border-left: 2px solid var(--accent);
+  color: var(--muted);
+  font-style: italic;
+}
+
+.outcome {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+  background: var(--accent-soft);
+}
+
+.outcome h3 { margin-top: 0; }
+
+.outcome ul { margin: 0; padding-left: 1.1rem; }
+
+.back {
+  display: inline-block;
+  margin: 2.5rem 0 0;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+/* ---------- footer ---------- */
+
+footer {
+  border-top: 1px solid var(--rule);
+  margin-top: 4rem;
+  padding: 2rem 0 4rem;
+  font-size: 0.93rem;
+  color: var(--muted);
+}
+
+footer a { color: var(--muted); }
+footer a:hover { color: var(--accent); }
+
+.footlinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}

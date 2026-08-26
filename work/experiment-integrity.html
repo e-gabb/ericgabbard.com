@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rebuilding a live A/B test that was lying to us — Eric Gabbard</title>
+<meta name="description" content="A three-variant loan application experiment, two opposed stakeholder agendas, and an attribution pipeline discarding three quarters of real mobile traffic.">
+<link rel="canonical" href="https://ericgabbard.com/work/experiment-integrity.html">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <nav>
+    <a class="home" href="/">Eric Gabbard</a>
+    <ul>
+      <li><a href="/#work" aria-current="page">Work</a></li>
+      <li><a href="/ai.html">AI</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="case">
+
+  <p class="eyebrow">Backflip &middot; Real estate lending</p>
+  <h1>Rebuilding a live A/B test that was lying to us</h1>
+
+  <p class="lede">Three variants, two stakeholders who wanted opposite outcomes, and an
+  attribution pipeline quietly discarding about 73% of real mobile sessions. The fix had to
+  happen mid-experiment without invalidating 25 days of data.</p>
+
+  <dl>
+    <dt>Role</dt>
+    <dd>Head of Product (previously Senior Product Manager)</dd>
+    <dt>Scope</dt>
+    <dd>Experiment design, metric definition, attribution pipeline debugging, methodology documentation</dd>
+  </dl>
+
+  <h2>The problem</h2>
+
+  <p>The loan application flow needed a decision about how much rate information to show, and
+  when. Two senior stakeholders had opposing positions and both had a plausible story about
+  which funnel shape proved them right. An experiment run into that situation, with a loosely
+  defined success metric, doesn&rsquo;t settle anything — it just relocates the argument to
+  after the data comes in.</p>
+
+  <h2>Designing against the argument</h2>
+
+  <p>I designed a three-variant split, one third of ad traffic per arm, and spent the design
+  time on the primary metric rather than the variants. The metric had to be
+  <em>funnel-shape-neutral</em>: it could not be gamed by an interpretation that favored a
+  longer or shorter funnel, because that was precisely the axis the two stakeholders disagreed
+  on. Defining it before launch is what made post-hoc result-gaming impossible rather than
+  merely impolite.</p>
+
+  <p>I also redirected the build onto a maintainable codebase instead of the fastest path to
+  live, and calibrated leadership expectations on statistical power before data collection
+  started — so &ldquo;we don&rsquo;t have enough data yet&rdquo; was a known checkpoint rather
+  than a stall tactic invented in week two.</p>
+
+  <h2>The pipeline was wrong</h2>
+
+  <p>Mid-flight, the entry counts didn&rsquo;t reconcile. Investigating turned up three
+  overlapping causes, which is the reason it hadn&rsquo;t been caught earlier — each one alone
+  looked like noise:</p>
+
+  <ul class="plain">
+    <li>A <strong>bot filter</strong> tuned too aggressively, sweeping up real traffic</li>
+    <li><strong>Event coverage gaps</strong> in the instrumentation</li>
+    <li>A <strong>proxy metric</strong> standing in for entry that didn&rsquo;t track it faithfully</li>
+  </ul>
+
+  <p>The bot filter was the big one: it was discarding roughly <strong>73% of real mobile
+  sessions</strong>. I reversed it and corrected counts across all three funnel arms — entries
+  went from 74 / 41 / 45 to <strong>197 / 127 / 125</strong>. Then I documented the full
+  methodology, including what had been wrong and how the correction was derived, so the result
+  would be reproducible and auditable by someone who hadn&rsquo;t lived through it.</p>
+
+  <blockquote>An experiment that produces a number nobody can reproduce is worse than no
+  experiment, because people act on it.</blockquote>
+
+  <h2>The result held</h2>
+
+  <p>With corrected attribution, the rates-hidden variant led submission conversion
+  <strong>4.5% vs 2.0%</strong> — roughly 2.3&times; — and it led on <em>every pull across 25
+  days</em>, not only in the final cut. Consistency across pulls matters more than the endpoint
+  gap: it&rsquo;s the difference between a real effect and a snapshot that happened to land
+  favorably.</p>
+
+  <div class="outcome">
+    <h3>Outcome</h3>
+    <ul>
+      <li><strong>~73% of real mobile sessions recovered</strong> from bot over-filtering</li>
+      <li>Entry counts corrected across three arms: 74/41/45 &rarr; <strong>197/127/125</strong></li>
+      <li>Winning variant at <strong>4.5% vs 2.0% submission conversion</strong>, consistent across every pull over 25 days</li>
+      <li>Methodology documented for reproducibility; the decision closed instead of reopening</li>
+    </ul>
+  </div>
+
+  <a class="back" href="/#work">&larr; All work</a>
+
+</main>
+
+<footer>
+  <p>Eric Gabbard — Seattle, WA</p>
+  <ul class="footlinks">
+    <li><a href="mailto:ericdgabbard@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/eric-gabbard-48069759/">LinkedIn</a></li>
+    <li><a href="/resume.pdf">Résumé (PDF)</a></li>
+  </ul>
+</footer>
+
+</div>
+</body>
+</html>
