@@ -160,6 +160,8 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 3rem 0; }
 .ch-val  { fill: var(--fg); font-family: var(--mono); font-size: 9.5px; }
 .ch-on   { fill: var(--on-accent); font-family: var(--sans); font-size: 9px; }
 .ch-rule { stroke: var(--rule); stroke-width: 1; }
+.ch-ghost { fill: none; stroke: var(--clay); stroke-width: 1; }
+.ch-arrow { fill: none; stroke: var(--clay); stroke-width: 1; }
 
 figure { margin: 2rem 0; }
 figure svg { display: block; width: 100%; height: auto; }
@@ -169,30 +171,19 @@ figcaption {
   display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; justify-content: space-between;
 }
 
-/* ---------- portrait photo (contact page) ----------
-   Deliberately modest: a photo, not a hero. Stays in the prose column even on
-   wide screens, where bare `figure` would break out into the data margin. */
-
-.portrait { margin: 2.6rem 0 0; max-width: 22rem; }
-.portrait img {
-  display: block; width: 100%; height: auto;
-  border: 1px solid var(--rule); border-radius: 2px;
-}
-
-@media (min-width: 68rem) {
-  main > .portrait { grid-column: 1; }
-}
-
 /* ---------- work cards ---------- */
+/* One project per row. The text column carries problem-then-impact as prose;
+   the chart takes the right third. Never a three-up grid — that squeezed the
+   cards tall and narrow and left the numbers unreadable. */
 
-.cards { display: grid; gap: 1.4rem; }
+.cards { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
 
 .card {
   display: grid;
-  grid-template-columns: 1fr 12rem;
-  gap: 1.6rem;
-  align-items: center;
-  padding: 1.35rem 1.5rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+  gap: 2rem;
+  align-items: start;
+  padding: 1.6rem 1.75rem;
   border: 1px solid var(--rule);
   border-radius: 8px;
   background: var(--surface);
@@ -203,12 +194,45 @@ figcaption {
 
 .card:hover { border-color: var(--accent); }
 
-.card h3 { font-family: var(--serif); font-weight: 500; font-size: 1.12rem; margin: 0 0 0.35rem; }
-.card p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+.card .kicker {
+  font-family: var(--mono);
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 0.5rem;
+}
+
+.card h3 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 1.32rem; line-height: 1.25; margin: 0 0 0.9rem;
+}
+
+.card p { margin: 0; color: var(--muted); font-size: 0.94rem; line-height: 1.55; }
+.card .pi + .pi { margin-top: 0.7rem; }
+
+.card .tag {
+  font-family: var(--mono);
+  font-size: 0.62rem; letter-spacing: 0.11em; text-transform: uppercase;
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+
+.card .stats { margin-top: 1.05rem; }
+
+.card .more {
+  display: inline-block; margin-top: 1.05rem;
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.card:hover .more { text-decoration: underline; }
+
+.card .chart { align-self: center; }
 .card .chart svg { display: block; width: 100%; height: auto; }
 
-@media (max-width: 34rem) {
-  .card { grid-template-columns: 1fr; gap: 1.1rem; }
+@media (max-width: 52rem) {
+  .card { grid-template-columns: 1fr; gap: 1.3rem; }
+  /* stacked, the chart would blow up to full width and the 9px SVG type with
+     it — hold it to roughly the width it has in the two-column layout */
+  .card .chart { max-width: 22rem; }
 }
 
 /* ---------- lists ---------- */
@@ -389,13 +413,9 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
   /* sparklines are sparklines — don't let them stretch across the strip */
   .metric svg { max-width: 15rem; }
 
-  /* the work cards use the full width as a three-up row */
-  main > #work { grid-column: 1 / -1; }
-  main > #work > :not(.cards) { max-width: 40rem; }
-
-  .cards { grid-template-columns: repeat(3, 1fr); align-items: stretch; gap: 1.2rem; }
-  .card { grid-template-columns: 1fr; align-content: start; gap: 1.1rem; }
-  .card .chart { margin-top: auto; }
+  /* one project per row, breaking into the right margin the way a figure does */
+  main > .cards { grid-column: 1 / -1; }
+  .card { grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); gap: 3rem; padding: 1.75rem 2rem; }
 }
 
 /* ================= home hero ================= */

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rebuilding the system we were renting — Eric Gabbard</title>
+<meta name="description" content="Construction budgets arrived by spreadsheet and every draw after closing ran on a third-party platform. We rebuilt budget intake, the ledger, the borrower draw experience and internal review, and retired the vendor.">
+<link rel="canonical" href="https://ericgabbard.com/work/draw-management.html">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#14655a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<link rel="stylesheet" href="/style.css?v=14">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <nav>
+    <a class="home" href="/">Eric Gabbard</a>
+    <ul>
+      <li><a href="/work.html" aria-current="page">Projects</a></li>
+      <li><a href="/ai.html">AI</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="case">
+
+  <p class="eyebrow">Backflip &middot; Real estate lending</p>
+  <h1>Rebuilding the system we were renting</h1>
+
+  <p class="lede">Budgets came in as spreadsheets. Everything after closing &mdash; the budget
+  ledger, the borrower&rsquo;s draw requests, our servicing and accounting review, the
+  disbursement &mdash; ran on a third-party platform we paid heavily for and couldn&rsquo;t
+  change. We rebuilt all of it in two stages and retired the vendor.</p>
+
+  <dl>
+    <dt>Role</dt>
+    <dd>Head of Product (previously Senior Product Manager)</dd>
+    <dt>Scope</dt>
+    <dd>Product strategy, borrower and internal experience, cross-functional facilitation with
+    servicing and accounting, vendor migration and cutover design</dd>
+  </dl>
+
+  <figure>
+    <svg viewBox="0 0 560 240" role="img" aria-label="Budget intake moved from Excel by email to the Backflip platform; the budget ledger and the draw request and payout workflow moved from a third-party vendor to the Backflip platform">
+      <text class="ch-lab" x="0" y="12">WHAT WE REPLACED, AND IN WHAT ORDER</text>
+
+      <text class="ch-lab" x="0" y="44">STAGE 1 &#8212; UNDERWRITING</text>
+      <text class="ch-lab" x="0" y="58">BUDGET INTAKE &amp; REVIEW</text>
+      <rect class="ch-ghost" x="230" y="36" width="130" height="30"/>
+      <text class="ch-lab" x="242" y="55">EXCEL BY EMAIL</text>
+      <path class="ch-arrow" d="M368 51 h26 m-7 -5 l7 5 l-7 5"/>
+      <rect class="ch-mark" x="402" y="36" width="158" height="30"/>
+      <text class="ch-on" x="414" y="55">Backflip platform</text>
+
+      <text class="ch-lab" x="0" y="112">STAGE 2 &#8212; AFTER CLOSING</text>
+      <text class="ch-lab" x="0" y="126">BUDGET LEDGER</text>
+      <rect class="ch-ghost" x="230" y="104" width="130" height="30"/>
+      <text class="ch-lab" x="242" y="123">THIRD-PARTY VENDOR</text>
+      <path class="ch-arrow" d="M368 119 h26 m-7 -5 l7 5 l-7 5"/>
+      <rect class="ch-mark" x="402" y="104" width="158" height="30"/>
+      <text class="ch-on" x="414" y="123">Backflip platform</text>
+
+      <text class="ch-lab" x="0" y="180">DRAW REQUEST &#8594; REVIEW &#8594; PAYOUT</text>
+      <text class="ch-lab" x="0" y="194">BORROWER, SERVICING, ACCOUNTING</text>
+      <rect class="ch-ghost" x="230" y="172" width="130" height="30"/>
+      <text class="ch-lab" x="242" y="191">THIRD-PARTY VENDOR</text>
+      <path class="ch-arrow" d="M368 187 h26 m-7 -5 l7 5 l-7 5"/>
+      <rect class="ch-mark" x="402" y="172" width="158" height="30"/>
+      <text class="ch-on" x="414" y="191">Backflip platform</text>
+
+      <line class="ch-rule" x1="0" y1="216" x2="560" y2="216"/>
+      <text class="ch-lab" x="0" y="234">THREE SYSTEMS OF RECORD, ONE PLATFORM &#8212; AND NO VENDOR BILL</text>
+    </svg>
+    <figcaption><span>Fig. 1 &#8212; The scope, stage by stage</span><span>Backflip</span></figcaption>
+  </figure>
+
+  <h2>The problem</h2>
+
+  <p>Backflip lends against renovation projects, so a loan is really a budget: a line-item plan
+  for the work, drawn down in stages as the work gets done. When I arrived, that budget arrived
+  as a spreadsheet attached to an email. Underwriting parsed it by hand. Every version was a
+  new attachment, and the deal waited while somebody reconciled them.</p>
+
+  <p>After closing it got worse, in a more expensive way. The budget ledger, the borrower&rsquo;s
+  draw request experience, and our servicing and accounting teams&rsquo; review and disbursement
+  workflow all lived on a third-party platform. We paid a great deal for it, and none of it was
+  ours to fix. When servicing wanted a different review step, or a borrower found the request
+  flow confusing, the answer was a support ticket to a vendor.</p>
+
+  <p>That matters more in this market than it sounds. Draw turnaround is one of the few things
+  a real estate investor actually shops on &mdash; the money has to arrive before the next
+  phase of work can start. It was a competitive lever we did not control.</p>
+
+  <h2>Stage one: budgets, before the loan closes</h2>
+
+  <p>We started upstream rather than at the expensive part, deliberately. Letting borrowers
+  submit a structured budget against their project as part of underwriting was smaller, shipped
+  sooner, and paid off immediately: the spreadsheet round-trip disappeared from the critical
+  path, and the same structured budget became the object everything downstream could be built
+  on. Turnaround improved, and time to close came down with it.</p>
+
+  <blockquote>Building the ledger first would have been the obvious order. Building the intake
+  first is what made the ledger cheap.</blockquote>
+
+  <h2>Stage two: the draw system, end to end</h2>
+
+  <p>The second stage was the one that retired the vendor. It had two faces and both had to be
+  good, which is the part that makes draw management harder than it looks:</p>
+
+  <ul class="plain">
+    <li><strong>The borrower experience.</strong> Requesting a draw against budget line items,
+    with the state of the request legible without emailing anyone to ask.</li>
+    <li><strong>The internal review.</strong> Servicing reviewing and approving against the
+    budget, and accounting handling the disbursement &mdash; built with those teams rather
+    than handed to them.</li>
+  </ul>
+
+  <p>Bringing accounting into the design early was what kept the general-disbursement side from
+  becoming a second manual process bolted onto a shiny borrower-facing one. The end state was
+  one system where a draw moved from request to payout without leaving the platform.</p>
+
+  <h2>Retiring the vendor without disrupting live loans</h2>
+
+  <p>Cutover was its own problem: draws were live on real deals with dozens more in flight at
+  every stage of completion. Move everything at once and you disrupt borrowers mid-project;
+  leave everything and you pay for two systems indefinitely.</p>
+
+  <p>I ran a working session with the engineering, ops and servicing leads and the draw product
+  owner rather than deciding it in product and socializing it afterward, and we landed on a
+  completion-percentage threshold: <strong>loans under 50% complete migrate; loans at or above
+  50% finish their remaining draws on the legacy vendor.</strong> The logic was concrete rather
+  than arbitrary &mdash; a loan under 50% has been through one or two draw cycles and moves
+  cleanly, while a loan past 50% is deeply embedded in borrower and ops workflow.</p>
+
+  <p>The piece that made it a plan rather than a preference was the trigger condition: no new
+  loans go on the old system once engineering finished its final workstream. That bounded the
+  dual-system period instead of leaving the retirement date to drift. The plan was adopted by
+  the full cross-functional group with no dissent.</p>
+
+  <h2>Tradeoffs</h2>
+
+  <p>Rebuilding a vendor system is the expensive answer by default, and it is usually the wrong
+  one. It was right here because the vendor sat on three things at once &mdash; the ledger, the
+  borrower experience, and a competitive lever &mdash; and because the fee was large enough
+  that the build paid for itself rather than merely feeling better.</p>
+
+  <p>The threshold cutover also accepts a real cost: a set of borrowers finished their loans on
+  the old platform and never saw the new one. That was the price of not disrupting deals
+  mid-project, and it was bounded, which is the only reason it was acceptable.</p>
+
+  <div class="outcome">
+    <h3>Outcome</h3>
+    <ul>
+      <li>Third-party draw platform <strong>retired</strong>, eliminating a substantial recurring vendor fee</li>
+      <li>Budget intake moved into underwriting &mdash; structured submission and review in-platform, shortening turnaround and time to close</li>
+      <li>Draw request, servicing and accounting review, and disbursement rebuilt as one system; <strong>payout turnaround materially faster</strong> than at the start</li>
+      <li>Borrower feedback on the rebuilt experience: easier to use than the platform it replaced</li>
+      <li>Migration bounded by a <strong>50% completion threshold</strong> and a hard no-new-loans trigger, adopted cross-functionally with no dissent</li>
+    </ul>
+  </div>
+
+  <a class="back" href="/work.html">&larr; All projects</a>
+
+</main>
+
+<footer>
+  <p>Eric Gabbard — Seattle, WA</p>
+  <ul class="footlinks">
+    <li><a href="mailto:ericdgabbard@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/eric-gabbard-48069759/">LinkedIn</a></li>
+    <li><a href="/resume.pdf">Résumé (PDF)</a></li>
+  </ul>
+</footer>
+
+</div>
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a85f519c6c7c4a88a507c44891415a3c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>

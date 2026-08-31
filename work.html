@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projects — Eric Gabbard</title>
-<meta name="description" content="Selected product work: retention and funnel growth, saving a product from being cut, and rebuilding a live A/B test mid-experiment.">
+<meta name="description" content="Three product problems at a venture-backed lender: running the acquisition funnel on experiments, saving a product slated for cancellation, and replacing a third-party budget and draw platform with our own.">
 <link rel="canonical" href="https://ericgabbard.com/work.html">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
-<link rel="stylesheet" href="/style.css?v=13">
+<link rel="stylesheet" href="/style.css?v=14">
 </head>
 <body>
 <div class="wrap">
@@ -35,94 +35,152 @@
 
   <h1>Projects</h1>
 
-  <p class="lede">Three problems worth the space. Each one starts with a number somebody
-  disagreed with.</p>
+  <p class="lede">Three problems worth the space. Each card is the problem first and the
+  number second &mdash; open one for how it actually went.</p>
 
   <div class="cards">
 
-    <a class="card" href="/work/retention-conversion.html">
+    <a class="card" href="/work/conversion.html">
       <div>
-        <h3>Making retention the roadmap</h3>
-        <p>Rebuilt the roadmap around new-user retention, then ran a cross-functional pod
-        through 10+ funnel experiments — and showed sales why retention was their problem too.</p>
+        <p class="kicker">Backflip &middot; Acquisition funnel &rarr; loan application</p>
+        <h3>Running the funnel on experiments, not opinions</h3>
+        <p class="pi"><span class="tag">Problem</span>Funnel decisions were being made on
+        conviction. Everyone could see drop-off; nobody could say which drop-off actually cost
+        applications. And the one decision big enough to matter &mdash; how much rate
+        information the loan application should show, and when &mdash; had two senior
+        stakeholders on opposite sides, each with a plausible story about which funnel shape
+        proved them right.</p>
+        <p class="pi"><span class="tag">Impact</span>Led a cross-functional pod through 10+ A/B
+        tests against the real drop-off points instead of shipping a redesign and hoping. Then
+        designed the three-variant application experiment so it could actually settle the
+        argument: a funnel-shape-neutral primary metric, defined before launch, that neither
+        side could reinterpret afterward.</p>
+        <ul class="stats">
+          <li>+34% conversion</li>
+          <li>+26% applications on 10% less spend</li>
+          <li>4.5% vs 2.0% winning variant</li>
+        </ul>
+        <span class="more">Read the case &rarr;</span>
       </div>
       <div class="chart">
-        <svg viewBox="0 0 200 92" role="img" aria-label="Loan applications up 26 percent while marketing spend fell 10 percent">
-          <text class="ch-lab" x="0" y="9">APPLICATIONS</text>
-          <rect class="ch-alt"  x="0" y="15" width="103" height="14"/>
-          <rect class="ch-mark" x="0" y="33" width="130" height="14"/>
-          <text class="ch-val" x="136" y="44">+26%</text>
-          <text class="ch-lab" x="0" y="63">MARKETING SPEND</text>
-          <rect class="ch-alt"  x="0" y="69" width="103" height="14"/>
-          <rect class="ch-mark" x="0" y="69" width="93" height="14"/>
-          <text class="ch-val" x="112" y="80">&minus;10%</text>
+        <svg viewBox="0 0 300 158" role="img" aria-label="Over one quarter against a trailing-twelve-month baseline: funnel conversion up 34 percent, loan applications up 26 percent, marketing spend down 10 percent. In the loan application experiment, the rates-hidden variant converted at 4.5 percent against 2.0 percent for control over 25 days.">
+          <text class="ch-lab" x="0" y="8">ONE QUARTER VS TRAILING TWELVE MONTHS</text>
+
+          <text class="ch-lab" x="0" y="24">FUNNEL CONVERSION</text>
+          <rect class="ch-mark" x="0" y="28" width="200" height="13"/>
+          <text class="ch-val" x="206" y="38">+34%</text>
+
+          <text class="ch-lab" x="0" y="54">LOAN APPLICATIONS</text>
+          <rect class="ch-mark" x="0" y="58" width="153" height="13"/>
+          <text class="ch-val" x="159" y="68">+26%</text>
+
+          <text class="ch-lab" x="0" y="84">MARKETING SPEND</text>
+          <rect class="ch-alt" x="0" y="88" width="59" height="13"/>
+          <text class="ch-val" x="65" y="98">&#8722;10%</text>
+
+          <line class="ch-rule" x1="0" y1="110" x2="300" y2="110"/>
+
+          <text class="ch-lab" x="0" y="124">APPLICATION EXPERIMENT &#8212; 25 DAYS</text>
+          <rect class="ch-mark" x="0" y="128" width="230" height="13"/>
+          <text class="ch-on" x="6" y="138">Rates hidden</text>
+          <text class="ch-val" x="236" y="138">4.5%</text>
+          <rect class="ch-alt" x="0" y="143" width="102" height="13"/>
+          <text class="ch-val" x="108" y="153">2.0%</text>
         </svg>
       </div>
     </a>
 
     <a class="card" href="/work/analyzer.html">
       <div>
+        <p class="kicker">Backflip &middot; Retention &amp; vendor cost</p>
         <h3>Saving the product everyone wanted to cut</h3>
-        <p>A feature was on the chopping block for its data bill. The data said it was the
-        single strongest retention driver we had. I kept the product and killed the bill.</p>
+        <p class="pi"><span class="tag">Problem</span>Analyzer &mdash; the deal-analysis tool
+        investors used to evaluate properties &mdash; carried a large third-party data bill and
+        no revenue line of its own. In a cost review it read as an obvious cut. Nobody had put
+        a number on what it was worth.</p>
+        <p class="pi"><span class="tag">Impact</span>Ran the retention and conversion analysis
+        that reframed the decision, then went after the bill so the argument never had to be
+        made again: isolated the real cost driver, killed a low-use automated feed, and
+        renegotiated to usage-based pricing.</p>
+        <ul class="stats">
+          <li>60% vs 9% Month 1 retention</li>
+          <li>85% more applications per user</li>
+          <li>90% data cost cut</li>
+        </ul>
+        <span class="more">Read the case &rarr;</span>
       </div>
       <div class="chart">
-        <svg viewBox="0 0 200 92" role="img" aria-label="Month 1 retention: Analyzer users 60 percent versus 9 percent for everyone else">
-          <text class="ch-lab" x="0" y="9">MONTH 1 RETENTION</text>
-          <rect class="ch-mark" x="0" y="17" width="160" height="20"/>
-          <text class="ch-on"  x="5" y="31">Analyzer users</text>
-          <text class="ch-val" x="166" y="31">60%</text>
-          <rect class="ch-alt" x="0" y="45" width="24" height="20"/>
-          <text class="ch-val" x="30" y="59">9%</text>
-          <text class="ch-lab" x="0" y="80">EVERYONE ELSE</text>
+        <svg viewBox="0 0 300 160" role="img" aria-label="Analyzer users retained at 60 percent at Month 1 against 9 percent for everyone else; the third-party data bill fell from 100 percent to 10 percent">
+          <text class="ch-lab" x="0" y="8">MONTH 1 RETENTION</text>
+          <rect class="ch-mark" x="0" y="14" width="240" height="20"/>
+          <text class="ch-on"  x="7" y="28">Analyzer users</text>
+          <text class="ch-val" x="246" y="28">60%</text>
+          <rect class="ch-alt" x="0" y="40" width="36" height="20"/>
+          <text class="ch-val" x="42" y="54">9%</text>
+          <text class="ch-lab" x="0" y="76">EVERYONE ELSE &#8212; A 6.7&#215; GAP</text>
+
+          <line class="ch-rule" x1="0" y1="92" x2="300" y2="92"/>
+
+          <text class="ch-lab" x="0" y="110">THIRD-PARTY DATA BILL</text>
+          <rect class="ch-alt"  x="0" y="116" width="250" height="16"/>
+          <text class="ch-val" x="256" y="128">100%</text>
+          <rect class="ch-mark" x="0" y="138" width="25" height="16"/>
+          <text class="ch-val" x="31" y="150">10%</text>
         </svg>
       </div>
     </a>
 
-    <a class="card" href="/work/experiment-integrity.html">
+    <a class="card" href="/work/draw-management.html">
       <div>
-        <h3>Rebuilding a live A/B test that was lying to us</h3>
-        <p>Three variants, two opposed stakeholder agendas, and an attribution pipeline
-        quietly discarding three quarters of real mobile traffic. Fixed mid-flight.</p>
+        <p class="kicker">Backflip &middot; Budgets, draws &amp; disbursements</p>
+        <h3>Rebuilding the system we were renting</h3>
+        <p class="pi"><span class="tag">Problem</span>Construction budgets arrived as
+        spreadsheets over email, and every budget and draw after closing lived on a third-party
+        platform we paid heavily for. It was the ledger, the borrower&rsquo;s draw experience,
+        and the servicing and accounting review queue &mdash; and none of it was ours to fix.
+        Draw speed is one of the reasons a borrower picks a lender, and we couldn&rsquo;t move
+        it.</p>
+        <p class="pi"><span class="tag">Impact</span>Replaced it in two stages: first budget
+        submission and review inside underwriting, so a deal stopped waiting on a spreadsheet;
+        then the full draw system &mdash; borrower request, servicing and accounting review,
+        disbursement. Retired the vendor, cut the payout clock, and a borrower who&rsquo;d used
+        both told me the new one was the easier system.</p>
+        <ul class="stats">
+          <li>Vendor retired</li>
+          <li>Faster draw payouts</li>
+          <li>Budgets in-platform</li>
+        </ul>
+        <span class="more">Read the case &rarr;</span>
       </div>
       <div class="chart">
-        <svg viewBox="0 0 200 92" role="img" aria-label="Entry counts before and after the attribution fix, across three funnel arms">
-          <text class="ch-lab" x="0" y="9">ENTRIES BY ARM</text>
-          <rect class="ch-alt"  x="0"  y="60" width="16" height="14"/>
-          <rect class="ch-mark" x="20" y="38" width="16" height="36"/>
-          <rect class="ch-alt"  x="56" y="66" width="16" height="8"/>
-          <rect class="ch-mark" x="76" y="51" width="16" height="23"/>
-          <rect class="ch-alt"  x="112" y="65" width="16" height="9"/>
-          <rect class="ch-mark" x="132" y="51" width="16" height="23"/>
-          <line class="ch-rule" x1="0" y1="74" x2="200" y2="74"/>
-          <text class="ch-lab" x="0"   y="86">A</text>
-          <text class="ch-lab" x="56"  y="86">B</text>
-          <text class="ch-lab" x="112" y="86">C</text>
-          <text class="ch-lab" x="200" y="45" text-anchor="end">CORRECTED</text>
-          <text class="ch-lab" x="200" y="86" text-anchor="end">REPORTED</text>
+        <svg viewBox="0 0 300 152" role="img" aria-label="Three stages moved off spreadsheets and a third-party vendor onto Backflip's own platform: budget intake, budget ledger, and draw request and payout">
+          <text class="ch-lab" x="0" y="8">WHAT WE REPLACED</text>
+
+          <text class="ch-lab" x="0" y="26">BUDGET INTAKE</text>
+          <rect class="ch-ghost" x="0" y="30" width="118" height="24"/>
+          <text class="ch-lab" x="8" y="45">EXCEL BY EMAIL</text>
+          <path class="ch-arrow" d="M124 42 h20 m-5 -4 l5 4 l-5 4"/>
+          <rect class="ch-mark" x="152" y="30" width="148" height="24"/>
+          <text class="ch-on" x="160" y="45">Backflip platform</text>
+
+          <text class="ch-lab" x="0" y="74">BUDGET LEDGER</text>
+          <rect class="ch-ghost" x="0" y="78" width="118" height="24"/>
+          <text class="ch-lab" x="8" y="93">THIRD-PARTY VENDOR</text>
+          <path class="ch-arrow" d="M124 90 h20 m-5 -4 l5 4 l-5 4"/>
+          <rect class="ch-mark" x="152" y="78" width="148" height="24"/>
+          <text class="ch-on" x="160" y="93">Backflip platform</text>
+
+          <text class="ch-lab" x="0" y="122">DRAW REQUEST &#8594; PAYOUT</text>
+          <rect class="ch-ghost" x="0" y="126" width="118" height="24"/>
+          <text class="ch-lab" x="8" y="141">THIRD-PARTY VENDOR</text>
+          <path class="ch-arrow" d="M124 138 h20 m-5 -4 l5 4 l-5 4"/>
+          <rect class="ch-mark" x="152" y="126" width="148" height="24"/>
+          <text class="ch-on" x="160" y="141">Backflip platform</text>
         </svg>
       </div>
     </a>
 
   </div>
-
-  <h2>Also</h2>
-  <ul class="plain">
-    <li><strong>Loan dashboard architecture.</strong> Greenlit a React rewrite and cut the
-    database middle layer in favor of a direct CRM front end — median time to close fell 27%
-    (26 days to 19), engineering feature velocity roughly tripled.</li>
-    <li><strong>Data warehouse &amp; securitization reporting.</strong> Locked scope at the
-    raw-source and per-loan-derived layers to avoid blocking on downstream logic, inventoried
-    21 reports across credit, capital markets, accounting and reconciliation, and reduced
-    500–600 apparent CRM fields to roughly 110 unique source fields.</li>
-    <li><strong>Regulatory risk in the funnel.</strong> Worked with compliance on
-    denial-of-credit exposure by redefining the application trigger point — an
-    &ldquo;application&rdquo; to &ldquo;loan quote&rdquo; terminology shift that preserved the
-    funnel and avoided an automated filtering system that would have disqualified good leads.</li>
-    <li><strong>Vendor migration off a legacy draw-management platform.</strong> Risk-tiered
-    by a 50% loan-completion threshold, with a hard trigger condition that bounded the
-    dual-system period instead of leaving the cutover open-ended.</li>
-  </ul>
 
 </main>
 
