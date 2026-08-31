@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eric Gabbard — Head of Product</title>
-<meta name="description" content="Head of Product. Nine years building fintech and B2B SaaS products, and the AI systems product teams run on.">
+<meta name="description" content="Head of Product. Nine years in fintech and B2B SaaS, building products and the AI systems product teams run on.">
 <meta property="og:title" content="Eric Gabbard — Head of Product">
-<meta property="og:description" content="Head of Product. Nine years building fintech and B2B SaaS products, and the AI systems product teams run on.">
+<meta property="og:description" content="Nine years in fintech and B2B SaaS, building products and the AI systems product teams run on.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ericgabbard.com/">
 <link rel="canonical" href="https://ericgabbard.com/">
@@ -18,193 +18,116 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
-<link rel="stylesheet" href="/style.css?v=5">
+<link rel="stylesheet" href="/style.css?v=6">
 </head>
 <body>
-<div class="wrap">
 
-<header>
-  <nav>
-    <a class="home" href="/">Eric Gabbard</a>
-    <ul>
-      <li><a href="/#work">Work</a></li>
-      <li><a href="/ai.html">AI</a></li>
-      <li><a href="/#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+<div class="hero">
+  <svg class="hero-art" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"   stop-color="#57c9c0" stop-opacity="0.30"/>
+        <stop offset="60%"  stop-color="#57c9c0" stop-opacity="0.06"/>
+        <stop offset="100%" stop-color="#57c9c0" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="vig" cx="50%" cy="46%" r="72%">
+        <stop offset="55%"  stop-color="#000" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#000" stop-opacity="0.62"/>
+      </radialGradient>
+      <filter id="soft" x="-8%" y="-40%" width="116%" height="180%">
+        <feGaussianBlur stdDeviation="7"/>
+      </filter>
+      <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+        <path d="M64 0H0V64" fill="none" stroke="#7fd8c8" stroke-opacity="0.05" stroke-width="1"/>
+      </pattern>
+    </defs>
 
-<main>
+    <rect width="1600" height="900" fill="#0b1214"/>
+    <rect width="1600" height="900" fill="url(#grid)"/>
 
-  <h1>I build fintech products, and the systems product teams run on.</h1>
+    <!-- baseline + measurement ticks -->
+    <g stroke="#7fd8c8" stroke-opacity="0.13">
+      <line x1="0" y1="742" x2="1600" y2="742"/>
+      <line x1="266" y1="700" x2="266" y2="742"/>
+      <line x1="620" y1="700" x2="620" y2="742"/>
+      <line x1="974" y1="700" x2="974" y2="742"/>
+      <line x1="1328" y1="700" x2="1328" y2="742"/>
+    </g>
 
-  <p class="lede">Head of Product with nine years in fintech and B2B SaaS — most recently at
-  Backflip, a real estate lending platform, where I owned the technology roadmap across three
-  teams and built the AI infrastructure the product org ran on.</p>
+    <!-- the curve, drawn large: a retention line that turns -->
+    <path d="M0,690 C170,684 300,672 430,640 C560,608 650,548 790,470 C930,392 1040,330 1200,252 C1330,188 1450,150 1600,118"
+          fill="none" stroke="#57c9c0" stroke-opacity="0.5" stroke-width="14" filter="url(#soft)"/>
+    <path d="M0,690 C170,684 300,672 430,640 C560,608 650,548 790,470 C930,392 1040,330 1200,252 C1330,188 1450,150 1600,118 L1600,900 L0,900 Z"
+          fill="url(#fade)"/>
+    <path d="M0,690 C170,684 300,672 430,640 C560,608 650,548 790,470 C930,392 1040,330 1200,252 C1330,188 1450,150 1600,118"
+          fill="none" stroke="#8fe6d6" stroke-width="2.5"/>
 
-  <div class="strip">
-    <div class="metric">
-      <span class="k">Week 2 retention</span>
-      <span class="v">+9<span class="u">%</span></span>
-      <svg viewBox="0 0 120 26" role="img" aria-label="Week 2 retention trending up after the roadmap restructure">
-        <polyline class="ch-line" points="0,20 24,19 48,17 72,12 96,8 120,5"/>
-        <circle class="ch-mark" cx="120" cy="5" r="2.6"/>
-      </svg>
-    </div>
-    <div class="metric">
-      <span class="k">Funnel conversion</span>
-      <span class="v">+34<span class="u">%</span></span>
-      <svg viewBox="0 0 120 26" role="img" aria-label="Conversion before and after ten funnel experiments">
-        <rect class="ch-alt" x="0" y="14" width="52" height="10"/>
-        <rect class="ch-mark" x="62" y="6" width="58" height="18"/>
-      </svg>
-    </div>
-    <div class="metric">
-      <span class="k">Data cost</span>
-      <span class="v">&minus;90<span class="u">%</span></span>
-      <svg viewBox="0 0 120 26" role="img" aria-label="Data cost stepping down ninety percent">
-        <path class="ch-area" d="M0,4 L58,4 L58,20 L120,20 L120,26 L0,26 Z"/>
-        <path class="ch-line" d="M0,4 L58,4 L58,20 L120,20"/>
-      </svg>
-    </div>
-    <div class="metric">
-      <span class="k">Time to close</span>
-      <span class="v">&minus;27<span class="u">%</span></span>
-      <svg viewBox="0 0 120 26" role="img" aria-label="Median time to close falling from 26 days to 19 days">
-        <rect class="ch-alt" x="0" y="4" width="104" height="8"/>
-        <rect class="ch-mark" x="0" y="16" width="76" height="8"/>
-      </svg>
-    </div>
+    <!-- a quieter comparison line -->
+    <path d="M0,712 C220,708 480,702 760,694 C1040,686 1320,680 1600,674"
+          fill="none" stroke="#b9a99a" stroke-opacity="0.32" stroke-width="2" stroke-dasharray="7 9"/>
+
+    <!-- instrument annotations, kept in the baseline band so they never
+         collide with the title, and inside the mobile centre-crop -->
+    <g font-family="IBM Plex Mono, monospace" font-size="15" fill="#8fe6d6" fill-opacity="0.28" letter-spacing="1.5">
+      <text x="288"  y="792">W2 RETENTION  +9%</text>
+      <text x="660"  y="792">CONVERSION  +34%</text>
+      <text x="1010" y="792">APPLICATIONS  +26%</text>
+    </g>
+
+    <rect width="1600" height="900" fill="url(#vig)"/>
+  </svg>
+
+  <div class="hero-top">
+    <a class="hero-home" href="/">Eric Gabbard</a>
+    <nav class="hero-nav">
+      <a href="/work.html">Work</a>
+      <a href="/ai.html">AI</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
   </div>
 
-  <p style="margin-top:2.2rem">My work tends to start with a measurement problem. Teams usually
-  know what they want to build; far fewer can tell you whether the last thing worked. I spend a
-  lot of time on the boring middle — what the metric actually means, whether the pipeline behind
-  it is lying, what the data says about the feature everyone already decided to cut.</p>
+  <div class="hero-title">
+    <h1>Eric Gabbard</h1>
+    <p class="hero-role">Head of Product &middot; Fintech &amp; B2B SaaS</p>
+  </div>
 
-  <p>Before Backflip I spent six and a half years at <strong>Kasasa</strong>, a banking SaaS
-  company, moving from Associate PM to Senior PM across rewards platforms, a 600-client platform
-  migration, and a product line that did $1.2M in annual revenue. Before product, I managed a
-  90-person shift at an Amazon fulfillment center. Purdue, Industrial Management.</p>
+  <a class="hero-cue" href="#about" aria-label="Read more">
+    <svg viewBox="0 0 24 14" aria-hidden="true"><path d="M2 2 L12 11 L22 2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
 
-  <section id="work">
-    <h2>Selected work</h2>
+<div class="wrap plain">
 
-    <div class="cards">
+  <main id="about">
+    <h2>About</h2>
 
-      <a class="card" href="/work/retention-conversion.html">
-        <div>
-          <h3>Making retention the roadmap</h3>
-          <p>Rebuilt the roadmap around new-user retention, then ran a cross-functional pod
-          through 10+ funnel experiments — and showed sales why retention was their problem too.</p>
-        </div>
-        <div class="chart">
-          <svg viewBox="0 0 200 92" role="img" aria-label="Loan applications up 26 percent while marketing spend fell 10 percent">
-            <text class="ch-lab" x="0" y="9">APPLICATIONS</text>
-            <rect class="ch-alt"  x="0" y="15" width="103" height="14"/>
-            <rect class="ch-mark" x="0" y="33" width="130" height="14"/>
-            <text class="ch-val" x="136" y="44">+26%</text>
-            <text class="ch-lab" x="0" y="63">MARKETING SPEND</text>
-            <rect class="ch-alt"  x="0" y="69" width="103" height="14"/>
-            <rect class="ch-mark" x="0" y="69" width="93" height="14"/>
-            <text class="ch-val" x="112" y="80">&minus;10%</text>
-          </svg>
-        </div>
-      </a>
+    <p>I&rsquo;m a Head of Product with nine years in fintech and B2B SaaS. Most recently at
+    <strong>Backflip</strong>, a real estate lending platform, where I owned the technology
+    roadmap across three teams and built the AI systems the product org ran on.</p>
 
-      <a class="card" href="/work/analyzer.html">
-        <div>
-          <h3>Saving the product everyone wanted to cut</h3>
-          <p>A feature was on the chopping block for its data bill. The data said it was the
-          single strongest retention driver we had. I kept the product and killed the bill.</p>
-        </div>
-        <div class="chart">
-          <svg viewBox="0 0 200 92" role="img" aria-label="Month 1 retention: Analyzer users 60 percent versus 9 percent for everyone else">
-            <text class="ch-lab" x="0" y="9">MONTH 1 RETENTION</text>
-            <rect class="ch-mark" x="0" y="17" width="160" height="20"/>
-            <text class="ch-on"  x="5" y="31">Analyzer users</text>
-            <text class="ch-val" x="166" y="31">60%</text>
-            <rect class="ch-alt" x="0" y="45" width="24" height="20"/>
-            <text class="ch-val" x="30" y="59">9%</text>
-            <text class="ch-lab" x="0" y="80">EVERYONE ELSE</text>
-          </svg>
-        </div>
-      </a>
+    <p>Before that, six and a half years at <strong>Kasasa</strong> in banking SaaS — Associate
+    PM to Senior PM, a 600-client platform migration, and a product line that did $1.2M a year.
+    Before product, I ran a 90-person shift at an Amazon fulfillment center.</p>
 
-      <a class="card" href="/work/experiment-integrity.html">
-        <div>
-          <h3>Rebuilding a live A/B test that was lying to us</h3>
-          <p>Three variants, two opposed stakeholder agendas, and an attribution pipeline
-          quietly discarding three quarters of real mobile traffic. Fixed mid-flight.</p>
-        </div>
-        <div class="chart">
-          <svg viewBox="0 0 200 92" role="img" aria-label="Entry counts before and after the attribution fix, across three funnel arms">
-            <text class="ch-lab" x="0" y="9">ENTRIES BY ARM</text>
-            <g>
-              <rect class="ch-alt"  x="0"  y="60" width="16" height="14"/>
-              <rect class="ch-mark" x="20" y="38" width="16" height="36"/>
-              <rect class="ch-alt"  x="56" y="66" width="16" height="8"/>
-              <rect class="ch-mark" x="76" y="51" width="16" height="23"/>
-              <rect class="ch-alt"  x="112" y="65" width="16" height="9"/>
-              <rect class="ch-mark" x="132" y="51" width="16" height="23"/>
-            </g>
-            <line class="ch-rule" x1="0" y1="74" x2="200" y2="74"/>
-            <text class="ch-lab" x="0"   y="86">A</text>
-            <text class="ch-lab" x="56"  y="86">B</text>
-            <text class="ch-lab" x="112" y="86">C</text>
-            <text class="ch-lab" x="200" y="45" text-anchor="end">CORRECTED</text>
-            <text class="ch-lab" x="200" y="86" text-anchor="end">REPORTED</text>
-          </svg>
-        </div>
-      </a>
+    <p>My work starts with a measurement problem. Teams know what they want to build; far fewer
+    can tell you whether the last thing worked.</p>
 
-    </div>
+    <p class="home-links">
+      <a href="/work.html">Selected work</a>
+      <a href="/ai.html">What I&rsquo;ve built with AI</a>
+    </p>
 
-    <h3>Also</h3>
-    <ul class="plain">
-      <li><strong>Loan dashboard architecture.</strong> Greenlit a React rewrite and cut the
-      database middle layer in favor of a direct CRM front end — median time to close fell 27%
-      (26 days to 19), engineering feature velocity roughly tripled.</li>
-      <li><strong>Data warehouse &amp; securitization reporting.</strong> Locked scope at the
-      raw-source and per-loan-derived layers to avoid blocking on downstream logic, inventoried
-      21 reports across credit, capital markets, accounting and reconciliation, and reduced
-      500–600 apparent CRM fields to roughly 110 unique source fields.</li>
-      <li><strong>Regulatory risk in the funnel.</strong> Worked with compliance on
-      denial-of-credit exposure by redefining the application trigger point — an
-      &ldquo;application&rdquo; to &ldquo;loan quote&rdquo; terminology shift that preserved the
-      funnel and avoided an automated filtering system that would have disqualified good leads.</li>
-      <li><strong>Vendor migration off a legacy draw-management platform.</strong> Risk-tiered
-      by a 50% loan-completion threshold, with a hard trigger condition that bounded the
-      dual-system period instead of leaving the cutover open-ended.</li>
+    <p class="btn-row"><a class="btn" href="/resume.pdf">View résumé</a></p>
+  </main>
+
+  <footer>
+    <p>Eric Gabbard — Seattle, WA</p>
+    <ul class="footlinks">
+      <li><a href="mailto:ericdgabbard@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/eric-gabbard-48069759/">LinkedIn</a></li>
+      <li><a href="/resume.pdf">Résumé (PDF)</a></li>
     </ul>
-  </section>
-
-  <section>
-    <h2>AI</h2>
-    <p>The last stretch of my work has been building AI systems rather than writing strategy
-    decks about them — a PM operating system on Claude Code, a prototyping pipeline that turns
-    PRDs into working HTML, an event-sourced context architecture for multi-agent writes, and
-    the governance model that let non-engineers ship automations safely.</p>
-    <p><a href="/ai.html">What I think, and what I&rsquo;ve built &rarr;</a></p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Best reached by email.</p>
-    <p><a href="mailto:ericdgabbard@gmail.com">ericdgabbard@gmail.com</a><br>
-    <a href="https://www.linkedin.com/in/eric-gabbard-48069759/">LinkedIn</a></p>
-  </section>
-
-</main>
-
-<footer>
-  <p>Eric Gabbard — Seattle, WA</p>
-  <ul class="footlinks">
-    <li><a href="mailto:ericdgabbard@gmail.com">Email</a></li>
-    <li><a href="https://www.linkedin.com/in/eric-gabbard-48069759/">LinkedIn</a></li>
-    <li><a href="/resume.pdf">Résumé (PDF)</a></li>
-  </ul>
-</footer>
+  </footer>
 
 </div>
 </body>

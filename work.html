@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work — Eric Gabbard</title>
+<meta name="description" content="Selected product work: retention and funnel growth, saving a product from being cut, and rebuilding a live A/B test mid-experiment.">
+<link rel="canonical" href="https://ericgabbard.com/work.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#14655a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<link rel="stylesheet" href="/style.css?v=6">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <nav>
+    <a class="home" href="/">Eric Gabbard</a>
+    <ul>
+      <li><a href="/work.html" aria-current="page">Work</a></li>
+      <li><a href="/ai.html">AI</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <h1>Selected work</h1>
+
+  <p class="lede">Three problems worth the space. Each one starts with a number somebody
+  disagreed with.</p>
+
+  <div class="cards">
+
+    <a class="card" href="/work/retention-conversion.html">
+      <div>
+        <h3>Making retention the roadmap</h3>
+        <p>Rebuilt the roadmap around new-user retention, then ran a cross-functional pod
+        through 10+ funnel experiments — and showed sales why retention was their problem too.</p>
+      </div>
+      <div class="chart">
+        <svg viewBox="0 0 200 92" role="img" aria-label="Loan applications up 26 percent while marketing spend fell 10 percent">
+          <text class="ch-lab" x="0" y="9">APPLICATIONS</text>
+          <rect class="ch-alt"  x="0" y="15" width="103" height="14"/>
+          <rect class="ch-mark" x="0" y="33" width="130" height="14"/>
+          <text class="ch-val" x="136" y="44">+26%</text>
+          <text class="ch-lab" x="0" y="63">MARKETING SPEND</text>
+          <rect class="ch-alt"  x="0" y="69" width="103" height="14"/>
+          <rect class="ch-mark" x="0" y="69" width="93" height="14"/>
+          <text class="ch-val" x="112" y="80">&minus;10%</text>
+        </svg>
+      </div>
+    </a>
+
+    <a class="card" href="/work/analyzer.html">
+      <div>
+        <h3>Saving the product everyone wanted to cut</h3>
+        <p>A feature was on the chopping block for its data bill. The data said it was the
+        single strongest retention driver we had. I kept the product and killed the bill.</p>
+      </div>
+      <div class="chart">
+        <svg viewBox="0 0 200 92" role="img" aria-label="Month 1 retention: Analyzer users 60 percent versus 9 percent for everyone else">
+          <text class="ch-lab" x="0" y="9">MONTH 1 RETENTION</text>
+          <rect class="ch-mark" x="0" y="17" width="160" height="20"/>
+          <text class="ch-on"  x="5" y="31">Analyzer users</text>
+          <text class="ch-val" x="166" y="31">60%</text>
+          <rect class="ch-alt" x="0" y="45" width="24" height="20"/>
+          <text class="ch-val" x="30" y="59">9%</text>
+          <text class="ch-lab" x="0" y="80">EVERYONE ELSE</text>
+        </svg>
+      </div>
+    </a>
+
+    <a class="card" href="/work/experiment-integrity.html">
+      <div>
+        <h3>Rebuilding a live A/B test that was lying to us</h3>
+        <p>Three variants, two opposed stakeholder agendas, and an attribution pipeline
+        quietly discarding three quarters of real mobile traffic. Fixed mid-flight.</p>
+      </div>
+      <div class="chart">
+        <svg viewBox="0 0 200 92" role="img" aria-label="Entry counts before and after the attribution fix, across three funnel arms">
+          <text class="ch-lab" x="0" y="9">ENTRIES BY ARM</text>
+          <rect class="ch-alt"  x="0"  y="60" width="16" height="14"/>
+          <rect class="ch-mark" x="20" y="38" width="16" height="36"/>
+          <rect class="ch-alt"  x="56" y="66" width="16" height="8"/>
+          <rect class="ch-mark" x="76" y="51" width="16" height="23"/>
+          <rect class="ch-alt"  x="112" y="65" width="16" height="9"/>
+          <rect class="ch-mark" x="132" y="51" width="16" height="23"/>
+          <line class="ch-rule" x1="0" y1="74" x2="200" y2="74"/>
+          <text class="ch-lab" x="0"   y="86">A</text>
+          <text class="ch-lab" x="56"  y="86">B</text>
+          <text class="ch-lab" x="112" y="86">C</text>
+          <text class="ch-lab" x="200" y="45" text-anchor="end">CORRECTED</text>
+          <text class="ch-lab" x="200" y="86" text-anchor="end">REPORTED</text>
+        </svg>
+      </div>
+    </a>
+
+  </div>
+
+  <h2>Also</h2>
+  <ul class="plain">
+    <li><strong>Loan dashboard architecture.</strong> Greenlit a React rewrite and cut the
+    database middle layer in favor of a direct CRM front end — median time to close fell 27%
+    (26 days to 19), engineering feature velocity roughly tripled.</li>
+    <li><strong>Data warehouse &amp; securitization reporting.</strong> Locked scope at the
+    raw-source and per-loan-derived layers to avoid blocking on downstream logic, inventoried
+    21 reports across credit, capital markets, accounting and reconciliation, and reduced
+    500–600 apparent CRM fields to roughly 110 unique source fields.</li>
+    <li><strong>Regulatory risk in the funnel.</strong> Worked with compliance on
+    denial-of-credit exposure by redefining the application trigger point — an
+    &ldquo;application&rdquo; to &ldquo;loan quote&rdquo; terminology shift that preserved the
+    funnel and avoided an automated filtering system that would have disqualified good leads.</li>
+    <li><strong>Vendor migration off a legacy draw-management platform.</strong> Risk-tiered
+    by a 50% loan-completion threshold, with a hard trigger condition that bounded the
+    dual-system period instead of leaving the cutover open-ended.</li>
+  </ul>
+
+</main>
+
+<footer>
+  <p>Eric Gabbard — Seattle, WA</p>
+  <ul class="footlinks">
+    <li><a href="mailto:ericdgabbard@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/eric-gabbard-48069759/">LinkedIn</a></li>
+    <li><a href="/resume.pdf">Résumé (PDF)</a></li>
+  </ul>
+</footer>
+
+</div>
+</body>
+</html>

@@ -304,7 +304,7 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
     padding: 3rem 0 0;
   }
 
-  nav {
+  header nav {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.1rem;
@@ -312,9 +312,9 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
     padding-bottom: 0;
   }
 
-  nav .home { font-size: 1.05rem; }
+  header nav .home { font-size: 1.05rem; }
 
-  nav ul { flex-direction: column; gap: 0.45rem; font-size: 0.9rem; }
+  header nav ul { flex-direction: column; gap: 0.45rem; font-size: 0.9rem; }
 
   main {
     grid-column: 2 / 4;
@@ -359,4 +359,170 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
   .cards { grid-template-columns: repeat(3, 1fr); align-items: stretch; gap: 1.2rem; }
   .card { grid-template-columns: 1fr; align-content: start; gap: 1.1rem; }
   .card .chart { margin-top: auto; }
+}
+
+/* ================= home hero ================= */
+
+.hero {
+  position: relative;
+  min-height: 88vh;
+  min-height: 88svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  background: #0b1214;
+  isolation: isolate;
+}
+
+.hero-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.6rem clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.hero-home {
+  color: #f2f7f5;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.hero-nav { display: flex; gap: 1.6rem; border-bottom: 0; padding-bottom: 0; }
+
+.hero-nav a {
+  color: rgba(242, 247, 245, 0.72);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-nav a:hover, .hero-home:hover { color: #8fe6d6; }
+
+.hero-title {
+  align-self: center;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.hero-title h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: #f6faf8;
+  font-size: clamp(2.6rem, 9vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0;
+  max-width: none;
+}
+
+.hero-role {
+  font-family: var(--mono);
+  font-size: clamp(0.68rem, 1.6vw, 0.84rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(143, 230, 214, 0.85);
+  margin: 1.4rem 0 0;
+}
+
+.hero-cue {
+  justify-self: center;
+  margin-bottom: 2.2rem;
+  color: rgba(242, 247, 245, 0.55);
+  width: 30px;
+  display: block;
+  animation: cue 2.6s ease-in-out infinite;
+}
+
+.hero-cue svg { display: block; width: 100%; }
+.hero-cue:hover { color: #8fe6d6; }
+
+@keyframes cue {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cue { animation: none; }
+}
+
+/* ================= home body ================= */
+
+.wrap.plain { display: block; max-width: 40rem; }
+
+.wrap.plain main { padding: clamp(3.5rem, 9vw, 6rem) 0 0; display: block; }
+
+.wrap.plain h2 {
+  margin: 0 0 1.6rem;
+  font-size: 1.35rem;
+}
+
+.wrap.plain p { font-size: 1.04rem; }
+
+.home-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  margin: 2rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.btn-row { margin: 2.2rem 0 0; }
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover { background: var(--accent); color: var(--on-accent); }
+
+/* ================= contact list ================= */
+
+.contact-list > li {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.contact-list .k {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media (max-width: 30rem) {
+  .contact-list > li { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+
+@media (max-width: 30rem) {
+  .hero-role { letter-spacing: 0.13em; font-size: 0.63rem; }
+  .hero-top { padding: 1.2rem 1.1rem; }
+  .hero-nav { gap: 1.1rem; }
 }
