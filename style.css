@@ -527,9 +527,8 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
   .hero-nav { gap: 1.1rem; }
 }
 
-/* smooth anchor scrolling, for anyone who hasn't asked for less motion */
-@media (prefers-reduced-motion: no-preference) {
-  html { scroll-behavior: smooth; }
-}
+/* No CSS scroll-behavior here on purpose: the hero cue animates the scroll
+   in JS, and a browser-level smooth scroll fights it on every frame — the
+   symptom is a long stall before anything moves. */
 
 #about { scroll-margin-top: 0; }

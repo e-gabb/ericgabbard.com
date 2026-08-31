@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
-<link rel="stylesheet" href="/style.css?v=8">
+<link rel="stylesheet" href="/style.css?v=9">
 </head>
 <body>
 
@@ -152,12 +152,14 @@
     var start = window.pageYOffset;
     var end = target.getBoundingClientRect().top + start;
     var distance = end - start;
-    var duration = 950;
+    var duration = 780;
     var t0 = null;
 
-    // easeInOutCubic — slow start, quick middle, gentle landing
+    // easeOutQuad — moves at full speed from the first frame, then eases
+    // into the landing. An ease-IN curve here reads as lag before anything
+    // happens, which is exactly what we don't want on a click.
     function ease(t) {
-      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      return t * (2 - t);
     }
 
     function step(now) {
