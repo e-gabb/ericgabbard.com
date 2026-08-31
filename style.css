@@ -165,6 +165,10 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 3rem 0; }
 
 figure { margin: 2rem 0; }
 figure svg { display: block; width: 100%; height: auto; }
+/* The breakout gives a figure the full 64rem on wide screens, which scales the
+   8.5px SVG labels well past body-text size. Hold the drawing back so its type
+   reads at roughly the same weight as the prose beside it. */
+.case figure { max-width: 46rem; }
 figcaption {
   font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
   border-top: 1px solid var(--rule); padding-top: 0.55rem; margin-top: 0.7rem;
