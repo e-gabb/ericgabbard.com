@@ -169,6 +169,20 @@ figcaption {
   display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; justify-content: space-between;
 }
 
+/* ---------- portrait photo (contact page) ----------
+   Deliberately modest: a photo, not a hero. Stays in the prose column even on
+   wide screens, where bare `figure` would break out into the data margin. */
+
+.portrait { margin: 2.6rem 0 0; max-width: 22rem; }
+.portrait img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--rule); border-radius: 2px;
+}
+
+@media (min-width: 68rem) {
+  main > .portrait { grid-column: 1; }
+}
+
 /* ---------- work cards ---------- */
 
 .cards { display: grid; gap: 1.4rem; }
