@@ -75,6 +75,22 @@ nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; fo
 nav a { color: var(--muted); text-decoration: none; }
 nav a:hover, nav a[aria-current="page"] { color: var(--accent); }
 
+/* Below the sidebar breakpoint the nav is a top row rather than a sticky
+   left column, so pin the row itself — otherwise the links scroll away and
+   the reader has no navigation for the rest of the page. */
+@media (max-width: 67.99rem) {
+  /* The header, not the nav inside it: a sticky element can only travel
+     within its containing block, and the header's box is barely taller
+     than the nav row, so pinning the nav pins it nowhere. */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    padding: 1.1rem 0 0;
+  }
+}
+
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
 
 /* ---------- type ---------- */
@@ -372,8 +388,10 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
 
 .hero {
   position: relative;
-  min-height: 88vh;
-  min-height: 88svh;
+  /* Full viewport, so nothing from the About section peeks above the fold.
+     dvh tracks the mobile toolbar as it collapses; vh is the fallback. */
+  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   overflow: hidden;
