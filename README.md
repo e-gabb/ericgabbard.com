@@ -4,7 +4,7 @@ Personal site. Static HTML/CSS, no build step, no dependencies.
 
 ## Structure
 
-- `index.html` — homepage: positioning, selected work, contact
+- `index.html` — homepage: positioning, projects, contact
 - `ai.html` — point of view on AI in product work + things built
 - `work/*.html` — case studies (Problem / What I did / Tradeoffs / Outcome)
 - `style.css` — single stylesheet, light + dark via `prefers-color-scheme`

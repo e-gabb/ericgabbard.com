@@ -55,13 +55,20 @@ header { padding: 2.5rem 0 0; }
 
 nav {
   display: flex; flex-wrap: wrap;
-  align-items: baseline; justify-content: space-between;
+  align-items: center; justify-content: space-between;
   gap: 1rem;
   border-bottom: 1px solid var(--rule);
   padding-bottom: 0.85rem;
 }
 
-nav .home { font-weight: 600; letter-spacing: -0.01em; text-decoration: none; color: var(--fg); }
+nav .home {
+  font-weight: 600; letter-spacing: -0.01em; text-decoration: none; color: var(--fg);
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+
+/* the home glyph sits with the wordmark and inherits its colour */
+.home-icon { width: 1.05em; height: 1.05em; flex: none; }
+nav .home:hover { color: var(--accent); }
 
 nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; font-size: 0.92rem; }
 
@@ -385,7 +392,7 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
 .hero-top {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
   padding: 1.6rem clamp(1.5rem, 5vw, 3.5rem);
@@ -396,6 +403,9 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
   font-weight: 600;
   text-decoration: none;
   letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .hero-nav { display: flex; gap: 1.6rem; border-bottom: 0; padding-bottom: 0; }
@@ -460,16 +470,16 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
 
 /* ================= home body ================= */
 
-.wrap.plain { display: block; max-width: 40rem; }
+/* The home page's below-fold half uses the same .wrap shell as every other
+   page, so the nav that appears when you scroll past the hero is the same
+   nav — a top row on narrow screens, the sticky left column at 68rem+. */
 
-.wrap.plain main { padding: clamp(3.5rem, 9vw, 6rem) 0 0; display: block; }
-
-.wrap.plain h2 {
-  margin: 0 0 1.6rem;
+.home-about h2 {
+  margin: 2rem 0 1.6rem;
   font-size: 1.35rem;
 }
 
-.wrap.plain p { font-size: 1.04rem; }
+.home-about p { font-size: 1.04rem; }
 
 .home-links {
   display: flex;
@@ -482,7 +492,14 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
   text-transform: uppercase;
 }
 
-.btn-row { margin: 2.2rem 0 0; }
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin: 2.4rem 0 0;
+}
+
+.hero-cta { margin: 2.2rem 0 0; }
 
 .btn {
   display: inline-block;
@@ -499,6 +516,24 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
 }
 
 .btn:hover { background: var(--accent); color: var(--on-accent); }
+
+/* filled: the two routes off the homepage */
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent);
+}
+
+.btn-primary:hover { background: transparent; color: var(--accent); }
+
+/* on the dark hero, the accent green has too little contrast — go light */
+.btn-hero {
+  border-color: rgba(242, 247, 245, 0.55);
+  color: #f2f7f5;
+}
+
+.btn-hero:hover { background: #f2f7f5; color: #0b1214; }
+.btn-hero:focus-visible { outline-color: #8fe6d6; }
 
 /* ================= contact list ================= */
 

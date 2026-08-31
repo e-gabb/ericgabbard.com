@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
-<link rel="stylesheet" href="/style.css?v=9">
+<link rel="stylesheet" href="/style.css?v=11">
 </head>
 <body>
 
@@ -79,9 +79,9 @@
   </svg>
 
   <div class="hero-top">
-    <a class="hero-home" href="/">Eric Gabbard</a>
+    <a class="hero-home" href="/" aria-label="Home"><svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11.3 12 4.2l9 7.1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.7 9.7V19.8h12.6V9.7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Eric Gabbard</span></a>
     <nav class="hero-nav">
-      <a href="/work.html">Work</a>
+      <a href="/work.html">Projects</a>
       <a href="/ai.html">AI</a>
       <a href="/contact.html">Contact</a>
     </nav>
@@ -90,6 +90,7 @@
   <div class="hero-title">
     <h1>Eric Gabbard</h1>
     <p class="hero-role">Head of Product &middot; Fintech &amp; B2B SaaS</p>
+    <p class="hero-cta"><a class="btn btn-hero" href="/resume.pdf">View résumé</a></p>
   </div>
 
   <a class="hero-cue" href="#about" aria-label="Read more">
@@ -97,9 +98,20 @@
   </a>
 </div>
 
-<div class="wrap plain">
+<div class="wrap" id="about">
 
-  <main id="about">
+  <header>
+    <nav>
+      <a class="home" href="/" aria-label="Home"><svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11.3 12 4.2l9 7.1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.7 9.7V19.8h12.6V9.7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Eric Gabbard</span></a>
+      <ul>
+        <li><a href="/work.html">Projects</a></li>
+        <li><a href="/ai.html">AI</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="home-about">
     <h2>About</h2>
 
     <p>I&rsquo;m a Head of Product with nine years in fintech and B2B SaaS. Most recently at
@@ -113,12 +125,10 @@
     <p>My work starts with a measurement problem. Teams know what they want to build; far fewer
     can tell you whether the last thing worked.</p>
 
-    <p class="home-links">
-      <a href="/work.html">Selected work</a>
-      <a href="/ai.html">What I&rsquo;ve built with AI</a>
+    <p class="btn-row">
+      <a class="btn btn-primary" href="/work.html">Projects</a>
+      <a class="btn btn-primary" href="/ai.html">AI</a>
     </p>
-
-    <p class="btn-row"><a class="btn" href="/resume.pdf">View résumé</a></p>
   </main>
 
   <footer>
