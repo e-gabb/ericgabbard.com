@@ -447,7 +447,7 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
 }
 
 .hero-cue svg { display: block; width: 100%; }
-.hero-cue:hover { color: #8fe6d6; }
+.hero-cue:hover, .hero-cue:focus-visible { color: #8fe6d6; animation-play-state: paused; }
 
 @keyframes cue {
   0%, 100% { transform: translateY(0); }
@@ -526,3 +526,10 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
   .hero-top { padding: 1.2rem 1.1rem; }
   .hero-nav { gap: 1.1rem; }
 }
+
+/* smooth anchor scrolling, for anyone who hasn't asked for less motion */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+#about { scroll-margin-top: 0; }

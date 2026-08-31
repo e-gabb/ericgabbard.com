@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
-<link rel="stylesheet" href="/style.css?v=6">
+<link rel="stylesheet" href="/style.css?v=7">
 </head>
 <body>
 
@@ -130,5 +130,50 @@
   </footer>
 
 </div>
+
+<script>
+(function () {
+  var cue = document.querySelector('.hero-cue');
+  if (!cue) return;
+  var hash = cue.getAttribute('href');
+  var target = document.querySelector(hash);
+  if (!target) return;
+
+  cue.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      target.scrollIntoView();
+      history.replaceState(null, '', hash);
+      return;
+    }
+
+    var start = window.pageYOffset;
+    var end = target.getBoundingClientRect().top + start;
+    var distance = end - start;
+    var duration = 950;
+    var t0 = null;
+
+    // easeInOutCubic — slow start, quick middle, gentle landing
+    function ease(t) {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    function step(now) {
+      if (t0 === null) t0 = now;
+      var p = Math.min((now - t0) / duration, 1);
+      window.scrollTo(0, start + distance * ease(p));
+      if (p < 1) {
+        requestAnimationFrame(step);
+      } else {
+        history.replaceState(null, '', hash);
+      }
+    }
+
+    requestAnimationFrame(step);
+  });
+})();
+</script>
+
 </body>
 </html>
