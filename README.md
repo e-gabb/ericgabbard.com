@@ -5,8 +5,8 @@ Personal site. Static HTML/CSS, no build step, no dependencies.
 ## Structure
 
 - `index.html` — homepage: positioning, projects, contact
-- `ai.html` — point of view on AI in product work + things built
-- `work/*.html` — case studies (Problem / What I did / Tradeoffs / Outcome)
+- `ai.html` (served at `/ai`) — point of view on AI in product work + things built
+- `projects/*.html` — case studies, listing at `projects/index.html` (served at `/projects`) (Problem / What I did / Tradeoffs / Outcome)
 - `style.css` — single stylesheet, light + dark via `prefers-color-scheme`
 - `resume.pdf` — downloadable résumé (a copy; see below)
 - `site.js` — attribution beacon (see below)

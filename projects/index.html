@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects — Eric Gabbard</title>
+<meta name="description" content="Three product problems at a venture-backed lender: running the acquisition funnel on experiments, saving a product slated for cancellation, and replacing a third-party budget and draw platform with our own.">
+<link rel="canonical" href="https://ericgabbard.com/projects">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#14655a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<link rel="stylesheet" href="/style.css?v=14">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <nav>
+    <a class="home" href="/" aria-label="Home"><svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11.3 12 4.2l9 7.1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.7 9.7V19.8h12.6V9.7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Eric Gabbard</span></a>
+    <ul>
+      <li><a href="/projects" aria-current="page">Projects</a></li>
+      <li><a href="/ai">AI</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <h1>Projects</h1>
+
+  <p class="lede">Three problems worth the space. Each card is the problem first and the
+  number second &mdash; open one for how it actually went.</p>
+
+  <div class="cards">
+
+    <a class="card" href="/projects/conversion">
+      <div>
+        <p class="kicker">Backflip &middot; Acquisition funnel &rarr; loan application</p>
+        <h3>Running the funnel on experiments, not opinions</h3>
+        <p class="pi"><span class="tag">Problem</span>Funnel decisions were being made on
+        conviction. Everyone could see drop-off; nobody could say which drop-off actually cost
+        applications. And the one decision big enough to matter &mdash; how much rate
+        information the loan application should show, and when &mdash; had two senior
+        stakeholders on opposite sides, each with a plausible story about which funnel shape
+        proved them right.</p>
+        <p class="pi"><span class="tag">Impact</span>Led a cross-functional pod through 10+ A/B
+        tests against the real drop-off points instead of shipping a redesign and hoping. Then
+        designed the three-variant application experiment so it could actually settle the
+        argument: a funnel-shape-neutral primary metric, defined before launch, that neither
+        side could reinterpret afterward.</p>
+        <ul class="stats">
+          <li>+34% conversion</li>
+          <li>+26% applications on 10% less spend</li>
+          <li>4.5% vs 2.0% winning variant</li>
+        </ul>
+        <span class="more">Read the case &rarr;</span>
+      </div>
+      <div class="chart">
+        <svg viewBox="0 0 300 158" role="img" aria-label="Over one quarter against a trailing-twelve-month baseline: funnel conversion up 34 percent, loan applications up 26 percent, marketing spend down 10 percent. In the loan application experiment, the rates-hidden variant converted at 4.5 percent against 2.0 percent for control over 25 days.">
+          <text class="ch-lab" x="0" y="8">ONE QUARTER VS TRAILING TWELVE MONTHS</text>
+
+          <text class="ch-lab" x="0" y="24">FUNNEL CONVERSION</text>
+          <rect class="ch-mark" x="0" y="28" width="200" height="13"/>
+          <text class="ch-val" x="206" y="38">+34%</text>
+
+          <text class="ch-lab" x="0" y="54">LOAN APPLICATIONS</text>
+          <rect class="ch-mark" x="0" y="58" width="153" height="13"/>
+          <text class="ch-val" x="159" y="68">+26%</text>
+
+          <text class="ch-lab" x="0" y="84">MARKETING SPEND</text>
+          <rect class="ch-alt" x="0" y="88" width="59" height="13"/>
+          <text class="ch-val" x="65" y="98">&#8722;10%</text>
+
+          <line class="ch-rule" x1="0" y1="110" x2="300" y2="110"/>
+
+          <text class="ch-lab" x="0" y="124">APPLICATION EXPERIMENT &#8212; 25 DAYS</text>
+          <rect class="ch-mark" x="0" y="128" width="230" height="13"/>
+          <text class="ch-on" x="6" y="138">Rates hidden</text>
+          <text class="ch-val" x="236" y="138">4.5%</text>
+          <rect class="ch-alt" x="0" y="143" width="102" height="13"/>
+          <text class="ch-val" x="108" y="153">2.0%</text>
+        </svg>
+      </div>
+    </a>
+
+    <a class="card" href="/projects/analyzer">
+      <div>
+        <p class="kicker">Backflip &middot; Retention &amp; vendor cost</p>
+        <h3>Cutting the right thing</h3>
+        <p class="pi"><span class="tag">Problem</span>Analyzer &mdash; the deal-analysis tool
+        investors used to evaluate properties &mdash; carried a large third-party data bill and
+        no revenue line of its own. In a cost review it read as an obvious cut. Nobody had put
+        a number on what it was worth.</p>
+        <p class="pi"><span class="tag">Impact</span>Interviewed investors, then ran the
+        retention and conversion analysis that reframed the decision. Traced nearly all the spend
+        to an inbox-scanning feature that surfaced deals automatically &mdash; cut it without
+        losing the analysis itself, and renegotiated to usage-based pricing.</p>
+        <ul class="stats">
+          <li>60% vs 9% Month 1 retention</li>
+          <li>85% more applications per user</li>
+          <li>90% data cost cut</li>
+        </ul>
+        <span class="more">Read the case &rarr;</span>
+      </div>
+      <div class="chart">
+        <svg viewBox="0 0 300 160" role="img" aria-label="Analyzer users retained at 60 percent at Month 1 against 9 percent for everyone else; the third-party data bill fell from 100 percent to 10 percent">
+          <text class="ch-lab" x="0" y="8">MONTH 1 RETENTION</text>
+          <rect class="ch-mark" x="0" y="14" width="240" height="20"/>
+          <text class="ch-on"  x="7" y="28">Analyzer users</text>
+          <text class="ch-val" x="246" y="28">60%</text>
+          <rect class="ch-alt" x="0" y="40" width="36" height="20"/>
+          <text class="ch-val" x="42" y="54">9%</text>
+          <text class="ch-lab" x="0" y="76">EVERYONE ELSE &#8212; A 6.7&#215; GAP</text>
+
+          <line class="ch-rule" x1="0" y1="92" x2="300" y2="92"/>
+
+          <text class="ch-lab" x="0" y="110">THIRD-PARTY DATA BILL</text>
+          <rect class="ch-alt"  x="0" y="116" width="250" height="16"/>
+          <text class="ch-val" x="256" y="128">100%</text>
+          <rect class="ch-mark" x="0" y="138" width="25" height="16"/>
+          <text class="ch-val" x="31" y="150">10%</text>
+        </svg>
+      </div>
+    </a>
+
+    <a class="card" href="/projects/draw-management">
+      <div>
+        <p class="kicker">Backflip &middot; Budgets, draws &amp; disbursements</p>
+        <h3>Rebuilding the system we were renting</h3>
+        <p class="pi"><span class="tag">Problem</span>Construction budgets arrived as
+        spreadsheets over email, and every budget and draw after closing lived on a third-party
+        platform we paid heavily for. It was the ledger, the borrower&rsquo;s draw experience,
+        and the servicing and accounting review queue &mdash; and none of it was ours to fix.
+        Draw speed is one of the reasons a borrower picks a lender, and we couldn&rsquo;t move
+        it.</p>
+        <p class="pi"><span class="tag">Impact</span>Replaced it in two stages: first budget
+        submission and review inside underwriting, so a deal stopped waiting on a spreadsheet;
+        then the full draw system &mdash; borrower request, servicing and accounting review,
+        disbursement. Retired the vendor, cut the payout clock, and a borrower who&rsquo;d used
+        both told me the new one was the easier system.</p>
+        <ul class="stats">
+          <li>Vendor retired</li>
+          <li>Faster draw payouts</li>
+          <li>Budgets in-platform</li>
+        </ul>
+        <span class="more">Read the case &rarr;</span>
+      </div>
+      <div class="chart">
+        <svg viewBox="0 0 300 152" role="img" aria-label="Three stages moved off spreadsheets and a third-party vendor onto Backflip's own platform: budget intake, budget ledger, and draw request and payout">
+          <text class="ch-lab" x="0" y="8">WHAT WE REPLACED</text>
+
+          <text class="ch-lab" x="0" y="26">BUDGET INTAKE</text>
+          <rect class="ch-ghost" x="0" y="30" width="118" height="24"/>
+          <text class="ch-lab" x="8" y="45">EXCEL BY EMAIL</text>
+          <path class="ch-arrow" d="M124 42 h20 m-5 -4 l5 4 l-5 4"/>
+          <rect class="ch-mark" x="152" y="30" width="148" height="24"/>
+          <text class="ch-on" x="160" y="45">Backflip platform</text>
+
+          <text class="ch-lab" x="0" y="74">BUDGET LEDGER</text>
+          <rect class="ch-ghost" x="0" y="78" width="118" height="24"/>
+          <text class="ch-lab" x="8" y="93">THIRD-PARTY VENDOR</text>
+          <path class="ch-arrow" d="M124 90 h20 m-5 -4 l5 4 l-5 4"/>
+          <rect class="ch-mark" x="152" y="78" width="148" height="24"/>
+          <text class="ch-on" x="160" y="93">Backflip platform</text>
+
+          <text class="ch-lab" x="0" y="122">DRAW REQUEST &#8594; PAYOUT</text>
+          <rect class="ch-ghost" x="0" y="126" width="118" height="24"/>
+          <text class="ch-lab" x="8" y="141">THIRD-PARTY VENDOR</text>
+          <path class="ch-arrow" d="M124 138 h20 m-5 -4 l5 4 l-5 4"/>
+          <rect class="ch-mark" x="152" y="126" width="148" height="24"/>
+          <text class="ch-on" x="160" y="141">Backflip platform</text>
+        </svg>
+      </div>
+    </a>
+
+  </div>
+
+</main>
+
+<footer>
+  <p>Eric Gabbard — Seattle, WA</p>
+  <ul class="footlinks">
+    <li><a href="mailto:ericdgabbard@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/eric-gabbard-48069759/">LinkedIn</a></li>
+    <li><a href="/resume.pdf?v=2026-08">Résumé (PDF)</a></li>
+  </ul>
+</footer>
+
+</div>
+  <script src="/site.js?v=1" defer></script>
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a85f519c6c7c4a88a507c44891415a3c"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>

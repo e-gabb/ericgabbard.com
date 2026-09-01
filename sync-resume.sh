@@ -21,7 +21,7 @@ fi
 cp "$SRC" "$SITE/resume.pdf"
 
 # Rewrite every /resume.pdf link (with or without an existing ?v=) to this month.
-grep -rl 'resume\.pdf' "$SITE"/*.html "$SITE"/work/*.html 2>/dev/null | while read -r f; do
+grep -rl 'resume\.pdf' "$SITE"/*.html "$SITE"/projects/*.html 2>/dev/null | while read -r f; do
   sed -i '' -E "s|href=\"/resume\.pdf(\?v=[0-9-]+)?\"|href=\"/resume.pdf?v=$STAMP\"|g" "$f"
 done
 
