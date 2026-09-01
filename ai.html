@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI — Eric Gabbard</title>
-<meta name="description" content="What I think about AI in product work, and the systems I've actually built: a PM operating system, a prototyping pipeline, a multi-agent context architecture, and an org-wide governance model.">
+<meta name="description" content="A product manager who builds the AI systems he proposes: a multi-agent deal context architecture, an event-sourced write model, a governance gate adopted for company-wide automation, and the operating system I still run between roles.">
 <meta property="og:title" content="AI — Eric Gabbard">
-<meta property="og:description" content="A point of view on AI in product work, and the systems behind it.">
+<meta property="og:description" content="I build the AI systems I propose. What I shipped, what it cost, and what did not work.">
 <link rel="canonical" href="https://ericgabbard.com/ai.html">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
-<link rel="stylesheet" href="/style.css?v=14">
+<link rel="stylesheet" href="/style.css?v=17">
 </head>
 <body>
 <div class="wrap">
@@ -37,87 +37,54 @@
 
   <h1>AI</h1>
 
-  <p class="lede">Most companies are automating workflows when their actual problem is that
-  their data can&rsquo;t be reasoned over. Those look similar from the outside. They are not the
-  same project, and one of them compounds fragility.</p>
+  <p class="lede">I build the AI systems I propose. At a 50-person lender: the context
+  architecture our agents ran on, the standard a non-technical colleague shipped against in
+  one sprint, and the rule for who was allowed to automate what.</p>
 
-  <p>I watched this happen up close. Every new automation made the system a little more brittle,
-  because loan context was split across a document portal, a file store, and a CRM, and no
-  automation could see the whole deal. The instinct was to add more automation. The fix was to
-  stop and build a centralized deal context layer, so agents could reason across the full loan
-  lifecycle instead of firing on triggers.</p>
+  <div class="strip">
+    <div class="metric">
+      <span class="k">Time to close</span>
+      <span class="v">&minus;27<span class="u">%</span></span>
+      <span class="sub">26 &rarr; 19 days, on the data layer</span>
+    </div>
+    <div class="metric">
+      <span class="k">Agent run cost</span>
+      <span class="v">&minus;84<span class="u">%</span></span>
+      <span class="sub">~$32 &rarr; ~$5 a day, same workflow</span>
+    </div>
+    <div class="metric">
+      <span class="k">Systems unified</span>
+      <span class="v">5<span class="u">&thinsp;&rarr;&thinsp;1</span></span>
+      <span class="sub">one authenticated agent data layer</span>
+    </div>
+    <div class="metric">
+      <span class="k">Second builder</span>
+      <span class="v">1<span class="u">&nbsp;sprint</span></span>
+      <span class="sub">non-technical, shipping conformant agents</span>
+    </div>
+  </div>
 
-  <figure class="plate">
-    <svg viewBox="0 0 560 190" role="img" aria-label="Diagram: four fragmented data sources unify into a deal context layer, which three agents reason across">
-      <text class="bp-t-m" x="0" y="10">BEFORE — FRAGMENTED</text>
-      <rect class="bp-box"   x="0" y="24" width="104" height="24"/>
-      <text class="bp-t"     x="10" y="40">Document portal</text>
-      <rect class="bp-box"   x="0" y="58" width="104" height="24"/>
-      <text class="bp-t"     x="10" y="74">File storage</text>
-      <rect class="bp-box"   x="0" y="92" width="104" height="24"/>
-      <text class="bp-t"     x="10" y="108">CRM</text>
-      <rect class="bp-box-d" x="0" y="126" width="104" height="24"/>
-      <text class="bp-t-m"   x="10" y="142">+ trigger rules</text>
-
-      <g class="bp-arrow">
-        <path d="M104,36 L146,36 L146,86"/>
-        <path d="M104,70 L146,70 L146,86"/>
-        <path d="M104,104 L146,104 L146,86"/>
-        <path d="M104,138 L146,138 L146,86"/>
-        <path d="M146,86 L192,86"/>
-      </g>
-      <path class="bp-head" d="M192,86 l-7,-3.6 v7.2 z"/>
-
-      <rect class="bp-key" x="196" y="46" width="152" height="80"/>
-      <text class="bp-t-k" x="208" y="72">DEAL CONTEXT</text>
-      <text class="bp-t-k" x="208" y="88">LAYER</text>
-      <text class="bp-t-m" x="208" y="107">full loan lifecycle</text>
-      <text class="bp-t-m" x="196" y="142">AFTER — ONE MODEL</text>
-
-      <g class="bp-arrow-k">
-        <path d="M348,86 L392,86"/>
-        <path d="M392,86 L392,40 L436,40"/>
-        <path d="M392,86 L436,86"/>
-        <path d="M392,86 L392,132 L436,132"/>
-      </g>
-      <g class="bp-head-k">
-        <path d="M436,40 l-7,-3.6 v7.2 z"/>
-        <path d="M436,86 l-7,-3.6 v7.2 z"/>
-        <path d="M436,132 l-7,-3.6 v7.2 z"/>
-      </g>
-
-      <rect class="bp-box" x="440" y="28" width="118" height="24"/>
-      <text class="bp-t"   x="450" y="44">Processing agent</text>
-      <rect class="bp-box" x="440" y="74" width="118" height="24"/>
-      <text class="bp-t"   x="450" y="90">Sales agents</text>
-      <rect class="bp-box" x="440" y="120" width="118" height="24"/>
-      <text class="bp-t"   x="450" y="136">Config monitor</text>
-      <text class="bp-t-m" x="558" y="162" text-anchor="end">reasoning, not triggers</text>
-    </svg>
-    <figcaption>Fig. 1 — AI enablement strategy: from workflow automation to data architecture</figcaption>
-  </figure>
-
-  <p>Trigger-based automation scales with how many rules you can maintain. Context-based agents
-  scale with how good your data model is. That reframing is the whole strategy, and it&rsquo;s
-  why I stopped a push for more automation and redirected the effort at the data layer instead.</p>
-
-  <p>The second thing I believe: the interesting constraint is no longer capability, it&rsquo;s
-  governance and cost. A model can write the automation. The open questions are who is allowed
-  to deploy it, what it&rsquo;s permitted to write to, and whether anyone modeled the bill before
-  shipping. Those are product decisions, not engineering ones.</p>
-
-  <p>Third: I build the things I propose. Writing a strategy for AI adoption without having
-  shipped an agent is like writing a mobile roadmap having never used a phone. Everything below
-  is something I built and ran, not something I specced.</p>
+  <p>Everyone wanted more automation. Every new one made the system more fragile, because no
+  automation could see a whole loan. Trigger-based automation scales with the rules you
+  maintain. Context-based agents scale with your data model. So I stopped the automation push
+  and rebuilt the layer underneath &mdash; the work that also took time to close from 26 days
+  to 19.</p>
 
   <hr>
 
-  <h2>Three systems, drawn</h2>
+  <h2>What I built</h2>
 
-  <h3>The write model</h3>
-  <p>The multi-agent context system had a single-writer model and was losing data whenever two
-  agents wrote at once. The obvious fix is locking. The better fix is making the collision
-  impossible: immutable per-event writes, with views regenerated from the log.</p>
+  <h3>Deal context architecture <span class="when">&middot; Jun&ndash;Aug 2026</span></h3>
+  <p>One context layer per deal, assembled on demand, so context survived the handoff from
+  sales to processing to underwriting. Run against closed loans, it caught an interest-accrual
+  error on a deal that had already funded. I demoed that catch to the executive team. Our
+  engineering lead had argued for a database; I showed the specific case instead of the
+  principle, and got the call.</p>
+
+  <h3>The write model <span class="when">&middot; Jun 2026</span></h3>
+  <p>Single writer, two agents, silent data loss &mdash; found at five deals and one agent,
+  the cheapest possible moment to fix it. Locking manages the collision. Event sourcing
+  removes it.</p>
 
   <figure class="plate">
     <svg viewBox="0 0 560 200" role="img" aria-label="Diagram comparing a single-writer model that loses concurrent writes against an event-sourced model with immutable writes and regenerable views">
@@ -178,16 +145,17 @@
       <text class="bp-t-m" x="494" y="106">regenerable</text>
 
       <text class="bp-t-m" x="0" y="152">NO LOCKING. THE COLLISION IS REMOVED, NOT MANAGED.</text>
-      <text class="bp-t-m" x="0" y="168">A SECOND, NON-TECHNICAL BUILDER SHIPPED AGAINST THIS IN ONE SPRINT.</text>
     </svg>
-    <figcaption>Fig. 2 — Event-sourced, CQRS-style write model for multi-agent context</figcaption>
+    <figcaption>Fig. 1 — Event-sourced, CQRS-style write model for multi-agent context</figcaption>
   </figure>
 
-  <h3>The governance model</h3>
-  <p>Company-wide AI automation stalls on one question: who is allowed to ship. Blanket
-  engineering review kills adoption; no review kills data. The split that worked was by
-  permission, not by person — read-only automations run unrestricted, anything that writes goes
-  through a gate.</p>
+  <p>Then I wrote the standard down. A non-technical colleague shipped conformant agents on
+  it the same sprint, without me correcting them into the pattern after.</p>
+
+  <h3>The governance model <span class="when">&middot; Apr&ndash;Jul 2026</span></h3>
+  <p>Every team was told to build agents; one colleague alone was running forty. Lock it down
+  and you kill the momentum that made it valuable. So: split by permission, not by person.
+  Read-only ships free. Anything that writes to a system of record goes through a gate.</p>
 
   <figure class="plate">
     <svg viewBox="0 0 560 176" role="img" aria-label="Diagram: natural language automation requests route through code generation, then split by permission — read-only deploys directly, write access passes an engineering review gate">
@@ -228,81 +196,43 @@
       <rect class="bp-box" x="450" y="104" width="108" height="32"/>
       <text class="bp-t"   x="458" y="118">engineering</text>
       <text class="bp-t"   x="458" y="130">review gate</text>
-
-      <text class="bp-t-m" x="0" y="164">ADOPTED ORG-WIDE. ZERO ENGINEERING BOTTLENECK ON PERSONAL, READ-ONLY AUTOMATIONS.</text>
     </svg>
-    <figcaption>Fig. 3 — Governance model for company-wide AI automation adoption</figcaption>
+    <figcaption>Fig. 2 — Permission split for company-wide AI automation</figcaption>
   </figure>
+
+  <h3>The gate before the gate <span class="when">&middot; Jul 2026</span></h3>
+  <p>Governance says who may ship. It does not say whether the thing should be an agent at
+  all. My test: an agent earns its place on judgment over messy input. Same input, same
+  destination, every time? That is code, and it belongs to engineering. It shipped as the
+  first gate in our agent-authoring tool.</p>
+
+  <h3>Cost is a design decision <span class="when">&middot; Jul 2026</span></h3>
+  <p>Our first multi-agent workflow ran ~$32/day naive. I took it to ~$5 &mdash; incremental
+  off events, batched, cached, with the cheap model doing extraction and the expensive one
+  only judgment. On the next agent I priced two designs before writing code and shipped the
+  one 40% cheaper. <span class="muted">Designed and handed off; it had not gotten a deploy
+  slot before my role ended.</span></p>
+
+  <h3>Deal-loss analysis <span class="when">&middot; Jul 2026</span></h3>
+  <p>Loss reasons came from a dropdown, and a fifth of them landed in "Other." I built a
+  read-only agent that re-derives the reason from the deal's own evidence. First run: two
+  deals recorded as losses were not losses &mdash; the borrower had been rerouted to another
+  product internally. We had been understating conversion.</p>
+
+  <h3>The operating system I ran the job on <span class="when">&middot; 2026</span></h3>
+  <p>Only PM at a 50-person company, so my capacity was the ceiling on everything. 30+ custom
+  Claude Code skills wired to six live data sources, plus scheduled jobs that ran overnight and
+  wrote back with citations. Teammates started building on the same foundation.</p>
 
   <hr>
 
-  <h2>What I&rsquo;ve built</h2>
+  <h2>What I run now</h2>
+  <p>Between roles it did not stop, which is the honest test of whether any of it was real. A
+  vault that ingests and cross-links my notes nightly. A curator that mines each day's work for
+  improvements. A council of adversarial agents I convene on my own decisions.</p>
 
-  <ul class="plain build">
-
-    <li>
-      <h3>An AI-native PM operating system</h3>
-      <p>A working operating system for product management built on Claude Code — PRD authoring,
-      prototyping, roadmap management, meeting intelligence, data analysis, task management, and
-      idea capture, all automated and wired to the same context.</p>
-      <ul class="stats">
-        <li>7 automated workflows</li>
-        <li>8+ custom agentic skills</li>
-        <li>6 integrated data sources</li>
-      </ul>
-      <p class="muted">The point wasn&rsquo;t speed for its own sake. It let one PM operate the
-      surface area that normally needs a team.</p>
-    </li>
-
-    <li>
-      <h3>PRD-to-prototype pipeline</h3>
-      <p>A system that autonomously generates interactive, design-system-compliant HTML
-      prototypes directly from PRDs. Prototype turnaround went from days to minutes, which
-      changed what stakeholder validation could happen <em>before</em> engineering investment
-      rather than after it.</p>
-      <ul class="stats">
-        <li>Days &rarr; minutes</li>
-      </ul>
-    </li>
-
-    <li>
-      <h3>A monitoring agent that cost-models itself</h3>
-      <p>CRM configuration changes were silently breaking code across four repositories, and we
-      only found out when a customer reported it. I designed a scheduled agent that audits config
-      changes for downstream breakage risk — roughly 125 hardcoded CRM string literals under
-      watch. Cost modeling before any code was written cut about 40% off the naive always-on
-      design.</p>
-      <ul class="stats">
-        <li>4 repositories audited</li>
-        <li>~40% cheaper than the ambient design</li>
-        <li>~$6–8/wk vs ~$17–19/wk</li>
-      </ul>
-    </li>
-
-    <li>
-      <h3>Sales conversation analysis at scale</h3>
-      <p>An AI system analyzing thousands of sales calls and deal-loss reasons on an ongoing
-      basis. It started as a proof of concept and surfaced objection patterns and rep-level
-      coaching gaps that nobody had visibility into; the findings reshaped sales onboarding and
-      ongoing training.</p>
-      <ul class="stats">
-        <li>Thousands of calls analyzed</li>
-        <li>Rep-level coaching gaps surfaced</li>
-      </ul>
-    </li>
-
-    <li>
-      <h3>AI agent strategy for loan processing</h3>
-      <p>Authored the AI Agent Vision for automating loan processing as a crawl/walk/run roadmap,
-      and designed four AI sales agent concepts. I built a working interactive prototype the same
-      day to validate them with stakeholders rather than debating a deck.</p>
-      <ul class="stats">
-        <li>4 agent concepts</li>
-        <li>Same-day concept to prototype</li>
-      </ul>
-    </li>
-
-  </ul>
+  <p>This page was rebuilt from one of those runs. It told me I had buried the evidence under
+  three hundred words of philosophy, so I cut the philosophy.</p>
 
   <a class="back" href="/">&larr; Back</a>
 
@@ -313,7 +243,7 @@
   <ul class="footlinks">
     <li><a href="mailto:ericdgabbard@gmail.com">Email</a></li>
     <li><a href="https://www.linkedin.com/in/eric-gabbard-48069759/">LinkedIn</a></li>
-    <li><a href="/resume.pdf">Résumé (PDF)</a></li>
+    <li><a href="/resume.pdf?v=2026-08">Résumé (PDF)</a></li>
   </ul>
 </footer>
 
