@@ -8,8 +8,20 @@ Personal site. Static HTML/CSS, no build step, no dependencies.
 - `ai.html` — point of view on AI in product work + things built
 - `work/*.html` — case studies (Problem / What I did / Tradeoffs / Outcome)
 - `style.css` — single stylesheet, light + dark via `prefers-color-scheme`
-- `resume.pdf` — downloadable résumé
+- `resume.pdf` — downloadable résumé (a copy; see below)
 - `CNAME` — custom domain for GitHub Pages
+
+## Résumé
+
+`resume.pdf` is a **copy** of the current build in `~/personal/job-hunt`. It does
+not update itself when that résumé is regenerated. After rebuilding it there:
+
+```
+./sync-resume.sh
+```
+
+That copies the PDF in and bumps the `?v=` stamp on every link. The stamp matters
+— browsers cache a PDF at an unchanged URL and will keep serving the old one.
 
 ## Local preview
 
