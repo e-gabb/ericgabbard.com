@@ -117,7 +117,7 @@ p { margin: 0 0 1.15rem; }
 
 a { color: var(--accent); text-underline-offset: 3px; }
 
-.lede { font-size: 1.18rem; line-height: 1.5; color: var(--fg); max-width: 42ch; }
+.lede { font-size: 1.18rem; line-height: 1.5; color: var(--fg); max-width: 52ch; }
 .muted { color: var(--muted); }
 
 .eyebrow {
@@ -380,9 +380,9 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
 @media (min-width: 68rem) {
 
   .wrap {
-    max-width: 82rem;
+    max-width: 74rem;
     display: grid;
-    grid-template-columns: 12rem minmax(0, 34rem) minmax(0, 1fr);
+    grid-template-columns: 12rem minmax(0, 40rem) minmax(0, 1fr);
     column-gap: 4rem;
     align-items: start;
     padding: 0 2.5rem;
@@ -411,7 +411,7 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
   main {
     grid-column: 2 / 4;
     display: grid;
-    grid-template-columns: minmax(0, 34rem) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 40rem) minmax(0, 1fr);
     column-gap: 4rem;
     padding-top: 3rem;
   }
@@ -421,7 +421,10 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
   /* data breathes into the right margin */
   main > .strip,
   main > figure,
+  main > .loop,
+  main > .builtfor,
   main > .plate { grid-column: 1 / -1; }
+
 
   /* Plates break out of the prose measure, but only a little. At full 1/-1
      width they read as the page's subject instead of its supporting evidence. */
@@ -440,8 +443,8 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
 }
 
 @media (min-width: 100rem) {
-  .wrap { max-width: 92rem; grid-template-columns: 14rem minmax(0, 36rem) minmax(0, 1fr); }
-  main { grid-template-columns: minmax(0, 36rem) minmax(0, 1fr); }
+  .wrap { max-width: 84rem; grid-template-columns: 14rem minmax(0, 44rem) minmax(0, 1fr); }
+  main { grid-template-columns: minmax(0, 44rem) minmax(0, 1fr); }
 }
 
 @media (min-width: 68rem) {
@@ -759,35 +762,24 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
    below them rather than breaking into the right margin the way .strip and
    the figures do. */
 
-/* ---------- solo pages: rail + one column, no reserved figure margin ----------
-   The default wide layout keeps a right-hand column free so charts and
-   blueprints can break out of the prose measure. A page with no such figures
-   has nothing to put there, and reserving it anyway leaves the content a
-   narrow ribbon beside an empty third of the screen. .wrap.solo drops the
-   column and centres the rail-plus-content pair instead. The 41rem measure is
-   wide enough for a four-panel row to read and still inside a sane line
-   length for running text. */
-
-@media (min-width: 68rem) {
-  .wrap.solo {
-    /* 12rem rail + 4rem gap + 41rem content + 2 x 2.5rem padding */
-    max-width: 64rem;
-    grid-template-columns: 12rem minmax(0, 41rem);
-    justify-content: center;
-  }
-  .wrap.solo main {
-    grid-column: 2;
-    display: block;
-  }
-  .wrap.solo footer { grid-column: 2; }
-
-  /* at 41rem the day reads as one horizontal run again */
-  .wrap.solo .loop { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .wrap.solo .builtfor { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.7rem; }
-}
+/* .wrap.solo is retired (2026-09-01). It existed because the wide grid
+   reserved a third of the screen for breakout figures, which left a
+   figure-light page as a narrow ribbon beside an empty column. The grid above
+   now runs 40rem of prose against a 14rem figure margin, so every page --
+   case study, essay, cards -- sits on one geometry with the rail anchored at
+   the same x. Pages whose blocks want the extra width span 1 / -1 instead. */
 
 /* Between the sidebar breakpoint and the phone, the day is two by two and the
    outcomes sit side by side. */
 @media (min-width: 46rem) and (max-width: 67.99rem) {
   .builtfor { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+}
+
+/* ---------- panel rows at the breakout width ----------
+   .loop and .builtfor span 1 / -1, so above the sidebar breakpoint they get
+   prose + figure margin rather than the 40rem measure. Declared here, after
+   their base rules, because those set the narrow fallbacks. */
+@media (min-width: 68rem) {
+  .loop { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .builtfor { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.7rem; }
 }
