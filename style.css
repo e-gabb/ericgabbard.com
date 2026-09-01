@@ -654,3 +654,140 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
    symptom is a long stall before anything moves. */
 
 #about { scroll-margin-top: 0; }
+
+/* ---------- the day loop (AI page hero) ----------
+   Four panels, one working day. Hairline grid rather than four bordered
+   cards: the day is continuous, and gaps between cards would read as four
+   unrelated claims instead of one loop. */
+
+/* Two by two, held to the prose measure. Four columns across 34rem gave each
+   panel ~8rem and broke the text to one word a line; the day still reads in
+   order left-to-right, top-to-bottom. */
+.loop {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 2rem 0 2.4rem;
+}
+
+.loop .step { background: var(--bg); padding: 1.3rem 1.25rem 1.45rem; }
+
+.loop .when {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.loop h3 { font-size: 1.06rem; margin: 0 0 0.35rem; }
+/* These four panels are the page's opening argument, not caption text.
+   They read at body size and in body colour; the mono .when label above
+   is what carries the hierarchy. */
+.loop p { margin: 0; font-size: 1rem; line-height: 1.6; color: var(--fg); }
+
+@media (max-width: 30rem) {
+  .loop { grid-template-columns: 1fr; }
+}
+
+/* The pivot from my own practice to the company's. Reads as a turn in the
+   argument, not as a pull quote. */
+
+.turn {
+  border-left: 2px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 8px 8px 0;
+  padding: 1.15rem 1.3rem;
+  margin: 2.2rem 0;
+}
+.turn p { margin: 0; }
+.turn p.claim { font-weight: 600; }
+.turn p + p { margin-top: 0.6rem; font-size: 1.02rem; line-height: 1.6; color: var(--fg); }
+
+/* Three things the company got. Clay rules on top, no boxes — these are
+   summaries that point down the page, not cards to click. */
+
+.builtfor { display: grid; grid-template-columns: 1fr; gap: 1.7rem; margin: 1.4rem 0 0; }
+/* Flex column so the stat can be pushed to the bottom: the three paragraphs
+   are different lengths, and left in flow their hairlines sat at three
+   different heights across the row. */
+.builtfor .bf {
+  border-top: 2px solid var(--clay);
+  padding-top: 0.7rem;
+  display: flex;
+  flex-direction: column;
+}
+.builtfor .bf h3 { margin: 0 0 0.35rem; font-size: 1.06rem; }
+.builtfor .bf p { margin: 0; font-size: 1rem; line-height: 1.6; color: var(--fg); }
+
+/* The number is the point of each block, so it leaves the paragraph and sits
+   below a hairline as a labelled pair. Set as one run it wrapped mid-value and
+   left "days" alone on the last line; a label above gives the value its own
+   line to break on. */
+/* auto keeps the hairline on the floor of the block; the gap below the prose
+   is the minimum, not the actual, distance */
+.builtfor .bf > p:not(.stat) { margin-bottom: 0.9rem; }
+.builtfor .bf p.stat {
+  margin-top: auto;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.5rem;
+}
+.builtfor .bf .stat .lab {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+}
+.builtfor .bf .stat .val {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.85rem; line-height: 1.4;
+  color: var(--accent);
+}
+
+/* Deliberately not a three-up. Split across the prose measure each column is
+   ~10rem wide and the sentences shred; stacked, each one keeps a readable
+   line and the clay rule still separates them at a glance. */
+
+/* The day and the three outcomes stay on the prose measure. They are the
+   argument, not supporting data, so they align with the paragraphs above and
+   below them rather than breaking into the right margin the way .strip and
+   the figures do. */
+
+/* ---------- solo pages: rail + one column, no reserved figure margin ----------
+   The default wide layout keeps a right-hand column free so charts and
+   blueprints can break out of the prose measure. A page with no such figures
+   has nothing to put there, and reserving it anyway leaves the content a
+   narrow ribbon beside an empty third of the screen. .wrap.solo drops the
+   column and centres the rail-plus-content pair instead. The 41rem measure is
+   wide enough for a four-panel row to read and still inside a sane line
+   length for running text. */
+
+@media (min-width: 68rem) {
+  .wrap.solo {
+    /* 12rem rail + 4rem gap + 41rem content + 2 x 2.5rem padding */
+    max-width: 64rem;
+    grid-template-columns: 12rem minmax(0, 41rem);
+    justify-content: center;
+  }
+  .wrap.solo main {
+    grid-column: 2;
+    display: block;
+  }
+  .wrap.solo footer { grid-column: 2; }
+
+  /* at 41rem the day reads as one horizontal run again */
+  .wrap.solo .loop { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .wrap.solo .builtfor { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.7rem; }
+}
+
+/* Between the sidebar breakpoint and the phone, the day is two by two and the
+   outcomes sit side by side. */
+@media (min-width: 46rem) and (max-width: 67.99rem) {
+  .builtfor { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+}

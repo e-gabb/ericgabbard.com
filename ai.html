@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI — Eric Gabbard</title>
-<meta name="description" content="A product manager who builds the AI systems he proposes: a multi-agent deal context architecture, an event-sourced write model, a governance gate adopted for company-wide automation, and the operating system I still run between roles.">
+<meta name="description" content="A product manager who runs his own job on agents he built — thirty-plus of them across six live data sources — and then turned that practice into the context layer, the write standard, and the governance rule a 50-person lender built agents on.">
 <meta property="og:title" content="AI — Eric Gabbard">
-<meta property="og:description" content="I build the AI systems I propose. What I shipped, what it cost, and what did not work.">
+<meta property="og:description" content="Most of my work happens before I open the laptop. The agents I run my own job on, and what I built when a 50-person lender started running them too.">
 <link rel="canonical" href="https://ericgabbard.com/ai.html">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
@@ -17,10 +17,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
-<link rel="stylesheet" href="/style.css?v=17">
+<link rel="stylesheet" href="/style.css?v=28">
 </head>
 <body>
-<div class="wrap">
+<div class="wrap solo">
 
 <header>
   <nav>
@@ -35,204 +35,70 @@
 
 <main>
 
-  <h1>AI</h1>
+  <p class="eyebrow">A weekday, end to end</p>
 
-  <p class="lede">I build the AI systems I propose. At a 50-person lender: the context
-  architecture our agents ran on, the standard a non-technical colleague shipped against in
-  one sprint, and the rule for who was allowed to automate what.</p>
+  <h1>Most of my work happens before I open the laptop.</h1>
 
-  <div class="strip">
-    <div class="metric">
-      <span class="k">Time to close</span>
-      <span class="v">&minus;27<span class="u">%</span></span>
-      <span class="sub">26 &rarr; 19 days, on the data layer</span>
+  <p class="lede">Thirty-plus agents and skills I wrote, six live data sources, and scheduled
+  agents that run whether or not I&rsquo;m awake.</p>
+
+  <div class="loop">
+    <div class="step">
+      <span class="when">Overnight</span>
+      <h3>An ingest agent reads the day</h3>
+      <p>Every note I took, cross-linked against everything before it.</p>
     </div>
-    <div class="metric">
-      <span class="k">Agent run cost</span>
-      <span class="v">&minus;84<span class="u">%</span></span>
-      <span class="sub">~$32 &rarr; ~$5 a day, same workflow</span>
+    <div class="step">
+      <span class="when">Before 9</span>
+      <h3>Scheduled agents have reported</h3>
+      <p>Six live systems pulled into one brief, every claim cited.</p>
     </div>
-    <div class="metric">
-      <span class="k">Systems unified</span>
-      <span class="v">5<span class="u">&thinsp;&rarr;&thinsp;1</span></span>
-      <span class="sub">one authenticated agent data layer</span>
+    <div class="step">
+      <span class="when">The workday</span>
+      <h3>Agents take the first pass</h3>
+      <p>Research, analysis, specs, prototypes &mdash; how the first version gets made.</p>
     </div>
-    <div class="metric">
-      <span class="k">Second builder</span>
-      <span class="v">1<span class="u">&nbsp;sprint</span></span>
-      <span class="sub">non-technical, shipping conformant agents</span>
+    <div class="step">
+      <span class="when">After hours</span>
+      <h3>A curator agent mines the day</h3>
+      <p>It proposes changes to the system itself. I approve them in the morning.</p>
     </div>
   </div>
 
-  <p>Everyone wanted more automation. Every new one made the system more fragile, because no
-  automation could see a whole loan. Trigger-based automation scales with the rules you
-  maintain. Context-based agents scale with your data model. So I stopped the automation push
-  and rebuilt the layer underneath &mdash; the work that also took time to close from 26 days
-  to 19.</p>
+  <p>Only PM at a 50-person lender, so my own capacity was the ceiling on everything. That is
+  what pushed this from a habit into a system I maintain &mdash; and then made the obvious next
+  question <em>what happens when everyone else is running agents too.</em></p>
 
-  <hr>
+  <div class="turn">
+    <p class="claim">Everyone wanted more automation. One colleague alone was running forty
+    agents.</p>
+    <p>Every new agent made the company more fragile, because no agent could see a whole loan.
+    Trigger-based automation scales with the rules you maintain. Context-based agents scale with
+    your data model. So I stopped the automation push and rebuilt the layer underneath.</p>
+  </div>
 
-  <h2>What I built</h2>
+  <h2>What I built for the company</h2>
 
-  <h3>Deal context architecture <span class="when">&middot; Jun&ndash;Aug 2026</span></h3>
-  <p>One context layer per deal, assembled on demand, so context survived the handoff from
-  sales to processing to underwriting. Run against closed loans, it caught an interest-accrual
-  error on a deal that had already funded. I demoed that catch to the executive team. Our
-  engineering lead had argued for a database; I showed the specific case instead of the
-  principle, and got the call.</p>
-
-  <h3>The write model <span class="when">&middot; Jun 2026</span></h3>
-  <p>Single writer, two agents, silent data loss &mdash; found at five deals and one agent,
-  the cheapest possible moment to fix it. Locking manages the collision. Event sourcing
-  removes it.</p>
-
-  <figure class="plate">
-    <svg viewBox="0 0 560 200" role="img" aria-label="Diagram comparing a single-writer model that loses concurrent writes against an event-sourced model with immutable writes and regenerable views">
-      <text class="bp-t-m" x="0" y="10">BEFORE — SINGLE WRITER</text>
-      <rect class="bp-box" x="0" y="26" width="62" height="20"/>
-      <text class="bp-t"   x="8" y="40">Agent A</text>
-      <rect class="bp-box" x="0" y="54" width="62" height="20"/>
-      <text class="bp-t"   x="8" y="68">Agent B</text>
-      <rect class="bp-box" x="0" y="82" width="62" height="20"/>
-      <text class="bp-t"   x="8" y="96">Agent C</text>
-
-      <g class="bp-arrow">
-        <path d="M62,36 L100,36 L100,64"/>
-        <path d="M62,64 L100,64"/>
-        <path d="M62,92 L100,92 L100,64"/>
-        <path d="M100,64 L134,64"/>
-      </g>
-      <path class="bp-head" d="M134,64 l-7,-3.6 v7.2 z"/>
-
-      <rect class="bp-box-w" x="138" y="50" width="84" height="28"/>
-      <text class="bp-t-w"   x="148" y="68">single writer</text>
-      <text class="bp-t-w"   x="138" y="98">✕ last write wins</text>
-      <text class="bp-t-w"   x="138" y="112">✕ silent data loss</text>
-
-      <line class="bp-div" x1="252" y1="8" x2="252" y2="180"/>
-
-      <text class="bp-t-m" x="272" y="10">AFTER — EVENT SOURCED</text>
-      <rect class="bp-box" x="272" y="26" width="62" height="20"/>
-      <text class="bp-t"   x="280" y="40">Agent A</text>
-      <rect class="bp-box" x="272" y="54" width="62" height="20"/>
-      <text class="bp-t"   x="280" y="68">Agent B</text>
-      <rect class="bp-box" x="272" y="82" width="62" height="20"/>
-      <text class="bp-t"   x="280" y="96">Agent C</text>
-
-      <g class="bp-arrow-k">
-        <path d="M334,36 L368,36"/>
-        <path d="M334,64 L368,64"/>
-        <path d="M334,92 L368,92"/>
-      </g>
-      <g class="bp-head-k">
-        <path d="M368,36 l-7,-3.6 v7.2 z"/>
-        <path d="M368,64 l-7,-3.6 v7.2 z"/>
-        <path d="M368,92 l-7,-3.6 v7.2 z"/>
-      </g>
-
-      <rect class="bp-key" x="372" y="24" width="82" height="80"/>
-      <text class="bp-t-k" x="380" y="48">append-</text>
-      <text class="bp-t-k" x="380" y="63">only</text>
-      <text class="bp-t-k" x="380" y="78">event log</text>
-      <text class="bp-t-m" x="372" y="120">immutable, one file per event</text>
-
-      <path class="bp-arrow-k" d="M454,64 L490,64"/>
-      <path class="bp-head-k" d="M490,64 l-7,-3.6 v7.2 z"/>
-      <rect class="bp-box" x="494" y="40" width="64" height="20"/>
-      <text class="bp-t"   x="502" y="54">view · A</text>
-      <rect class="bp-box" x="494" y="68" width="64" height="20"/>
-      <text class="bp-t"   x="502" y="82">view · B</text>
-      <text class="bp-t-m" x="494" y="106">regenerable</text>
-
-      <text class="bp-t-m" x="0" y="152">NO LOCKING. THE COLLISION IS REMOVED, NOT MANAGED.</text>
-    </svg>
-    <figcaption>Fig. 1 — Event-sourced, CQRS-style write model for multi-agent context</figcaption>
-  </figure>
-
-  <p>Then I wrote the standard down. A non-technical colleague shipped conformant agents on
-  it the same sprint, without me correcting them into the pattern after.</p>
-
-  <h3>The governance model <span class="when">&middot; Apr&ndash;Jul 2026</span></h3>
-  <p>Every team was told to build agents; one colleague alone was running forty. Lock it down
-  and you kill the momentum that made it valuable. So: split by permission, not by person.
-  Read-only ships free. Anything that writes to a system of record goes through a gate.</p>
-
-  <figure class="plate">
-    <svg viewBox="0 0 560 176" role="img" aria-label="Diagram: natural language automation requests route through code generation, then split by permission — read-only deploys directly, write access passes an engineering review gate">
-      <text class="bp-t-m" x="0" y="10">REQUEST</text>
-      <rect class="bp-box" x="0" y="60" width="96" height="34"/>
-      <text class="bp-t"   x="8" y="76">plain-English</text>
-      <text class="bp-t"   x="8" y="88">request</text>
-
-      <path class="bp-arrow" d="M96,77 L136,77"/>
-      <path class="bp-head" d="M136,77 l-7,-3.6 v7.2 z"/>
-
-      <rect class="bp-box" x="140" y="60" width="92" height="34"/>
-      <text class="bp-t"   x="148" y="76">code</text>
-      <text class="bp-t"   x="148" y="88">generation</text>
-
-      <g class="bp-arrow">
-        <path d="M232,77 L262,77"/>
-        <path d="M262,77 L262,36 L300,36"/>
-        <path d="M262,77 L262,120 L300,120"/>
-      </g>
-      <g class="bp-head">
-        <path d="M300,36 l-7,-3.6 v7.2 z"/>
-        <path d="M300,120 l-7,-3.6 v7.2 z"/>
-      </g>
-      <text class="bp-t-m" x="196" y="16">SPLIT BY PERMISSION</text>
-
-      <rect class="bp-key" x="304" y="20" width="104" height="32"/>
-      <text class="bp-t-k" x="312" y="40">read-only</text>
-      <path class="bp-arrow-k" d="M408,36 L446,36"/>
-      <path class="bp-head-k" d="M446,36 l-7,-3.6 v7.2 z"/>
-      <rect class="bp-box" x="450" y="20" width="108" height="32"/>
-      <text class="bp-t"   x="458" y="40">ships, no gate</text>
-
-      <rect class="bp-box-w" x="304" y="104" width="104" height="32"/>
-      <text class="bp-t-w"   x="312" y="124">writes data</text>
-      <path class="bp-arrow-w" d="M408,120 L446,120"/>
-      <path class="bp-head" d="M446,120 l-7,-3.6 v7.2 z" fill="#d98c7a"/>
-      <rect class="bp-box" x="450" y="104" width="108" height="32"/>
-      <text class="bp-t"   x="458" y="118">engineering</text>
-      <text class="bp-t"   x="458" y="130">review gate</text>
-    </svg>
-    <figcaption>Fig. 2 — Permission split for company-wide AI automation</figcaption>
-  </figure>
-
-  <h3>The gate before the gate <span class="when">&middot; Jul 2026</span></h3>
-  <p>Governance says who may ship. It does not say whether the thing should be an agent at
-  all. My test: an agent earns its place on judgment over messy input. Same input, same
-  destination, every time? That is code, and it belongs to engineering. It shipped as the
-  first gate in our agent-authoring tool.</p>
-
-  <h3>Cost is a design decision <span class="when">&middot; Jul 2026</span></h3>
-  <p>Our first multi-agent workflow ran ~$32/day naive. I took it to ~$5 &mdash; incremental
-  off events, batched, cached, with the cheap model doing extraction and the expensive one
-  only judgment. On the next agent I priced two designs before writing code and shipped the
-  one 40% cheaper. <span class="muted">Designed and handed off; it had not gotten a deploy
-  slot before my role ended.</span></p>
-
-  <h3>Deal-loss analysis <span class="when">&middot; Jul 2026</span></h3>
-  <p>Loss reasons came from a dropdown, and a fifth of them landed in "Other." I built a
-  read-only agent that re-derives the reason from the deal's own evidence. First run: two
-  deals recorded as losses were not losses &mdash; the borrower had been rerouted to another
-  product internally. We had been understating conversion.</p>
-
-  <h3>The operating system I ran the job on <span class="when">&middot; 2026</span></h3>
-  <p>Only PM at a 50-person company, so my capacity was the ceiling on everything. 30+ custom
-  Claude Code skills wired to six live data sources, plus scheduled jobs that ran overnight and
-  wrote back with citations. Teammates started building on the same foundation.</p>
-
-  <hr>
-
-  <h2>What I run now</h2>
-  <p>Between roles it did not stop, which is the honest test of whether any of it was real. A
-  vault that ingests and cross-links my notes nightly. A curator that mines each day's work for
-  improvements. A council of adversarial agents I convene on my own decisions.</p>
-
-  <p>This page was rebuilt from one of those runs. It told me I had buried the evidence under
-  three hundred words of philosophy, so I cut the philosophy.</p>
+  <div class="builtfor">
+    <div class="bf">
+      <h3>A context layer every agent could read</h3>
+      <p>One per deal, assembled on demand, so context survived every handoff. Run against
+      closed loans, it caught an accrual error on a funded deal.</p>
+      <p class="stat"><span class="lab">Time to close</span><span class="val">26 &rarr; 19 days</span></p>
+    </div>
+    <div class="bf">
+      <h3>A rule for who may ship an agent</h3>
+      <p>Split by permission, not by person. Read-only agents ship free; anything that writes
+      to a system of record passes an engineering gate.</p>
+      <p class="stat"><span class="lab">Gate applies to</span><span class="val">system-of-record writes</span></p>
+    </div>
+    <div class="bf">
+      <h3>A standard someone else could build on</h3>
+      <p>An event-sourced write model, written down, so two agents could not overwrite each
+      other. A non-technical colleague shipped on it in one sprint.</p>
+      <p class="stat"><span class="lab">Agent run cost</span><span class="val">$32 &rarr; $5 a day</span></p>
+    </div>
+  </div>
 
   <a class="back" href="/">&larr; Back</a>
 
