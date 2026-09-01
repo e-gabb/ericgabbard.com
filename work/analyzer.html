@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Saving the product everyone wanted to cut — Eric Gabbard</title>
-<meta name="description" content="A feature was on the chopping block for its data bill. It turned out to be the strongest retention driver in the product. Keeping it meant killing the bill instead.">
+<title>Cutting the right thing — Eric Gabbard</title>
+<meta name="description" content="A product was slated for removal over its data bill. The bill was real; the attribution was wrong. Nearly all the spend came from an automated path to the same analysis nobody was getting more value from.">
 <link rel="canonical" href="https://ericgabbard.com/work/analyzer.html">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
@@ -34,17 +34,18 @@
 <main class="case">
 
   <p class="eyebrow">Backflip &middot; Real estate lending</p>
-  <h1>Saving the product everyone wanted to cut</h1>
+  <h1>Cutting the right thing</h1>
 
-  <p class="lede">Analyzer was expensive and slated for removal. It was also the single
-  strongest retention driver in the product — 60% Month 1 retention against 9% for everyone
-  else. I kept the product and removed 90% of its cost instead.</p>
+  <p class="lede">Analyzer was expensive and slated for removal. The bill was real; the
+  attribution was wrong. Nearly all of it came from an automated path to the same analysis —
+  cutting that path removed 90% of the cost and left the strongest retention driver in the
+  product intact.</p>
 
   <dl>
     <dt>Role</dt>
     <dd>Head of Product (previously Senior Product Manager)</dd>
     <dt>Scope</dt>
-    <dd>Analysis, executive persuasion, vendor renegotiation, scope reduction</dd>
+    <dd>User research, cost attribution, executive persuasion, vendor renegotiation, scope reduction</dd>
   </dl>
 
 
@@ -72,7 +73,7 @@
       <text class="ch-val"  x="308" y="193">100%</text>
       <rect class="ch-mark" x="0" y="204" width="30" height="18"/>
       <text class="ch-val"  x="38" y="217">10%</text>
-      <text class="ch-lab"  x="360" y="190">CUT THE LOW-USE FEED,</text>
+      <text class="ch-lab"  x="360" y="190">CUT THE AUTOMATED PATH,</text>
       <text class="ch-lab"  x="360" y="204">REPRICED TO USAGE</text>
     </svg>
     <figcaption><span>Fig. 1 &#8212; The value case and the cost case, side by side</span><span>Backflip</span></figcaption>
@@ -89,8 +90,9 @@
 
   <h2>What I did</h2>
 
-  <p>I ran the retention and conversion analysis for Analyzer users against everyone else. The
-  gap wasn&rsquo;t marginal:</p>
+  <p>I started with users rather than the spreadsheet. In borrower interviews, investors told
+  me flatly they wouldn&rsquo;t have used the platform without Analyzer. Then I checked whether
+  the data agreed. It did, and the gap wasn&rsquo;t marginal:</p>
 
   <ul class="plain">
     <li><strong>Month 1 retention: 60% vs 9%</strong> — 6.7&times;</li>
@@ -103,23 +105,28 @@
   save a line item&rdquo; — and once framed that way, the answer was obvious to everyone in the
   room.</p>
 
-  <p>Winning the argument didn&rsquo;t make the bill go away, though, and I didn&rsquo;t want to
-  defend it again in the next cost review. So I went after the cost directly. I isolated the
-  true cost driver rather than treating the vendor bill as one undifferentiated number, and
-  found the spend was concentrated in an automated feature with low usage — a background process
-  pulling data most users never looked at. Eliminating it cut data volume roughly 75%. With
-  volume down, I renegotiated the contract to usage-based pricing so the remaining spend tracked
-  actual demand.</p>
+  <p>Winning that argument didn&rsquo;t make the bill go away, though, and I didn&rsquo;t want
+  to defend the product again in the next cost review. So I went after the spend itself rather
+  than treating the vendor bill as one undifferentiated number. Nearly all of it traced to a
+  single feature — marketed and used as its own thing, but functionally the same analysis run
+  automatically on deals investors forwarded by email instead of entering by hand. It bulk-pulled
+  email data at high volume, and the investors using it were no more active and closed no more
+  loans than anyone else.</p>
 
-  <blockquote>Two different arguments: one to prove the product was worth keeping, one to make
-  sure nobody had to make that argument again.</blockquote>
+  <p>Cutting it removed roughly 75% of data volume without removing the capability — the manual
+  path still did the same job. With volume down, I renegotiated the contract to usage-based
+  pricing so the remaining spend tracked actual demand.</p>
+
+  <blockquote>The spend was real. It just wasn&rsquo;t coming from the thing we were about to
+  cut.</blockquote>
 
   <h2>Tradeoffs</h2>
 
-  <p>Cutting the automated feature meant a small set of users lost data they hadn&rsquo;t
-  explicitly asked for but might have benefited from. The usage numbers said that risk was worth
-  a 90% cost reduction, and preserving the feature would have preserved the whole cut argument
-  along with it.</p>
+  <p>Investors who had been forwarding deals by email had to enter them by hand again. That is
+  a real regression for them, and the usage data is what made it acceptable — those investors
+  weren&rsquo;t retaining or converting any better than the ones typing deals in, so the
+  automation was buying data volume rather than outcomes. Keeping it would have preserved the
+  entire cut argument along with it.</p>
 
   <p>Usage-based pricing also trades a predictable bill for a variable one. That&rsquo;s the
   right trade when volume has just fallen 75% and you want the savings to be real rather than
@@ -128,7 +135,7 @@
   <div class="outcome">
     <h3>Outcome</h3>
     <ul>
-      <li>Product kept — <strong>6.7&times; retention advantage</strong> (60% vs 9% at Month 1) documented and now tracked</li>
+      <li>Product retained on the evidence — <strong>6.7&times; retention advantage</strong> (60% vs 9% at Month 1) documented and now tracked</li>
       <li><strong>85% more loan applications per user</strong>; <strong>23% vs 17% conversion</strong></li>
       <li><strong>90% data cost reduction</strong> via a <strong>75% volume reduction</strong> and usage-based repricing</li>
     </ul>
