@@ -19,7 +19,7 @@ SITE_ORIGIN = "https://ericgabbard.com"
 [[d1_databases]]
 binding = "DB"
 database_name = "attribution"
-database_id = "PASTE_THE_ID_FROM_D1_CREATE"
+database_id = "bf6d67f5-dcae-4943-aa4a-0d3b809acaf5"
 
 # DASH_SECRET is deliberately not here — it is set with:
 #   npx wrangler secret put DASH_SECRET
