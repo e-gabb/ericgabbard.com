@@ -1,0 +1,25 @@
+name = "ericgabbard-attribution"
+main = "src/worker.js"
+compatibility_date = "2026-09-01"
+
+# Keep the workers.dev URL: it is how you test the dashboard before putting
+# Cloudflare in front of the live site.
+workers_dev = true
+
+# The route only fires once ericgabbard.com is proxied (orange cloud). While
+# the DNS record is grey, this line is inert — which is what makes it safe to
+# deploy first and flip DNS second.
+routes = [
+  { pattern = "ericgabbard.com/*", zone_name = "ericgabbard.com" }
+]
+
+[vars]
+SITE_ORIGIN = "https://ericgabbard.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "attribution"
+database_id = "PASTE_THE_ID_FROM_D1_CREATE"
+
+# DASH_SECRET is deliberately not here — it is set with:
+#   npx wrangler secret put DASH_SECRET
