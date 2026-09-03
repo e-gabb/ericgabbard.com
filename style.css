@@ -9,7 +9,9 @@
   --rule:        #e3e2db;
   --accent:      #14655a;
   --accent-soft: #e9f0ee;
-  --clay:        #bfae9d;
+  /* Also the comparison-bar fill in the charts, so it has to clear 3:1 on
+     --bg (this is 3.4:1); the lighter clay it replaced was 2.1:1. */
+  --clay:        #9c8b78;
   --on-accent:   #ffffff;
 
   --serif: "Newsreader", Georgia, "Iowan Old Style", serif;
@@ -17,6 +19,10 @@
   --mono:  "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   --max: 44rem;
+
+  /* Height of the home page's top bar. The hero is sized against it so the
+     bar plus the hero fill exactly one viewport. */
+  --bar-h: 3.8rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,9 +55,28 @@ body {
 
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
 
+/* Keyboard users get a way past the nav. Off-canvas until focused, then it
+   drops in as a small filled tab at the top-left. */
+.skip {
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 30;
+  transform: translateY(-110%);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 4px 0;
+  transition: transform 0.12s ease;
+}
+.skip:focus, .skip:focus-visible { transform: none; outline-offset: 0; }
+
 /* ---------- header ---------- */
 
-header { padding: 2.5rem 0 0; }
+header { padding: 1.1rem 0 0; }
 
 nav {
   display: flex; flex-wrap: wrap;
@@ -75,6 +100,10 @@ nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; fo
 nav a { color: var(--muted); text-decoration: none; }
 nav a:hover, nav a[aria-current="page"] { color: var(--accent); }
 
+/* Inline links take vertical padding without changing the line box, so this
+   lifts the hit area to 24px+ without moving anything. */
+nav ul a, .footlinks a { padding: 0.35rem 0; }
+
 /* Below the sidebar breakpoint the nav is a top row rather than a sticky
    left column, so pin the row itself — otherwise the links scroll away and
    the reader has no navigation for the rest of the page. */
@@ -87,9 +116,43 @@ nav a:hover, nav a[aria-current="page"] { color: var(--accent); }
     top: 0;
     z-index: 20;
     background: var(--bg);
-    padding: 1.1rem 0 0;
   }
 }
+
+/* The home page's one nav: a full-width bar that sits above the hero and
+   stays pinned at every width. It is the same row as the inner pages' top
+   nav, with the hairline on the bar rather than on the row inside it. */
+header.bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: var(--bar-h);
+  padding: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+
+header.bar nav {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  border-bottom: 0;
+}
+
+/* While the bar is over the hero it goes transparent and light, so the dark
+   frame runs edge to edge; once the hero scrolls out (JS toggles .over off)
+   it becomes the same solid bar the inner pages use. No JS: solid bar. */
+header.bar.over {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+header.bar.over nav .home { color: #f3f7f5; }
+header.bar.over nav ul a { color: rgba(226, 238, 234, 0.72); }
+header.bar.over nav ul a:hover { color: #8fe6d6; }
 
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
 
@@ -117,8 +180,7 @@ p { margin: 0 0 1.15rem; }
 
 a { color: var(--accent); text-underline-offset: 3px; }
 
-.lede { font-size: 1.18rem; line-height: 1.5; color: var(--fg); max-width: 52ch; }
-.muted { color: var(--muted); }
+.lede { font-size: 1.18rem; line-height: 1.5; color: var(--fg); }
 
 .eyebrow {
   font-family: var(--mono);
@@ -126,53 +188,10 @@ a { color: var(--accent); text-underline-offset: 3px; }
   color: var(--muted); margin: 0 0 0.8rem;
 }
 
-section { margin: 0 0 3.5rem; }
-
-hr { border: 0; border-top: 1px solid var(--rule); margin: 2.6rem 0; }
-/* An hr already does the separating; the heading after it does not need its
-   full top margin on top of that. Same for the first subhead under a section
-   heading. */
-hr + h2 { margin-top: 1.6rem; }
-h2 + h3 { margin-top: 1.4rem; }
-
-/* ---------- metric strip ---------- */
-
-.strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
-  gap: 1.6rem;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  padding: 1.2rem 0;
-  margin: 2.2rem 0 2rem;
-}
-
-.metric .k {
-  display: block;
-  font-family: var(--mono);
-  font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 0.45rem;
-}
-.metric .v {
-  font-family: var(--serif); font-size: 1.7rem; line-height: 1;
-  color: var(--accent); font-variant-numeric: tabular-nums;
-}
-.metric .u { font-family: var(--sans); font-size: 0.72rem; color: var(--muted); margin-left: 0.2rem; }
-/* Second line under a metric: the denominator or baseline the number is against.
-   Sentence case on purpose — the uppercase .k label above it is already shouting. */
-.metric .sub {
-  display: block; margin-top: 0.45rem;
-  font-family: var(--sans); font-size: 0.76rem; line-height: 1.35;
-  color: var(--muted);
-}
-.metric svg { display: block; margin-top: 0.6rem; width: 100%; height: auto; }
-
 /* ---------- charts ---------- */
 
 .ch-mark { fill: var(--accent); }
 .ch-alt  { fill: var(--clay); }
-.ch-line { fill: none; stroke: var(--accent); stroke-width: 2; }
-.ch-area { fill: var(--accent); opacity: 0.1; }
 .ch-lab  { fill: var(--muted); font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.06em; }
 .ch-val  { fill: var(--fg); font-family: var(--mono); font-size: 9.5px; }
 .ch-on   { fill: var(--on-accent); font-family: var(--sans); font-size: 9px; }
@@ -192,17 +211,40 @@ figcaption {
   display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; justify-content: space-between;
 }
 
+/* On a phone a 560-unit figure would set its 8.5px labels at about 5px.
+   Below 40rem the drawing keeps a 34rem floor (labels at 8px and up) and
+   scrolls sideways inside this wrapper instead; the caption stays put
+   underneath. The two-tone
+   backgrounds are the scroll-shadow trick: the covers are attached to the
+   content and slide away to reveal the shadows at whichever edge has more. */
+.fig-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+@media (max-width: 39.99rem) {
+  .fig-scroll svg { min-width: 34rem; }
+  .fig-scroll {
+    background:
+      linear-gradient(to right, var(--bg) 40%, transparent) 0 0 / 3rem 100%,
+      linear-gradient(to left,  var(--bg) 40%, transparent) 100% 0 / 3rem 100%,
+      radial-gradient(farthest-side at 0 50%,   rgba(0,0,0,0.18), transparent) 0 0 / 1rem 100%,
+      radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,0.18), transparent) 100% 0 / 1rem 100%;
+    background-repeat: no-repeat;
+    background-attachment: local, local, scroll, scroll;
+  }
+}
+
 /* ---------- work cards ---------- */
-/* One project per row. The text column carries problem-then-impact as prose;
-   the chart takes the right third. Never a three-up grid — that squeezed the
-   cards tall and narrow and left the numbers unreadable. */
+/* One project per row. Stacked at every width below the sidebar breakpoint:
+   text, then the chart, then the chips and the call to action. Above it the
+   chart takes the right column and top-aligns with the kicker. Never a
+   three-up grid — that squeezed the cards tall and narrow and left the
+   numbers unreadable. */
 
 .cards { display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
 
 .card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1.3rem;
   align-items: start;
   padding: 1.6rem 1.75rem;
   border: 1px solid var(--rule);
@@ -221,9 +263,11 @@ figcaption {
   color: var(--muted); margin: 0 0 0.5rem;
 }
 
-.card h3 {
+.card h2 {
   font-family: var(--serif); font-weight: 500;
-  font-size: 1.32rem; line-height: 1.25; margin: 0 0 0.9rem;
+  font-size: 1.32rem; line-height: 1.25; letter-spacing: -0.006em;
+  text-wrap: wrap;
+  margin: 0 0 0.9rem;
 }
 
 .card p { margin: 0; color: var(--muted); font-size: 0.94rem; line-height: 1.55; }
@@ -236,34 +280,26 @@ figcaption {
   margin-right: 0.5rem;
 }
 
-.card .stats { margin-top: 1.05rem; }
-
 .card .more {
   display: inline-block; margin-top: 1.05rem;
   font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em;
   color: var(--accent);
 }
+/* stacked, the grid gap already separates the foot from the chart */
+.card .card-foot > :first-child { margin-top: 0; }
 
 .card:hover .more { text-decoration: underline; }
 
-.card .chart { align-self: center; }
+/* stacked, the chart would blow up to full width and the 9px SVG type with
+   it — hold it to roughly the width it has in the two-column layout */
+.card .chart { max-width: 22rem; }
 .card .chart svg { display: block; width: 100%; height: auto; }
-
-@media (max-width: 52rem) {
-  .card { grid-template-columns: 1fr; gap: 1.3rem; }
-  /* stacked, the chart would blow up to full width and the 9px SVG type with
-     it — hold it to roughly the width it has in the two-column layout */
-  .card .chart { max-width: 22rem; }
-}
 
 /* ---------- lists ---------- */
 
 ul.plain { list-style: none; margin: 0; padding: 0; }
 ul.plain > li { padding: 0.9rem 0; border-top: 1px solid var(--rule); }
 ul.plain > li:last-child { border-bottom: 1px solid var(--rule); }
-
-.build h3 { margin: 0 0 0.3rem; }
-.build p { margin: 0 0 0.5rem; }
 
 .stats { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
 .stats li {
@@ -302,51 +338,6 @@ blockquote {
 
 .back { display: inline-block; margin: 2.5rem 0 0; font-size: 0.93rem; text-decoration: none; }
 
-/* A date sitting beside an h3. Mono and small so it reads as a timestamp
-   rather than competing with the heading it follows. */
-.when {
-  font-family: var(--mono);
-  font-size: 0.72rem; font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  margin-left: 0.15rem;
-}
-
-/* ---------- blueprint figures (AI page) ---------- */
-
-.plate {
-  background: #0e1826;
-  background-image:
-    linear-gradient(rgba(127,168,201,0.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(127,168,201,0.09) 1px, transparent 1px);
-  background-size: 22px 22px;
-  border: 1px solid #23405c;
-  border-radius: 8px;
-  padding: 1.4rem 1.5rem 1.1rem;
-  margin: 2.2rem 0;
-  overflow-x: auto;
-}
-
-.plate svg { display: block; width: 100%; min-width: 30rem; height: auto; }
-
-.plate figcaption {
-  font-family: var(--mono); font-size: 0.68rem;
-  letter-spacing: 0.09em; text-transform: uppercase;
-  color: #8fa4b8; border-top: 1px solid rgba(127,168,201,0.28);
-  padding-top: 0.6rem; margin-top: 0.9rem;
-}
-
-.bp-box   { fill: none; stroke: #7fa8c9; stroke-width: 1; }
-.bp-box-d { fill: none; stroke: #7fa8c9; stroke-width: 1; stroke-dasharray: 3 3; }
-.bp-key   { fill: rgba(87,201,192,0.10); stroke: #57c9c0; stroke-width: 1.4; }
-.bp-arrow { fill: none; stroke: #7fa8c9; stroke-width: 1; }
-.bp-arrow-k { fill: none; stroke: #57c9c0; stroke-width: 1; }
-.bp-head  { fill: #7fa8c9; }
-.bp-head-k { fill: #57c9c0; }
-.bp-t     { fill: #dfeaf4; font-family: var(--mono); font-size: 9.5px; }
-.bp-t-k   { fill: #57c9c0; font-family: var(--mono); font-size: 10px; }
-.bp-t-m   { fill: #8fa4b8; font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.08em; }
-
 /* ---------- footer ---------- */
 
 footer {
@@ -366,11 +357,6 @@ footer a:hover { color: var(--accent); }
   * { transition: none !important; animation: none !important; }
 }
 
-.bp-box-w { fill: none; stroke: #d98c7a; stroke-width: 1; }
-.bp-t-w   { fill: #d98c7a; font-family: var(--mono); font-size: 8.5px; }
-.bp-arrow-w { fill: none; stroke: #d98c7a; stroke-width: 1; }
-.bp-div   { stroke: rgba(127,168,201,0.35); stroke-width: 1; stroke-dasharray: 4 4; }
-
 main > .eyebrow:first-child { margin-top: 2.2rem; }
 
 /* ---------- wide screens: sticky identity rail + breakout figures ----------
@@ -388,15 +374,18 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
     padding: 0 2.5rem;
   }
 
-  header {
+  /* Sticky with top: 3rem already holds the rail 3rem down from the top of
+     the wrap, even before any scrolling. No padding on top of that, so the
+     wordmark's box starts on the same line as main's first child. */
+  .wrap > header {
     grid-column: 1;
     grid-row: 1 / span 2;
     position: sticky;
     top: 3rem;
-    padding: 3rem 0 0;
+    padding: 0;
   }
 
-  header nav {
+  .wrap > header nav {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.1rem;
@@ -404,9 +393,11 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
     padding-bottom: 0;
   }
 
-  header nav .home { font-size: 1.05rem; }
+  .wrap > header nav .home { font-size: 1.05rem; }
 
-  header nav ul { flex-direction: column; gap: 0.45rem; font-size: 0.9rem; }
+  .wrap > header nav ul { flex-direction: column; gap: 0.45rem; font-size: 0.9rem; }
+
+  header.bar nav { max-width: 74rem; padding: 0 2.5rem; }
 
   main {
     grid-column: 2 / 4;
@@ -419,53 +410,54 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
   main > * { grid-column: 1; }
 
   /* data breathes into the right margin */
-  main > .strip,
   main > figure,
   main > .loop,
-  main > .builtfor,
-  main > .plate { grid-column: 1 / -1; }
+  main > .builtfor { grid-column: 1 / -1; }
 
-
-  /* Plates break out of the prose measure, but only a little. At full 1/-1
-     width they read as the page's subject instead of its supporting evidence. */
-  main > .plate { max-width: 44rem; }
-
-  main > *:first-child { margin-top: 0; }
+  main > *:first-child,
+  main > .eyebrow:first-child { margin-top: 0; }
 
   footer {
     grid-column: 2;
     grid-row: 2;
   }
-
-  .strip { grid-template-columns: repeat(4, 1fr); }
-
-  .plate svg { min-width: 0; }
 }
 
 @media (min-width: 100rem) {
   .wrap { max-width: 84rem; grid-template-columns: 14rem minmax(0, 44rem) minmax(0, 1fr); }
+  header.bar nav { max-width: 84rem; }
   main { grid-template-columns: minmax(0, 44rem) minmax(0, 1fr); }
 }
 
 @media (min-width: 68rem) {
-  /* sparklines are sparklines — don't let them stretch across the strip */
-  .metric svg { max-width: 15rem; }
-
   /* one project per row, breaking into the right margin the way a figure does */
   main > .cards { grid-column: 1 / -1; }
-  .card { grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); gap: 3rem; padding: 1.75rem 2rem; }
+  .card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+    grid-template-rows: auto 1fr;
+    column-gap: 3rem;
+    row-gap: 0;
+    padding: 1.75rem 2rem;
+  }
+  /* the chart spans both rows of the right column and hangs from the top,
+     level with the kicker, rather than floating at mid-height */
+  .card .chart { grid-column: 2; grid-row: 1 / -1; align-self: start; max-width: none; }
+  .card .card-foot { grid-column: 1; margin-top: 1.05rem; }
 }
 
 /* ================= home hero ================= */
 
 .hero {
   position: relative;
-  /* Full viewport, so nothing from the About section peeks above the fold.
-     dvh tracks the mobile toolbar as it collapses; vh is the fallback. */
+  /* The bar plus the hero fill the viewport, so nothing from the About
+     section peeks above the fold. dvh tracks the mobile toolbar as it
+     collapses; vh is the fallback. */
   min-height: 100vh;
   min-height: 100dvh;
+  margin-top: calc(-1 * var(--bar-h));
+  padding-top: var(--bar-h);
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
   overflow: hidden;
   background: #0b1214;
   isolation: isolate;
@@ -478,38 +470,6 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
   height: 100%;
   z-index: -1;
 }
-
-.hero-top {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.6rem clamp(1.5rem, 5vw, 3.5rem);
-}
-
-.hero-home {
-  color: #f2f7f5;
-  font-weight: 600;
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.hero-nav { display: flex; gap: 1.6rem; border-bottom: 0; padding-bottom: 0; }
-
-.hero-nav a {
-  color: rgba(242, 247, 245, 0.72);
-  text-decoration: none;
-  font-family: var(--mono);
-  font-size: 0.76rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.hero-nav a:hover, .hero-home:hover { color: #8fe6d6; }
 
 .hero-title {
   align-self: center;
@@ -537,11 +497,14 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
   margin: 1.4rem 0 0;
 }
 
+/* The glyph is 30px wide; the padding around it is the tap target. The
+   margin below is trimmed by the same amount so the chevron sits where it did. */
 .hero-cue {
   justify-self: center;
-  margin-bottom: 2.2rem;
+  margin-bottom: 1.7rem;
+  padding: 0.5rem;
   color: rgba(242, 247, 245, 0.55);
-  width: 30px;
+  width: 46px;
   display: block;
   animation: cue 2.6s ease-in-out infinite;
 }
@@ -561,8 +524,9 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
 /* ================= home body ================= */
 
 /* The home page's below-fold half uses the same .wrap shell as every other
-   page, so the nav that appears when you scroll past the hero is the same
-   nav — a top row on narrow screens, the sticky left column at 68rem+. */
+   page, minus the rail: the bar above the hero is the nav, so on wide
+   screens the rail column stays empty and the prose sits at the same x as
+   on the inner pages. */
 
 .home-about h2 {
   margin: 2rem 0 1.6rem;
@@ -570,17 +534,6 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
 }
 
 .home-about p { font-size: 1.04rem; }
-
-.home-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.6rem;
-  margin: 2rem 0 0;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
 
 .btn-row {
   display: flex;
@@ -648,15 +601,19 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
 
 @media (max-width: 30rem) {
   .hero-role { letter-spacing: 0.13em; font-size: 0.63rem; }
-  .hero-top { padding: 1.2rem 1.1rem; }
-  .hero-nav { gap: 1.1rem; }
+
+  /* The centre crop of the 1600-wide art puts the rising curve straight
+     through the name and the role line on a phone. Slide the drawn layer
+     down its own coordinate space so the curve passes under the title; the
+     grid and vignette stay where they are. */
+  .hero-art .art { transform: translateY(240px); }
 }
 
 /* No CSS scroll-behavior here on purpose: the hero cue animates the scroll
    in JS, and a browser-level smooth scroll fights it on every frame — the
    symptom is a long stall before anything moves. */
 
-#about { scroll-margin-top: 0; }
+#about { scroll-margin-top: calc(var(--bar-h) + 1.25rem); }
 
 /* ---------- the day loop (AI page hero) ----------
    Four panels, one working day. Hairline grid rather than four bordered
@@ -679,15 +636,26 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
 
 .loop .step { background: var(--bg); padding: 1.3rem 1.25rem 1.45rem; }
 
+/* The time-of-day label above each panel. Mono and small so it reads as a
+   timestamp rather than competing with the heading under it. */
 .loop .when {
   display: block;
   font-family: var(--mono);
-  font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase;
+  font-size: 0.66rem; font-weight: 400;
+  letter-spacing: 0.13em; text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.4rem;
 }
 
-.loop h3 { font-size: 1.06rem; margin: 0 0 0.35rem; }
+/* h2 for the outline (h1 → h2, nothing skipped), set at the size and
+   weight of the h3 it replaced */
+.loop h2 {
+  font-family: var(--sans);
+  font-size: 1.06rem; font-weight: 600;
+  letter-spacing: -0.006em; line-height: 1.68;
+  text-wrap: wrap;
+  margin: 0 0 0.35rem;
+}
 /* These four panels are the page's opening argument, not caption text.
    They read at body size and in body colour; the mono .when label above
    is what carries the hierarchy. */
@@ -759,15 +727,8 @@ main > .eyebrow:first-child { margin-top: 2.2rem; }
 
 /* The day and the three outcomes stay on the prose measure. They are the
    argument, not supporting data, so they align with the paragraphs above and
-   below them rather than breaking into the right margin the way .strip and
-   the figures do. */
-
-/* .wrap.solo is retired (2026-09-01). It existed because the wide grid
-   reserved a third of the screen for breakout figures, which left a
-   figure-light page as a narrow ribbon beside an empty column. The grid above
-   now runs 40rem of prose against a 14rem figure margin, so every page --
-   case study, essay, cards -- sits on one geometry with the rail anchored at
-   the same x. Pages whose blocks want the extra width span 1 / -1 instead. */
+   below them rather than breaking into the right margin the way the figures
+   do. */
 
 /* Between the sidebar breakpoint and the phone, the day is two by two and the
    outcomes sit side by side. */

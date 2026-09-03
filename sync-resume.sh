@@ -9,7 +9,7 @@ set -e
 
 SRC="$HOME/personal/job-hunt/Eric_Gabbard_Resume_2026.pdf"
 SITE="${0:A:h}"
-STAMP=$(date +%Y-%m)
+STAMP=$(date +%Y-%m-%d)
 
 [ -f "$SRC" ] || { print -u2 "no résumé at $SRC"; exit 1; }
 
@@ -20,7 +20,7 @@ fi
 
 cp "$SRC" "$SITE/resume.pdf"
 
-# Rewrite every /resume.pdf link (with or without an existing ?v=) to this month.
+# Rewrite every /resume.pdf link (with or without an existing ?v=) to today.
 grep -rl 'resume\.pdf' "$SITE"/*.html "$SITE"/projects/*.html 2>/dev/null | while read -r f; do
   sed -i '' -E "s|href=\"/resume\.pdf(\?v=[0-9-]+)?\"|href=\"/resume.pdf?v=$STAMP\"|g" "$f"
 done

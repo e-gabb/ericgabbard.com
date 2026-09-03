@@ -15,8 +15,12 @@
   var sent = false;
 
   function send() {
-    if (sent || document.visibilityState !== 'visible') return;
+    if (sent) return;
+    // Hidden again before the timer fired: not a read after all. Leave the
+    // listener in place so the next return to the tab starts the clock over.
+    if (document.visibilityState !== 'visible') return;
     sent = true;
+    document.removeEventListener('visibilitychange', arm);
     fetch('/e', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -27,10 +31,11 @@
 
   // A page opened in a background tab is not yet a read; wait until it is
   // actually looked at, then give it a beat to rule out an instant bounce.
+  // The listener stays armed until send() actually fires, so a tab that is
+  // hidden during the beat is re-armed by its next visibilitychange.
   function arm() {
     if (document.visibilityState === 'visible') {
       setTimeout(send, 1500);
-      document.removeEventListener('visibilitychange', arm);
     }
   }
 

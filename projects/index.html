@@ -4,8 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projects — Eric Gabbard</title>
-<meta name="description" content="Three product problems at a venture-backed lender: running the acquisition funnel on experiments, saving a product slated for cancellation, and replacing a third-party budget and draw platform with our own.">
-<link rel="canonical" href="https://ericgabbard.com/projects">
+<meta name="description" content="Three problems at a venture-backed lender: running the funnel on experiments, saving a product slated for cutting, and replacing a vendor draw platform.">
+<meta property="og:title" content="Projects — Eric Gabbard">
+<meta property="og:description" content="Three problems at a venture-backed lender: running the funnel on experiments, saving a product slated for cutting, and replacing a vendor draw platform.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ericgabbard.com/projects/">
+<meta property="og:image" content="https://ericgabbard.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Projects — Eric Gabbard">
+<meta name="twitter:description" content="Three problems at a venture-backed lender: running the funnel on experiments, saving a product slated for cutting, and replacing a vendor draw platform.">
+<meta name="twitter:image" content="https://ericgabbard.com/og-image.png">
+<link rel="canonical" href="https://ericgabbard.com/projects/">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
 <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
@@ -14,24 +25,26 @@
 <meta name="theme-color" content="#14655a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
-<link rel="stylesheet" href="/style.css?v=14">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"></noscript>
+<link rel="stylesheet" href="/style.css?v=15">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
 
 <header>
   <nav>
-    <a class="home" href="/" aria-label="Home"><svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11.3 12 4.2l9 7.1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.7 9.7V19.8h12.6V9.7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Eric Gabbard</span></a>
+    <a class="home" href="/" aria-label="Eric Gabbard, home"><svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11.3 12 4.2l9 7.1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.7 9.7V19.8h12.6V9.7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Eric Gabbard</span></a>
     <ul>
-      <li><a href="/projects" aria-current="page">Projects</a></li>
+      <li><a href="/projects/" aria-current="page">Projects</a></li>
       <li><a href="/ai">AI</a></li>
       <li><a href="/contact">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<main>
+<main id="main">
 
   <h1>Projects</h1>
 
@@ -41,9 +54,9 @@
   <div class="cards">
 
     <a class="card" href="/projects/conversion">
-      <div>
+      <div class="card-text">
         <p class="kicker">Backflip &middot; Acquisition funnel &rarr; loan application</p>
-        <h3>Running the funnel on experiments, not opinions</h3>
+        <h2>Running the funnel on experiments, not opinions</h2>
         <p class="pi"><span class="tag">Problem</span>Funnel decisions were being made on
         conviction. Everyone could see drop-off; nobody could say which drop-off actually cost
         applications. And the one decision big enough to matter &mdash; how much rate
@@ -55,12 +68,6 @@
         designed the three-variant application experiment so it could actually settle the
         argument: a funnel-shape-neutral primary metric, defined before launch, that neither
         side could reinterpret afterward.</p>
-        <ul class="stats">
-          <li>+34% conversion</li>
-          <li>+26% applications on 10% less spend</li>
-          <li>4.5% vs 2.0% winning variant</li>
-        </ul>
-        <span class="more">Read the case &rarr;</span>
       </div>
       <div class="chart">
         <svg viewBox="0 0 300 158" role="img" aria-label="Over one quarter against a trailing-twelve-month baseline: funnel conversion up 34 percent, loan applications up 26 percent, marketing spend down 10 percent. In the loan application experiment, the rates-hidden variant converted at 4.5 percent against 2.0 percent for control over 25 days.">
@@ -88,12 +95,15 @@
           <text class="ch-val" x="108" y="153">2.0%</text>
         </svg>
       </div>
+      <div class="card-foot">
+        <span class="more">Read the case &rarr;</span>
+      </div>
     </a>
 
     <a class="card" href="/projects/analyzer">
-      <div>
+      <div class="card-text">
         <p class="kicker">Backflip &middot; Retention &amp; vendor cost</p>
-        <h3>Cutting the right thing</h3>
+        <h2>Cutting the right thing</h2>
         <p class="pi"><span class="tag">Problem</span>Analyzer &mdash; the deal-analysis tool
         investors used to evaluate properties &mdash; carried a large third-party data bill and
         no revenue line of its own. In a cost review it read as an obvious cut. Nobody had put
@@ -102,12 +112,6 @@
         retention and conversion analysis that reframed the decision. Traced nearly all the spend
         to an inbox-scanning feature that surfaced deals automatically &mdash; cut it without
         losing the analysis itself, and renegotiated to usage-based pricing.</p>
-        <ul class="stats">
-          <li>60% vs 9% Month 1 retention</li>
-          <li>85% more applications per user</li>
-          <li>90% data cost cut</li>
-        </ul>
-        <span class="more">Read the case &rarr;</span>
       </div>
       <div class="chart">
         <svg viewBox="0 0 300 160" role="img" aria-label="Analyzer users retained at 60 percent at Month 1 against 9 percent for everyone else; the third-party data bill fell from 100 percent to 10 percent">
@@ -128,12 +132,18 @@
           <text class="ch-val" x="31" y="150">10%</text>
         </svg>
       </div>
+      <div class="card-foot">
+        <ul class="stats">
+          <li>85% more applications per user</li>
+        </ul>
+        <span class="more">Read the case &rarr;</span>
+      </div>
     </a>
 
     <a class="card" href="/projects/draw-management">
-      <div>
+      <div class="card-text">
         <p class="kicker">Backflip &middot; Budgets, draws &amp; disbursements</p>
-        <h3>Rebuilding the system we were renting</h3>
+        <h2>Rebuilding the system we were renting</h2>
         <p class="pi"><span class="tag">Problem</span>Construction budgets arrived as
         spreadsheets over email, and every budget and draw after closing lived on a third-party
         platform we paid heavily for. It was the ledger, the borrower&rsquo;s draw experience,
@@ -145,12 +155,6 @@
         then the full draw system &mdash; borrower request, servicing and accounting review,
         disbursement. Retired the vendor, cut the payout clock, and a borrower who&rsquo;d used
         both told me the new one was the easier system.</p>
-        <ul class="stats">
-          <li>Vendor retired</li>
-          <li>Faster draw payouts</li>
-          <li>Budgets in-platform</li>
-        </ul>
-        <span class="more">Read the case &rarr;</span>
       </div>
       <div class="chart">
         <svg viewBox="0 0 300 152" role="img" aria-label="Three stages moved off spreadsheets and a third-party vendor onto Backflip's own platform: budget intake, budget ledger, and draw request and payout">
@@ -178,6 +182,14 @@
           <text class="ch-on" x="160" y="141">Backflip platform</text>
         </svg>
       </div>
+      <div class="card-foot">
+        <ul class="stats">
+          <li>Vendor retired</li>
+          <li>Faster draw payouts</li>
+          <li>Budgets in-platform</li>
+        </ul>
+        <span class="more">Read the case &rarr;</span>
+      </div>
     </a>
 
   </div>
@@ -194,7 +206,7 @@
 </footer>
 
 </div>
-  <script src="/site.js?v=1" defer></script>
+  <script src="/site.js?v=2" defer></script>
   <!-- Cloudflare Web Analytics -->
   <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a85f519c6c7c4a88a507c44891415a3c"}'></script>
   <!-- End Cloudflare Web Analytics -->

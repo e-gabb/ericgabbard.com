@@ -4,7 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rebuilding the system we were renting — Eric Gabbard</title>
-<meta name="description" content="Construction budgets arrived by spreadsheet and every draw after closing ran on a third-party platform. We rebuilt budget intake, the ledger, the borrower draw experience and internal review, and retired the vendor.">
+<meta name="description" content="Budgets arrived by spreadsheet and every draw after closing ran on a vendor platform. We rebuilt intake, ledger, draws and review, and retired the vendor.">
+<meta property="og:title" content="Rebuilding the system we were renting — Eric Gabbard">
+<meta property="og:description" content="Budgets arrived by spreadsheet and every draw after closing ran on a vendor platform. We rebuilt intake, ledger, draws and review, and retired the vendor.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ericgabbard.com/projects/draw-management">
+<meta property="og:image" content="https://ericgabbard.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rebuilding the system we were renting — Eric Gabbard">
+<meta name="twitter:description" content="Budgets arrived by spreadsheet and every draw after closing ran on a vendor platform. We rebuilt intake, ledger, draws and review, and retired the vendor.">
+<meta name="twitter:image" content="https://ericgabbard.com/og-image.png">
 <link rel="canonical" href="https://ericgabbard.com/projects/draw-management">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
@@ -14,24 +25,26 @@
 <meta name="theme-color" content="#14655a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
-<link rel="stylesheet" href="/style.css?v=14">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"></noscript>
+<link rel="stylesheet" href="/style.css?v=15">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
 
 <header>
   <nav>
-    <a class="home" href="/">Eric Gabbard</a>
+    <a class="home" href="/" aria-label="Eric Gabbard, home"><svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11.3 12 4.2l9 7.1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.7 9.7V19.8h12.6V9.7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Eric Gabbard</span></a>
     <ul>
-      <li><a href="/projects" aria-current="page">Projects</a></li>
+      <li><a href="/projects/" aria-current="page">Projects</a></li>
       <li><a href="/ai">AI</a></li>
       <li><a href="/contact">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<main class="case">
+<main id="main" class="case">
 
   <p class="eyebrow">Backflip &middot; Real estate lending</p>
   <h1>Rebuilding the system we were renting</h1>
@@ -50,6 +63,7 @@
   </dl>
 
   <figure>
+    <div class="fig-scroll">
     <svg viewBox="0 0 560 240" role="img" aria-label="Budget intake moved from Excel by email to the Backflip platform; the budget ledger and the draw request and payout workflow moved from a third-party vendor to the Backflip platform">
       <text class="ch-lab" x="0" y="12">WHAT WE REPLACED, AND IN WHAT ORDER</text>
 
@@ -80,6 +94,7 @@
       <line class="ch-rule" x1="0" y1="216" x2="560" y2="216"/>
       <text class="ch-lab" x="0" y="234">THREE SYSTEMS OF RECORD, ONE PLATFORM &#8212; AND NO VENDOR BILL</text>
     </svg>
+    </div>
     <figcaption><span>Fig. 1 &#8212; The scope, stage by stage</span><span>Backflip</span></figcaption>
   </figure>
 
@@ -168,7 +183,7 @@
     </ul>
   </div>
 
-  <a class="back" href="/projects">&larr; All projects</a>
+  <a class="back" href="/projects/">&larr; All projects</a>
 
 </main>
 
@@ -182,7 +197,7 @@
 </footer>
 
 </div>
-  <script src="/site.js?v=1" defer></script>
+  <script src="/site.js?v=2" defer></script>
   <!-- Cloudflare Web Analytics -->
   <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a85f519c6c7c4a88a507c44891415a3c"}'></script>
   <!-- End Cloudflare Web Analytics -->
