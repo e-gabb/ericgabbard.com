@@ -32,3 +32,7 @@ Answer in any order; skip any and that part stays as-is.
 17. Close the blank band above the footer on contact and 404?
 
 Site state: phase 1 + 2 committed locally (HEAD fd92a39), not pushed. Preview: python3 -m http.server 8137 in the repo root.
+
+
+## Status 2026-09-03
+All 17 answered. Q12: no strip. DNS proxied, beacon verified 204. Worker headers/CSP committed in site-attribution, deploy AFTER the site push (inline scripts moved to site.js v3).
