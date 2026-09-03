@@ -182,6 +182,15 @@ a { color: var(--accent); text-underline-offset: 3px; }
 
 .lede { font-size: 1.18rem; line-height: 1.5; color: var(--fg); }
 
+/* three-line summary under a case-study lede */
+.tldr {
+  list-style: none; margin: 0 0 2rem; padding: 0.9rem 1.1rem;
+  border-left: 3px solid var(--accent); background: var(--accent-soft);
+  font-size: 0.95rem; line-height: 1.5;
+}
+.tldr li { margin: 0; padding: 0.15rem 0; }
+.tldr li + li { border-top: 1px solid var(--rule); }
+
 .eyebrow {
   font-family: var(--mono);
   font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;

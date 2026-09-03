@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"></noscript>
-<link rel="stylesheet" href="/style.css?v=15">
+<link rel="stylesheet" href="/style.css?v=16">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -49,10 +49,16 @@
   <p class="eyebrow">Backflip &middot; Real estate lending</p>
   <h1>Rebuilding the system we were renting</h1>
 
-  <p class="lede">Budgets came in as spreadsheets. Everything after closing &mdash; the budget
-  ledger, the borrower&rsquo;s draw requests, our servicing and accounting review, the
-  disbursement &mdash; ran on a third-party platform we paid heavily for and couldn&rsquo;t
+  <p class="lede">Budgets came in as spreadsheets. Everything after closing, from the budget
+  ledger to the borrower&rsquo;s draw requests to our servicing and accounting review and the
+  disbursement itself, ran on a third-party platform we paid heavily for and couldn&rsquo;t
   change. We rebuilt all of it in two stages and retired the vendor.</p>
+
+  <ul class="tldr" aria-label="In short">
+    <li>Draw payout cut from <strong>3.5 to 2.1 business days</strong>, 40% faster</li>
+    <li>Third-party draw platform <strong>retired</strong>; budgets, draws, and disbursement now in-platform</li>
+    <li>Cutover bounded by a 50% completion threshold so no live loan was disrupted</li>
+  </ul>
 
   <dl>
     <dt>Role</dt>
@@ -149,23 +155,22 @@
   every stage of completion. Move everything at once and you disrupt borrowers mid-project;
   leave everything and you pay for two systems indefinitely.</p>
 
-  <p>I ran a working session with the engineering, ops and servicing leads and the draw product
-  owner rather than deciding it in product and socializing it afterward, and we landed on a
+  <p>I ran a working session with the engineering, ops and servicing leads and the ops lead who
+  owned draws day to day, rather than deciding it in product and socializing it afterward, and we landed on a
   completion-percentage threshold: <strong>loans under 50% complete migrate; loans at or above
   50% finish their remaining draws on the legacy vendor.</strong> The logic was concrete rather
-  than arbitrary &mdash; a loan under 50% has been through one or two draw cycles and moves
+  than arbitrary: a loan under 50% has been through one or two draw cycles and moves
   cleanly, while a loan past 50% is deeply embedded in borrower and ops workflow.</p>
 
   <p>The piece that made it a plan rather than a preference was the trigger condition: no new
   loans go on the old system once engineering finished its final workstream. That bounded the
-  dual-system period instead of leaving the retirement date to drift. The plan was adopted by
-  the full cross-functional group with no dissent.</p>
+  dual-system period instead of leaving the retirement date to drift.</p>
 
   <h2>Tradeoffs</h2>
 
   <p>Rebuilding a vendor system is the expensive answer by default, and it is usually the wrong
-  one. It was right here because the vendor sat on three things at once &mdash; the ledger, the
-  borrower experience, and a competitive lever &mdash; and because the fee was large enough
+  one. It was right here because the vendor sat on three things at once, the ledger, the
+  borrower experience, and a competitive lever, and because the fee was large enough
   that the build paid for itself rather than merely feeling better.</p>
 
   <p>The threshold cutover also accepts a real cost: a set of borrowers finished their loans on
@@ -176,10 +181,10 @@
     <h3>Outcome</h3>
     <ul>
       <li>Third-party draw platform <strong>retired</strong>, eliminating a substantial recurring vendor fee</li>
-      <li>Budget intake moved into underwriting &mdash; structured submission and review in-platform, shortening turnaround and time to close</li>
-      <li>Draw request, servicing and accounting review, and disbursement rebuilt as one system; <strong>payout turnaround materially faster</strong> than at the start</li>
+      <li>Budget intake moved into underwriting: structured submission and review in-platform, shortening turnaround and time to close</li>
+      <li>Draw request, servicing and accounting review, and disbursement rebuilt as one system; <strong>payout turnaround cut 40%, from 3.5 to 2.1 business days</strong></li>
       <li>Borrower feedback on the rebuilt experience: easier to use than the platform it replaced</li>
-      <li>Migration bounded by a <strong>50% completion threshold</strong> and a hard no-new-loans trigger, adopted cross-functionally with no dissent</li>
+      <li>Migration bounded by a <strong>50% completion threshold</strong> and a hard no-new-loans trigger, adopted by the full cross-functional group</li>
     </ul>
   </div>
 
@@ -192,7 +197,7 @@
   <ul class="footlinks">
     <li><a href="mailto:ericdgabbard@gmail.com">Email</a></li>
     <li><a href="https://www.linkedin.com/in/eric-gabbard-48069759/">LinkedIn</a></li>
-    <li><a href="/resume.pdf?v=2026-09">Résumé (PDF)</a></li>
+    <li><a href="/resume.pdf?v=2026-09-02">Résumé (PDF)</a></li>
   </ul>
 </footer>
 

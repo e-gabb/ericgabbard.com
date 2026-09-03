@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"></noscript>
-<link rel="stylesheet" href="/style.css?v=15">
+<link rel="stylesheet" href="/style.css?v=16">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -51,8 +51,14 @@
 
   <p class="lede">Ten-plus A/B tests on the acquisition funnel moved conversion 34% and loan
   applications 26% on 10% less marketing spend. The harder one was a three-variant loan
-  application experiment run against two senior stakeholders who wanted opposite answers &mdash;
+  application experiment run against two senior stakeholders who wanted opposite answers,
   where the work was in designing a metric neither of them could reinterpret afterward.</p>
+
+  <ul class="tldr" aria-label="In short">
+    <li><strong>+34% conversion</strong>, <strong>+26% applications</strong>, on 10% less spend, one quarter vs a trailing-twelve-month baseline</li>
+    <li>Ten-plus A/B tests against measured drop-off points instead of one redesign</li>
+    <li>A pre-registered, funnel-shape-neutral metric that let two opposed stakeholders accept one answer</li>
+  </ul>
 
   <dl>
     <dt>Role</dt>
@@ -95,7 +101,7 @@
   <h2>The problem</h2>
 
   <p>Everyone could see that people fell out of the funnel. Nobody could say which drop-off
-  actually cost applications. That gap gets filled with conviction &mdash; whoever argues best
+  actually cost applications. That gap gets filled with conviction: whoever argues best
   in the room decides what ships, and because nothing is measured against a real baseline,
   nobody is ever wrong afterward.</p>
 
@@ -112,14 +118,14 @@
   <p>I led a cross-functional pod through the funnel systematically: find the drop-off points
   that actually cost applications, then test enhancements against them one at a time. More than
   ten A/B tests over the quarter, against a trailing-twelve-month baseline rather than against
-  last month &mdash; a lending funnel is seasonal enough that a short baseline will happily
+  last month. A lending funnel is seasonal enough that a short baseline will happily
   tell you whatever you want to hear.</p>
 
   <p>Doing it as ten tests rather than one redesign is slower to feel like progress and much
   faster to produce knowledge. A redesign that lifts conversion tells you the new one is better.
   Ten tests tell you <em>which changes</em> did it, which is what the next quarter is built on.</p>
 
-  <p>Conversion rose 34% and loan applications 26% &mdash; on 10% less marketing spend. The
+  <p>Conversion rose 34% and loan applications 26%, on 10% less marketing spend. The
   spend line is the one that matters most: the lift came from the funnel converting better, not
   from buying more traffic to push through it.</p>
 
@@ -143,7 +149,7 @@
   <h2>The pipeline was lying to us</h2>
 
   <p>Mid-flight, the entry counts didn&rsquo;t reconcile. Investigating turned up three
-  overlapping causes, which is why it hadn&rsquo;t been caught earlier &mdash; each one alone
+  overlapping causes, which is why it hadn&rsquo;t been caught earlier. Each one alone
   looked like noise:</p>
 
   <ul class="plain">
@@ -153,8 +159,8 @@
   </ul>
 
   <p>The bot filter was the big one: it was discarding roughly <strong>73% of real mobile
-  sessions</strong>. I reversed it and corrected counts across all three arms &mdash; entries
-  went from 74 / 41 / 45 to <strong>197 / 127 / 125</strong> &mdash; then documented the full
+  sessions</strong>. I reversed it and corrected counts across all three arms, so entries
+  went from 74 / 41 / 45 to <strong>197 / 127 / 125</strong>, then documented the full
   methodology, including what had been wrong and how the correction was derived, so the result
   was reproducible by someone who hadn&rsquo;t lived through it. In an experiment two people
   were already prepared to dispute, a correction nobody can audit is not a correction.</p>
@@ -202,7 +208,7 @@
   <h2>The result held</h2>
 
   <p>With corrected attribution, the rates-hidden variant led submission conversion
-  <strong>4.5% vs 2.0%</strong> over 25 days &mdash; and it led on <em>every pull across those
+  <strong>4.5% vs 2.0%</strong> over 25 days, and it led on <em>every pull across those
   25 days</em>, not only in the final cut. Consistency across pulls matters more than the
   endpoint gap: it&rsquo;s the difference between a real effect and a snapshot that happened to
   land favorably.</p>
@@ -214,7 +220,7 @@
   <h2>Tradeoffs</h2>
 
   <p>Ten experiments means accepting that most of them will be flat. The discipline is running
-  them anyway, and not quietly reinterpreting the losers into wins &mdash; which is the same
+  them anyway, and not quietly reinterpreting the losers into wins. It is the same
   discipline the metric definition was protecting, just applied ten times instead of once.</p>
 
   <p>A funnel-shape-neutral metric also costs you something real: it deliberately refuses to
@@ -228,11 +234,11 @@
   <div class="outcome">
     <h3>Outcome</h3>
     <ul>
-      <li><strong>+34% conversion</strong> and <strong>+26% loan applications</strong> on <strong>10% less marketing spend</strong> &mdash; one quarter against a trailing-twelve-month baseline</li>
+      <li><strong>+34% conversion</strong> and <strong>+26% loan applications</strong> on <strong>10% less marketing spend</strong>, one quarter against a trailing-twelve-month baseline</li>
       <li><strong>10+ A/B tests</strong> run against measured drop-off points rather than one redesign</li>
       <li>Funnel-shape-neutral primary metric defined pre-launch; <strong>post-hoc result-gaming closed off</strong> and the decision settled</li>
       <li>Winning variant at <strong>4.5% vs 2.0% submission conversion</strong>, leading on every pull across 25 days</li>
-      <li>Attribution corrected mid-experiment &mdash; <strong>~73% of real mobile sessions recovered</strong>, entries 74/41/45 &rarr; <strong>197/127/125</strong>, methodology documented</li>
+      <li>Attribution corrected mid-experiment: <strong>~73% of real mobile sessions recovered</strong>, entries 74/41/45 &rarr; <strong>197/127/125</strong>, methodology documented</li>
     </ul>
   </div>
 
@@ -245,7 +251,7 @@
   <ul class="footlinks">
     <li><a href="mailto:ericdgabbard@gmail.com">Email</a></li>
     <li><a href="https://www.linkedin.com/in/eric-gabbard-48069759/">LinkedIn</a></li>
-    <li><a href="/resume.pdf?v=2026-09">Résumé (PDF)</a></li>
+    <li><a href="/resume.pdf?v=2026-09-02">Résumé (PDF)</a></li>
   </ul>
 </footer>
 
