@@ -10,7 +10,6 @@ Personal site. Static HTML/CSS, no build step, no dependencies.
 - `style.css` — single stylesheet, light + dark via `prefers-color-scheme`
 - `resume.pdf` — downloadable résumé (a copy; see below)
 - `site.js` — attribution beacon (see below)
-- `attribution/` — the Cloudflare Worker behind per-company link tracking
 - `CNAME` — custom domain for GitHub Pages
 
 ## Résumé
@@ -32,7 +31,8 @@ without a UTM-laden URL. A Cloudflare Worker resolves the code, logs the open an
 forwards to the real page; `site.js` confirms a human rather than a mail scanner
 actually rendered it. The dashboard lives behind a secret path, not in this repo.
 
-Setup and the runbook: [`attribution/README.md`](attribution/README.md).
+The Worker, its schema, and the runbook live in the private repo
+`e-gabb/site-attribution` (checked out at `~/projects/site-attribution`).
 
 ## Local preview
 
