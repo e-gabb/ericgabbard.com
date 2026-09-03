@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"></noscript>
-<link rel="stylesheet" href="/style.css?v=16">
+<link rel="stylesheet" href="/style.css?v=17">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -62,10 +62,16 @@
 
   <dl>
     <dt>Role</dt>
-    <dd>Head of Product (previously Senior Product Manager)</dd>
+    <dd>Senior Product Manager for the funnel tests (Q3 2025); Head of Product for the
+    application experiment (June&ndash;July 2026)</dd>
     <dt>Scope</dt>
     <dd>Cross-functional pod leadership, funnel analysis, experiment design, metric definition,
     methodology documentation</dd>
+    <dt>Worked with</dt>
+    <dd>Design, engineering, sales, marketing</dd>
+    <dt>Timeline</dt>
+    <dd>Funnel tests over about a quarter; the application experiment ran roughly six weeks
+    from prototype through engineering to the final read</dd>
   </dl>
 
   <figure>
@@ -131,8 +137,10 @@
 
   <h2>The experiment two people wanted to win</h2>
 
-  <p>For the rate-disclosure question I designed a three-variant split, one third of ad traffic
-  per arm, and spent the design time on the primary metric rather than on the variants.</p>
+  <p>For the rate-disclosure question I designed a three-arm split: two test variants and a
+  control running the existing application, fed from a single marketing campaign so that
+  swings in campaign performance could not masquerade as conversion changes. I spent the
+  design time on the primary metric rather than on the variants.</p>
 
   <p>The metric had to be <em>funnel-shape-neutral</em>: it could not be gamed by an
   interpretation that favored a longer or a shorter funnel, because that was precisely the axis
@@ -140,9 +148,12 @@
   the win by construction. Defining it before launch, in writing, is what made post-hoc
   result-gaming impossible rather than merely impolite.</p>
 
-  <p>I also calibrated leadership expectations on statistical power before data collection
-  started, so &ldquo;we don&rsquo;t have enough data yet&rdquo; was a known checkpoint agreed in
-  advance rather than a stall tactic invented in week two by whoever was losing.</p>
+  <p>The decision bar was written down before launch too: a minimum of 300 applications
+  across the test before anyone read the result, and proof that down-funnel conversion had
+  not degraded, because a variant that wins by pushing weaker applications through is a loss
+  dressed as a win. Agreeing that in advance meant &ldquo;we don&rsquo;t have enough data
+  yet&rdquo; was a known checkpoint rather than a stall tactic invented in week two by whoever
+  was losing.</p>
 
   <blockquote>The variants were the easy part. The metric was the experiment.</blockquote>
 
@@ -169,6 +180,15 @@
   diagnostic detail, traded for a result that could actually end the argument. Worth it here
   only because the argument was the blocker.</p>
 
+
+  <h2>What I&rsquo;d do differently</h2>
+
+  <p>Run fewer experiments with more power. Ten tests in a quarter proved the funnel could be
+  run on evidence, but at our volume most of them were underpowered and flat, and flat results
+  teach a team less than clear losses. Traffic was the constraint, and spreading it across ten
+  tests was the mistake. Five tests, each sized to give a real answer, would have moved us
+  faster, and the saved weeks would have gone to the qualitative work that tells you which
+  five.</p>
 
   <div class="outcome">
     <h3>Outcome</h3>

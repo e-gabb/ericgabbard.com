@@ -102,7 +102,7 @@ nav a:hover, nav a[aria-current="page"] { color: var(--accent); }
 
 /* Inline links take vertical padding without changing the line box, so this
    lifts the hit area to 24px+ without moving anything. */
-nav ul a, .footlinks a { padding: 0.35rem 0; }
+nav ul a, .footlinks a { padding: 0.35rem 0.3rem; margin: 0 -0.3rem; }
 
 /* Below the sidebar breakpoint the nav is a top row rather than a sticky
    left column, so pin the row itself — otherwise the links scroll away and
@@ -309,6 +309,10 @@ figcaption {
 ul.plain { list-style: none; margin: 0; padding: 0; }
 ul.plain > li { padding: 0.9rem 0; border-top: 1px solid var(--rule); }
 ul.plain > li:last-child { border-bottom: 1px solid var(--rule); }
+/* When the list is the last thing before the footer, the footer's own rule
+   closes it; a second rule 4rem above reads as an empty box. */
+main > ul.plain:last-child > li:last-child { border-bottom: 0; }
+main > ul.plain:last-child { margin-bottom: 0; }
 
 .stats { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
 .stats li {
