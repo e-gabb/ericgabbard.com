@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"></noscript>
-<link rel="stylesheet" href="/style.css?v=17">
+<link rel="stylesheet" href="/style.css?v=18">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -75,35 +75,43 @@
 
   <figure>
     <div class="fig-scroll">
-    <svg viewBox="0 0 560 230" role="img" aria-label="Analyzer users retained at 60 percent at Month 1 versus 9 percent for other users, and filed 2.03 loan applications per user against 1.1; data cost fell 90 percent after a 75 percent volume reduction">
-      <text class="ch-lab" x="0" y="12">WHAT IT WAS WORTH</text>
-      <text class="ch-lab" x="0" y="40">MONTH 1 RETENTION</text>
-      <rect class="ch-mark" x="0" y="48" width="312" height="26"/>
-      <text class="ch-on"   x="9" y="65">Analyzer users</text>
-      <text class="ch-val"  x="322" y="65">60%</text>
-      <rect class="ch-alt"  x="0" y="82" width="47" height="26"/>
-      <text class="ch-val"  x="57" y="99">9%</text>
-      <text class="ch-lab"  x="0" y="124">EVERYONE ELSE &#8212; A 6.7&#215; GAP</text>
+    <svg viewBox="0 0 720 212" role="img" aria-label="Left: monthly data cost, indexed to 100 before and 10 after. Right: retention from day 0 to month 1, both cohorts starting at 100 percent, with Analyzer users at 60 percent at month 1 and My Leads users at 9 percent.">
 
-      <text class="ch-lab" x="380" y="40">LOAN APPS PER USER</text>
-      <rect class="ch-mark" x="380" y="48" width="120" height="26"/>
-      <text class="ch-val"  x="510" y="65">2.03</text>
-      <rect class="ch-alt"  x="380" y="82" width="65" height="26"/>
-      <text class="ch-val"  x="455" y="99">1.1</text>
-      <text class="ch-lab"  x="380" y="124">85% MORE</text>
+      <text class="ch-lab-lg" x="0" y="16">MONTHLY DATA COST</text>
 
-      <line class="ch-rule" x1="0" y1="150" x2="560" y2="150"/>
+      <path class="ch-line" d="M30 45 L320 153"/>
+      <circle class="ch-dot" cx="30" cy="45" r="4"/>
+      <circle class="ch-dot" cx="320" cy="153" r="4"/>
+      <text class="ch-val-lg" x="30" y="36">100</text>
+      <text class="ch-val-lg" x="328" y="157">10</text>
 
-      <text class="ch-lab" x="0" y="172">WHAT IT COST, AFTER</text>
-      <rect class="ch-alt"  x="0" y="180" width="300" height="18"/>
-      <text class="ch-val"  x="308" y="193">100%</text>
-      <rect class="ch-mark" x="0" y="204" width="30" height="18"/>
-      <text class="ch-val"  x="38" y="217">10%</text>
-      <text class="ch-lab"  x="360" y="190">CUT THE AUTOMATED PATH,</text>
-      <text class="ch-lab"  x="360" y="204">REPRICED TO USAGE</text>
+      <line class="ch-rule" x1="30" y1="165" x2="320" y2="165"/>
+      <text class="ch-lab-lg" x="30" y="187">BEFORE</text>
+      <text class="ch-lab-lg" x="320" y="187" text-anchor="end">AFTER</text>
+
+      <text class="ch-lab-lg" x="0" y="208">&#8722;90% COST &middot; &#8722;75% VOLUME</text>
+
+      <line class="ch-rule" x1="358" y1="28" x2="358" y2="192"/>
+
+      <text class="ch-lab-lg" x="390" y="16">RETENTION &middot; DAY 0 TO MONTH 1</text>
+
+      <path class="ch-line"  d="M420 45 C434 68 458 82 494 86 C550 92 600 92 640 93"/>
+      <path class="ch-line2" d="M420 45 C432 88 452 128 494 140 C548 149 600 153 640 154"/>
+
+      <circle class="ch-dot"  cx="640" cy="93" r="4"/>
+      <circle class="ch-dot2" cx="640" cy="154" r="4"/>
+
+      <text class="ch-val-lg" x="650" y="89">60%</text>
+      <text class="ch-lab-lg" x="650" y="105">ANALYZER</text>
+      <text class="ch-val-lg" x="650" y="150">9%</text>
+      <text class="ch-lab-lg" x="650" y="166">MY LEADS</text>
+
+      <line class="ch-rule" x1="420" y1="165" x2="640" y2="165"/>
+      <text class="ch-lab-lg" x="420" y="187">DAY 0</text>
+      <text class="ch-lab-lg" x="640" y="187" text-anchor="end">MONTH 1</text>
     </svg>
     </div>
-    <figcaption><span>Fig. 1 &#8212; The value case and the cost case, side by side</span><span>Backflip</span></figcaption>
+    <figcaption><span>Fig. 1 &#8212; Data cost after the My Leads sunset, and who actually retained</span><span>Backflip</span></figcaption>
   </figure>
 
   <h2>The problem</h2>

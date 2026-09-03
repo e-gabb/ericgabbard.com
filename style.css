@@ -207,6 +207,16 @@ a { color: var(--accent); text-underline-offset: 3px; }
 .ch-rule { stroke: var(--rule); stroke-width: 1; }
 .ch-ghost { fill: none; stroke: var(--clay); stroke-width: 1; }
 .ch-arrow { fill: none; stroke: var(--clay); stroke-width: 1; }
+.ch-line  { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+.ch-line2 { fill: none; stroke: var(--clay); stroke-width: 2; stroke-dasharray: 6 5; }
+.ch-dot   { fill: var(--accent); }
+.ch-dot2  { fill: var(--clay); }
+.ch-dash  { fill: none; stroke: var(--clay); stroke-width: 1; stroke-dasharray: 3 3; }
+
+/* Larger type for the wider two-panel figures, so text renders at the same
+   apparent size as it does in a 560-wide viewBox. Must follow .ch-lab/.ch-val. */
+.ch-lab-lg { fill: var(--muted); font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; }
+.ch-val-lg { fill: var(--fg); font-family: var(--mono); font-size: 13px; }
 
 figure { margin: 2rem 0; }
 figure svg { display: block; width: 100%; height: auto; }
